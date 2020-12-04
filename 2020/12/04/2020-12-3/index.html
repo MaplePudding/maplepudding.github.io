@@ -7,15 +7,15 @@
   
   <title>关于Type xxx is not assignable to type IntrinsicAttributes的一种解决方法(无状态组件) | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="关于Type xxx is not assignable to type IntrinsicAttributes的一种解决方法(无状态组件)组件代码： 1234567891011121314interface MyProps&amp;#123;    uiMode:boolean&amp;#125;const ChatCpt : React.FunctionComponent&lt;MyProps&gt; &amp;#x">
+  <meta name="description" content="组件代码： 1234567891011121314interface MyProps&amp;#123;    uiMode:boolean&amp;#125;const ChatCpt : React.FunctionComponent&lt;MyProps&gt; &#x3D; function(props)&amp;#123;    console.log(props.uiMode)        return(">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于Type xxx is not assignable to type IntrinsicAttributes的一种解决方法(无状态组件)">
 <meta property="og:url" content="http://example.com/2020/12/04/2020-12-3/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="关于Type xxx is not assignable to type IntrinsicAttributes的一种解决方法(无状态组件)组件代码： 1234567891011121314interface MyProps&amp;#123;    uiMode:boolean&amp;#125;const ChatCpt : React.FunctionComponent&lt;MyProps&gt; &amp;#x">
+<meta property="og:description" content="组件代码： 1234567891011121314interface MyProps&amp;#123;    uiMode:boolean&amp;#125;const ChatCpt : React.FunctionComponent&lt;MyProps&gt; &#x3D; function(props)&amp;#123;    console.log(props.uiMode)        return(">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-12-04T08:39:00.000Z">
-<meta property="article:modified_time" content="2020-12-04T08:39:29.719Z">
+<meta property="article:modified_time" content="2020-12-04T10:02:16.521Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -88,7 +88,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="关于Type-xxx-is-not-assignable-to-type-IntrinsicAttributes的一种解决方法-无状态组件"><a href="#关于Type-xxx-is-not-assignable-to-type-IntrinsicAttributes的一种解决方法-无状态组件" class="headerlink" title="关于Type xxx is not assignable to type IntrinsicAttributes的一种解决方法(无状态组件)"></a>关于Type xxx is not assignable to type IntrinsicAttributes的一种解决方法(无状态组件)</h1><p>组件代码：</p>
+        <p>组件代码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">interface MyProps&#123;</span><br><span class="line">    uiMode:boolean</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const ChatCpt : React.FunctionComponent&lt;MyProps&gt; &#x3D; function(props)&#123;</span><br><span class="line"></span><br><span class="line">    console.log(props.uiMode)</span><br><span class="line">    </span><br><span class="line">    return(</span><br><span class="line">        &lt;div id&#x3D;&quot;chatCpt&quot;&gt;</span><br><span class="line"></span><br><span class="line">        &lt;&#x2F;div&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
