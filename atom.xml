@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Code</title>
   
-  
+  <subtitle>Maple</subtitle>
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2020-12-04T10:02:16.521Z</updated>
+  <updated>2020-12-04T14:20:49.444Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://example.com/2020/12/04/2020-12-3/"/>
     <id>http://example.com/2020/12/04/2020-12-3/</id>
     <published>2020-12-04T08:39:00.000Z</published>
-    <updated>2020-12-04T10:02:16.521Z</updated>
+    <updated>2020-12-04T14:20:49.444Z</updated>
     
     
       
@@ -29,37 +29,18 @@
         
         
     <summary type="html">&lt;p&gt;组件代码：&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-none&quot;&gt;&lt;code class=&quot;language-none&quot;&gt;interface MyProps&amp;#123;
-    uiMode:boolean
-&amp;#125;
-
-const</summary>
+&lt;pre class=&quot;line-numbers language-(typescript)&quot; data-language=&quot;(typescript)&quot;&gt;&lt;code class=&quot;language-(typescript)&quot;&gt;interface</summary>
         
       
     
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://example.com/2020/12/04/hello-world/"/>
-    <id>http://example.com/2020/12/04/hello-world/</id>
-    <published>2020-12-04T08:13:57.103Z</published>
-    <updated>2020-12-04T08:13:57.103Z</updated>
+    <category term="Web" scheme="http://example.com/categories/Web/"/>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
-        
-      
+    <category term="TypeScript" scheme="http://example.com/tags/TypeScript/"/>
     
-    
-    
+    <category term="React" scheme="http://example.com/tags/React/"/>
     
   </entry>
   
