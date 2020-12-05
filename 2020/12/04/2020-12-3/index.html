@@ -424,7 +424,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2020-12-04
+                    2020-12-05
                 </div>
                 
 
@@ -447,20 +447,20 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <p>组件代码：</p>
-<pre class="line-numbers language-(typescript)" data-language="(typescript)"><code class="language-(typescript)">interface MyProps&#123;
-    uiMode:boolean
-&#125;
+<pre class="line-numbers language-typescript" data-language="typescript"><code class="language-typescript"><span class="token keyword">interface</span> <span class="token class-name">MyProps</span><span class="token punctuation">&#123;</span>
+    uiMode<span class="token operator">:</span><span class="token builtin">boolean</span>
+<span class="token punctuation">&#125;</span>
 
-const ChatCpt : React.FunctionComponent&lt;MyProps&gt; &#x3D; function(props)&#123;
+<span class="token keyword">const</span> ChatCpt <span class="token operator">:</span> React<span class="token punctuation">.</span>FunctionComponent<span class="token operator">&lt;</span>MyProps<span class="token operator">></span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
 
-    console.log(props.uiMode)
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>props<span class="token punctuation">.</span>uiMode<span class="token punctuation">)</span>
     
-    return(
-        &lt;div id&#x3D;&quot;chatCpt&quot;&gt;
+    <span class="token keyword">return</span><span class="token punctuation">(</span>
+        <span class="token operator">&lt;</span>div id<span class="token operator">=</span><span class="token string">"chatCpt"</span><span class="token operator">></span>
 
-        &lt;&#x2F;div&gt;
-    )
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+    <span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
