@@ -2,49 +2,49 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://example.com/2021/01/26/2021-1-26(2)/</loc>
+    <loc>https://maplepudding.github.io/2021/01/26/2021-1-26(2)/</loc>
     
     <lastmod>2021-01-26</lastmod>
     
   </url>
   
   <url>
-    <loc>http://example.com/2020/12/04/2020-12-3/</loc>
+    <loc>https://maplepudding.github.io/2020/12/04/2020-12-3/</loc>
     
     <lastmod>2021-01-26</lastmod>
     
   </url>
   
   <url>
-    <loc>http://example.com/2021/01/26/2021-1-26(1)/</loc>
+    <loc>https://maplepudding.github.io/2021/01/26/2021-1-26(1)/</loc>
     
     <lastmod>2021-01-26</lastmod>
     
   </url>
   
   <url>
-    <loc>http://example.com/404/index.html</loc>
+    <loc>https://maplepudding.github.io/404/index.html</loc>
     
     <lastmod>2020-12-04</lastmod>
     
   </url>
   
   <url>
-    <loc>http://example.com/about/index.html</loc>
+    <loc>https://maplepudding.github.io/about/index.html</loc>
     
     <lastmod>2020-12-04</lastmod>
     
   </url>
   
   <url>
-    <loc>http://example.com/categories/index.html</loc>
+    <loc>https://maplepudding.github.io/categories/index.html</loc>
     
     <lastmod>2020-12-04</lastmod>
     
   </url>
   
   <url>
-    <loc>http://example.com/tags/index.html</loc>
+    <loc>https://maplepudding.github.io/tags/index.html</loc>
     
     <lastmod>2020-12-04</lastmod>
     
@@ -52,7 +52,7 @@
   
 
   <url>
-    <loc>http://example.com/</loc>
+    <loc>https://maplepudding.github.io/</loc>
     <lastmod>2021-01-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
@@ -60,28 +60,28 @@
 
   
   <url>
-    <loc>http://example.com/tags/Leetcode/</loc>
+    <loc>https://maplepudding.github.io/tags/TypeScript/</loc>
     <lastmod>2021-01-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/Algorithm/</loc>
+    <loc>https://maplepudding.github.io/tags/React/</loc>
     <lastmod>2021-01-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/TypeScript/</loc>
+    <loc>https://maplepudding.github.io/tags/Leetcode/</loc>
     <lastmod>2021-01-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/tags/React/</loc>
+    <loc>https://maplepudding.github.io/tags/Algorithm/</loc>
     <lastmod>2021-01-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -90,14 +90,14 @@
 
   
   <url>
-    <loc>http://example.com/categories/Leetcode/</loc>
+    <loc>https://maplepudding.github.io/categories/Web/</loc>
     <lastmod>2021-01-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://example.com/categories/Web/</loc>
+    <loc>https://maplepudding.github.io/categories/Leetcode/</loc>
     <lastmod>2021-01-26</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
