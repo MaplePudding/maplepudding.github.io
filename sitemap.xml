@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://maplepudding.github.io/2021/04/16/2021-4-16/</loc>
+    
+    <lastmod>2021-04-16</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://maplepudding.github.io/2021/01/26/2021-1-26(2)/</loc>
     
     <lastmod>2021-01-26</lastmod>
@@ -53,7 +60,7 @@
 
   <url>
     <loc>https://maplepudding.github.io/</loc>
-    <lastmod>2021-01-26</lastmod>
+    <lastmod>2021-04-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -61,28 +68,28 @@
   
   <url>
     <loc>https://maplepudding.github.io/tags/TypeScript/</loc>
-    <lastmod>2021-01-26</lastmod>
+    <lastmod>2021-04-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://maplepudding.github.io/tags/React/</loc>
-    <lastmod>2021-01-26</lastmod>
+    <lastmod>2021-04-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://maplepudding.github.io/tags/Leetcode/</loc>
-    <lastmod>2021-01-26</lastmod>
+    <lastmod>2021-04-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://maplepudding.github.io/tags/Algorithm/</loc>
-    <lastmod>2021-01-26</lastmod>
+    <lastmod>2021-04-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
@@ -91,14 +98,14 @@
   
   <url>
     <loc>https://maplepudding.github.io/categories/Web/</loc>
-    <lastmod>2021-01-26</lastmod>
+    <lastmod>2021-04-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
     <loc>https://maplepudding.github.io/categories/Leetcode/</loc>
-    <lastmod>2021-01-26</lastmod>
+    <lastmod>2021-04-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
