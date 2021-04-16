@@ -94,6 +94,20 @@
     <priority>0.6</priority>
   </url>
   
+  <url>
+    <loc>https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/</loc>
+    <lastmod>2021-04-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://maplepudding.github.io/tags/CSS/</loc>
+    <lastmod>2021-04-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
 
   
   <url>
@@ -105,6 +119,13 @@
   
   <url>
     <loc>https://maplepudding.github.io/categories/Leetcode/</loc>
+    <lastmod>2021-04-16</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://maplepudding.github.io/categories/Web%E5%89%8D%E7%AB%AF/</loc>
     <lastmod>2021-04-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

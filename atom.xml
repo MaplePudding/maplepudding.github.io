@@ -6,7 +6,7 @@
   <link href="https://maplepudding.github.io/atom.xml" rel="self"/>
   
   <link href="https://maplepudding.github.io/"/>
-  <updated>2021-04-16T05:16:45.196Z</updated>
+  <updated>2021-04-16T05:26:10.550Z</updated>
   <id>https://maplepudding.github.io/</id>
   
   <author>
@@ -17,23 +17,29 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
+    <title>关于a标签各个伪类之间的权重关系整理（link visited hover active）</title>
     <link href="https://maplepudding.github.io/2021/04/16/2021-4-16/"/>
     <id>https://maplepudding.github.io/2021/04/16/2021-4-16/</id>
-    <published>2021-04-16T05:04:21.644Z</published>
-    <updated>2021-04-16T05:16:45.196Z</updated>
+    <published>2021-04-16T05:24:00.000Z</published>
+    <updated>2021-04-16T05:26:10.550Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;关于a标签各个伪类之间的权重关系整理（link-visited-hover-active）&quot;&gt;&lt;a href=&quot;#关于a标签各个伪类之间的权重关系整理（link-visited-hover-active）&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;h2 id=&quot;测试代码&quot;&gt;&lt;a href=&quot;#测试代码&quot; class=&quot;headerlink&quot; title=&quot;测试代码&quot;&gt;&lt;/a&gt;测试代码&lt;/h2&gt;&lt;pre class=&quot;line-numbers language-html&quot;</summary>
         
       
     
     
     
+    <category term="Web前端" scheme="https://maplepudding.github.io/categories/Web%E5%89%8D%E7%AB%AF/"/>
+    
+    
+    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="CSS" scheme="https://maplepudding.github.io/tags/CSS/"/>
     
   </entry>
   
