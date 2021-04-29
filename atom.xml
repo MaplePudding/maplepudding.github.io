@@ -6,7 +6,7 @@
   <link href="https://maplepudding.github.io/atom.xml" rel="self"/>
   
   <link href="https://maplepudding.github.io/"/>
-  <updated>2021-04-27T02:55:16.962Z</updated>
+  <updated>2021-04-29T05:30:34.121Z</updated>
   <id>https://maplepudding.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>牛客HTML前端笔试题目知识点整理（长期更新）</title>
+    <link href="https://maplepudding.github.io/2021/04/29/2021-4-29/"/>
+    <id>https://maplepudding.github.io/2021/04/29/2021-4-29/</id>
+    <published>2021-04-29T05:29:55.273Z</published>
+    <updated>2021-04-29T05:30:34.121Z</updated>
+    
+    
+    
+    
+    <category term="Web笔试" scheme="https://maplepudding.github.io/categories/Web%E7%AC%94%E8%AF%95/"/>
+    
+    
+    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="笔试" scheme="https://maplepudding.github.io/tags/%E7%AC%94%E8%AF%95/"/>
+    
+    <category term="HTML" scheme="https://maplepudding.github.io/tags/HTML/"/>
+    
+  </entry>
   
   <entry>
     <title>牛客CSS前端笔试题目知识点整理（长期更新）</title>
@@ -47,11 +68,11 @@
   </entry>
   
   <entry>
-    <title>牛客js前端笔试题目知识点整理（长期更新）</title>
+    <title>牛客JS前端笔试题目知识点整理（长期更新）</title>
     <link href="https://maplepudding.github.io/2021/04/22/2021-4-22/"/>
     <id>https://maplepudding.github.io/2021/04/22/2021-4-22/</id>
     <published>2021-04-22T01:19:15.677Z</published>
-    <updated>2021-04-27T05:12:54.361Z</updated>
+    <updated>2021-04-29T05:59:19.900Z</updated>
     
     
       
@@ -125,9 +146,9 @@
     <category term="Leetcode" scheme="https://maplepudding.github.io/categories/Leetcode/"/>
     
     
-    <category term="Algorithm" scheme="https://maplepudding.github.io/tags/Algorithm/"/>
-    
     <category term="Leetcode" scheme="https://maplepudding.github.io/tags/Leetcode/"/>
+    
+    <category term="Algorithm" scheme="https://maplepudding.github.io/tags/Algorithm/"/>
     
   </entry>
   
@@ -152,9 +173,9 @@
     <category term="Leetcode" scheme="https://maplepudding.github.io/categories/Leetcode/"/>
     
     
-    <category term="Algorithm" scheme="https://maplepudding.github.io/tags/Algorithm/"/>
-    
     <category term="Leetcode" scheme="https://maplepudding.github.io/tags/Leetcode/"/>
+    
+    <category term="Algorithm" scheme="https://maplepudding.github.io/tags/Algorithm/"/>
     
   </entry>
   
