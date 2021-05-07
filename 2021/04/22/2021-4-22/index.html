@@ -429,7 +429,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2021-04-29
+                    2021-05-07
                 </div>
                 
 
@@ -589,6 +589,67 @@ console<span class="token punctuation">.</span><span class="token function">log<
 
 <span class="token comment">//空元素区别于显示undefined，若直接指定为undefined，map等迭代器依然会进行处理</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<h2 id="关于立即执行函数调用时间"><a href="#关于立即执行函数调用时间" class="headerlink" title="关于立即执行函数调用时间"></a>关于立即执行函数调用时间</h2><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">//立即执行函数只有在js引擎“真正解析该处代码时才会调用”，真正解析是指当在函数内时，只有该函数进入调用栈才会被执行</span>
+
+<span class="token keyword">function</span> <span class="token function">fun1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"fun1"</span><span class="token punctuation">)</span>     <span class="token comment">//未执行</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">function</span> <span class="token function">fun2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"fun2"</span><span class="token punctuation">)</span>     
+    <span class="token punctuation">&#125;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token function">fun2</span><span class="token punctuation">(</span><span class="token punctuation">)</span>      <span class="token comment">//fun2</span>
+
+<span class="token keyword">let</span> obj <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+    fun<span class="token operator">:</span>     <span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"fun"</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>        <span class="token comment">//fun</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="Window对象的常见属性"><a href="#Window对象的常见属性" class="headerlink" title="Window对象的常见属性"></a>Window对象的常见属性</h2><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">//document 对document对象的只读引用</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span>document<span class="token punctuation">)</span>
+
+<span class="token comment">//history 包含浏览器窗口中访问过的url</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span>history<span class="token punctuation">)</span>     <span class="token comment">//返回一个类数组对象，包含访问过的url，利用该对象的back，forward，go方法可以访问列表中的url</span>
+
+<span class="token comment">//location 当前url的信息</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span>location<span class="token punctuation">)</span>
+
+<span class="token comment">//navigator 当前浏览器相关信息</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span>navigator<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="Location对象"><a href="#Location对象" class="headerlink" title="Location对象"></a>Location对象</h2><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">
+<span class="token comment">//hash 获取hash部分(前端路由)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span>location<span class="token punctuation">.</span>hash<span class="token punctuation">)</span>
+
+<span class="token comment">//host 获取当前页面主机名，以https://www.google.com/?hl=zh_CN为例</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span>location<span class="token punctuation">.</span>host<span class="token punctuation">)</span>   <span class="token comment">// "www.google.com"</span>
+
+<span class="token comment">//href 完整url</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span>location<span class="token punctuation">.</span>href<span class="token punctuation">)</span>   <span class="token comment">// "https://www.google.com/?hl=zh_CN"</span>
+
+<span class="token comment">//pathname 路径</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span>location<span class="token punctuation">.</span>pathname<span class="token punctuation">)</span>   <span class="token comment">// "/"</span>
+
+<span class="token comment">//protocol 协议</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span>location<span class="token punctuation">.</span>protocol<span class="token punctuation">)</span>   <span class="token comment">// "https:"</span>
+
+<span class="token comment">// search 查询参数</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span>location<span class="token punctuation">.</span>search<span class="token punctuation">)</span>     <span class="token comment">// "?hl=zh_CN"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="号作为一元运算符"><a href="#号作为一元运算符" class="headerlink" title="+号作为一元运算符"></a>+号作为一元运算符</h2><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">//作为一元运算符时会对表达式进行toNumber操作</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> <span class="token operator">+</span><span class="token string">"1"</span><span class="token punctuation">)</span>        <span class="token comment">//nuumber</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token number">1</span> <span class="token operator">+</span> <span class="token operator">+</span><span class="token string">"1"</span> <span class="token operator">+</span> <span class="token operator">+</span><span class="token string">"2"</span><span class="token punctuation">)</span>    <span class="token comment">//4</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token operator">+</span><span class="token string">"A"</span><span class="token punctuation">)</span>               <span class="token comment">//NaN</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="document-与-document-documentElement"><a href="#document-与-document-documentElement" class="headerlink" title="document 与 document.documentElement"></a>document 与 document.documentElement</h2><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">//window.document返回的是对完整文档结构的引用</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span>document<span class="token punctuation">)</span>
+
+<span class="token comment">//window.document.documentElement返回的是文档的根元素的引用（html及其子元素)</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>window<span class="token punctuation">.</span>document<span class="token punctuation">.</span>documentElement<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -747,12 +808,12 @@ console<span class="token punctuation">.</span><span class="token function">log<
                         <span class="chip bg-color">Web前端</span>
                     </a>
                     
-                    <a href="/tags/CSS/">
-                        <span class="chip bg-color">CSS</span>
-                    </a>
-                    
                     <a href="/tags/%E7%AC%94%E8%AF%95/">
                         <span class="chip bg-color">笔试</span>
+                    </a>
+                    
+                    <a href="/tags/CSS/">
+                        <span class="chip bg-color">CSS</span>
                     </a>
                     
                 </div>
