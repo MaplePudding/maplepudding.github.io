@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>JavaScript导出变量方式整理</title>
+      <link href="20210517/2021-5-17/"/>
+      <url>20210517/2021-5-17/</url>
+      
+        <content type="html"><![CDATA[<h2 id="CommonJs-AMD导出"><a href="#CommonJs-AMD导出" class="headerlink" title="CommonJs/AMD导出"></a>CommonJs/AMD导出</h2><p>module.exports指向一个默认对象且不可更改。exports默认情况下指向module.exports，但指向可以更改。当module.exports和exports共存时，module.exports具有更高的优先级，会覆盖exports导出的变量</p><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// file1</span><span class="token keyword">let</span> <span class="token function-variable function">fun</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'fun'</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span>module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">&#123;</span>    fun<span class="token operator">:</span> fun<span class="token punctuation">&#125;</span><span class="token comment">// file2</span><span class="token keyword">const</span> t2 <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./t2.js'</span><span class="token punctuation">)</span>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>t2<span class="token punctuation">)</span>     <span class="token comment">// &#123; fun: [Function: fun] &#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>module.exports覆盖exports测试</p><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">/* * 在测试代码添加如下代码，测试结果仍为&#123; fun: [Function: fun]&#125; */</span><span class="token keyword">let</span> <span class="token function-variable function">test</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'exports func'</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span>exports<span class="token punctuation">.</span>test <span class="token operator">=</span> test<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="ES6导出"><a href="#ES6导出" class="headerlink" title="ES6导出"></a>ES6导出</h2><p>使用 export/exprot default导出，importy引入非default变量使用{}</p><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// file1</span><span class="token keyword">let</span> hello <span class="token operator">=</span> <span class="token string">'hello'</span><span class="token keyword">let</span> <span class="token function-variable function">fun1</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'fun1'</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span><span class="token keyword">function</span> <span class="token function">fun2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'fun2'</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span><span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">fun3</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'fun3'</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">defaultFunc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'default func'</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span><span class="token keyword">export</span> <span class="token punctuation">&#123;</span>hello<span class="token punctuation">,</span> fun1<span class="token punctuation">,</span> fun2<span class="token punctuation">&#125;</span><span class="token comment">// file2</span><span class="token keyword">import</span> defaultFunc<span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>hello<span class="token punctuation">,</span> fun1<span class="token punctuation">,</span> fun2<span class="token punctuation">,</span> fun3<span class="token punctuation">&#125;</span> <span class="token keyword">from</span> <span class="token string">'./t2.js'</span>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>hello<span class="token punctuation">)</span><span class="token function">fun1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token function">fun2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token function">fun3</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token function">defaultFunc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment">/* * hello  * fun1 * fun2 * fun3 * default func*/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> JavaScript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Web前端 </tag>
+            
+            <tag> JavaScript </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>牛客HTML前端笔试题目知识点整理（长期更新）</title>
       <link href="20210429/2021-4-29/"/>
       <url>20210429/2021-4-29/</url>
@@ -51,9 +78,9 @@
             
             <tag> Web前端 </tag>
             
-            <tag> 笔试 </tag>
-            
             <tag> CSS </tag>
+            
+            <tag> 笔试 </tag>
             
         </tags>
       

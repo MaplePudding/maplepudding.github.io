@@ -6,7 +6,7 @@
   <link href="https://maplepudding.github.io/atom.xml" rel="self"/>
   
   <link href="https://maplepudding.github.io/"/>
-  <updated>2021-05-07T05:54:19.208Z</updated>
+  <updated>2021-05-17T15:13:55.814Z</updated>
   <id>https://maplepudding.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaScript导出变量方式整理</title>
+    <link href="https://maplepudding.github.io/20210517/2021-5-17/"/>
+    <id>https://maplepudding.github.io/20210517/2021-5-17/</id>
+    <published>2021-05-17T15:11:09.915Z</published>
+    <updated>2021-05-17T15:13:55.814Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;CommonJs-AMD导出&quot;&gt;&lt;a href=&quot;#CommonJs-AMD导出&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="JavaScript" scheme="https://maplepudding.github.io/categories/JavaScript/"/>
+    
+    
+    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="JavaScript" scheme="https://maplepudding.github.io/tags/JavaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>牛客HTML前端笔试题目知识点整理（长期更新）</title>
@@ -69,9 +96,9 @@
     
     <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
     
-    <category term="笔试" scheme="https://maplepudding.github.io/tags/%E7%AC%94%E8%AF%95/"/>
-    
     <category term="CSS" scheme="https://maplepudding.github.io/tags/CSS/"/>
+    
+    <category term="笔试" scheme="https://maplepudding.github.io/tags/%E7%AC%94%E8%AF%95/"/>
     
   </entry>
   

@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://maplepudding.github.io/20210517/2021-5-17/</loc>
+    
+    <lastmod>2021-05-17</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://maplepudding.github.io/20210429/2021-4-29/</loc>
     
     <lastmod>2021-05-07</lastmod>
@@ -123,6 +130,13 @@
   </url>
   
   <url>
+    <loc>https://maplepudding.github.io/tags/CSS/</loc>
+    <lastmod>2021-05-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://maplepudding.github.io/tags/%E7%AC%94%E8%AF%95/</loc>
     <lastmod>2021-05-17</lastmod>
     <changefreq>daily</changefreq>
@@ -131,13 +145,6 @@
   
   <url>
     <loc>https://maplepudding.github.io/tags/JavaScript/</loc>
-    <lastmod>2021-05-17</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://maplepudding.github.io/tags/CSS/</loc>
     <lastmod>2021-05-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -167,6 +174,13 @@
   </url>
   
   <url>
+    <loc>https://maplepudding.github.io/categories/Web%E5%89%8D%E7%AB%AF/</loc>
+    <lastmod>2021-05-17</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://maplepudding.github.io/categories/Web%E7%AC%94%E8%AF%95/</loc>
     <lastmod>2021-05-17</lastmod>
     <changefreq>daily</changefreq>
@@ -174,7 +188,7 @@
   </url>
   
   <url>
-    <loc>https://maplepudding.github.io/categories/Web%E5%89%8D%E7%AB%AF/</loc>
+    <loc>https://maplepudding.github.io/categories/JavaScript/</loc>
     <lastmod>2021-05-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
