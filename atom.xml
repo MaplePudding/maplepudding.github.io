@@ -6,7 +6,7 @@
   <link href="https://maplepudding.github.io/atom.xml" rel="self"/>
   
   <link href="https://maplepudding.github.io/"/>
-  <updated>2021-05-24T15:01:21.249Z</updated>
+  <updated>2021-05-24T15:08:48.223Z</updated>
   <id>https://maplepudding.github.io/</id>
   
   <author>
@@ -21,15 +21,14 @@
     <link href="https://maplepudding.github.io/20210524/2021-5-24/"/>
     <id>https://maplepudding.github.io/20210524/2021-5-24/</id>
     <published>2021-05-24T14:54:45.197Z</published>
-    <updated>2021-05-24T15:01:21.249Z</updated>
+    <updated>2021-05-24T15:08:48.223Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;&lt;img src=&quot;/images/2021-5-24.png&quot; alt=&quot;常见继承方式总结&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;原型链继承&quot;&gt;&lt;a href=&quot;#原型链继承&quot; class=&quot;headerlink&quot; title=&quot;原型链继承&quot;&gt;&lt;/a&gt;原型链继承&lt;/h2&gt;&lt;pre</summary>
+    <summary type="html">&lt;h2 id=&quot;原型链继承&quot;&gt;&lt;a href=&quot;#原型链继承&quot; class=&quot;headerlink&quot; title=&quot;原型链继承&quot;&gt;&lt;/a&gt;原型链继承&lt;/h2&gt;&lt;pre class=&quot;line-numbers language-javascript&quot;</summary>
         
       
     
