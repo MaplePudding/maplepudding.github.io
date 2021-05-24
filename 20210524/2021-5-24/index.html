@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="牛客CSS前端笔试题目知识点整理（长期更新）, Code">
+    <meta name="keywords" content="JS常见继承方式解析, Code">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>牛客CSS前端笔试题目知识点整理（长期更新） | Code</title>
+    <title>JS常见继承方式解析 | Code</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -268,12 +268,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">牛客CSS前端笔试题目知识点整理（长期更新）</h1>
+                    <h1 class="description center-align post-title">JS常见继承方式解析</h1>
                 </div>
             </div>
         </div>
@@ -393,12 +393,8 @@
                                 <span class="chip bg-color">Web前端</span>
                             </a>
                         
-                            <a href="/tags/%E7%AC%94%E8%AF%95/">
-                                <span class="chip bg-color">笔试</span>
-                            </a>
-                        
-                            <a href="/tags/CSS/">
-                                <span class="chip bg-color">CSS</span>
+                            <a href="/tags/JavaScript/">
+                                <span class="chip bg-color">JavaScript</span>
                             </a>
                         
                     </div>
@@ -409,8 +405,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Web%E7%AC%94%E8%AF%95/" class="post-category">
-                                Web笔试
+                            <a href="/categories/JavaScript/" class="post-category">
+                                JavaScript
                             </a>
                         
                     </div>
@@ -422,14 +418,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-04-27
+                    2021-05-24
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2021-05-07
+                    2021-05-24
                 </div>
                 
 
@@ -451,77 +447,127 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="CSS清除浮动方法整理"><a href="#CSS清除浮动方法整理" class="headerlink" title="CSS清除浮动方法整理"></a>CSS清除浮动方法整理</h2><p>测试代码</p>
-<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>X-UA-Compatible<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>IE=edge<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>viewport<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>width=device-width, initial-scale=1.0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>Document<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
-        <span class="token selector">.div1</span><span class="token punctuation">&#123;</span>
-            <span class="token property">width</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
-            <span class="token property">background</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
+                <p><img src="../img/2021-5-24.png" alt="常见继承方式总结"></p>
+<h2 id="原型链继承"><a href="#原型链继承" class="headerlink" title="原型链继承"></a>原型链继承</h2><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">
+<span class="token comment">// 1 用父类构造函数构建一个父类空对象</span>
 
-        <span class="token selector">.div2</span><span class="token punctuation">&#123;</span>
-            <span class="token property">width</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
-            <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
-            <span class="token property">background</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>
-            <span class="token property">float</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-    </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>div1<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-        div1
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>div2<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-            div2
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+<span class="token comment">// 2 将子类构造函数的prototype指向新建的对象</span>
 
-</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>1 触发父元素的BFC清除浮动(display, position, overflow等)</p>
-<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">.div1</span><span class="token punctuation">&#123;</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>
-    <span class="token property">background</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
-    <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>   <span class="token comment">/* BFC */</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment">// 3 添加子类特有的方法</span>
 
-<p>2 尾部元素使用clear属性清除浮动（伪元素， 额外DOM等）</p>
-<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">.div1::after</span><span class="token punctuation">&#123;</span>       <span class="token comment">/* clear清除的是前置浮动，即代码结构中clear元素前方的float元素 */</span>       
-    <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">""</span><span class="token punctuation">;</span>    <span class="token comment">/* content + display + clear */</span>
-    <span class="token property">display</span><span class="token punctuation">:</span> block<span class="token punctuation">;</span>
-    <span class="token property">clear</span><span class="token punctuation">:</span> both<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="CSS指定特定边框的方法"><a href="#CSS指定特定边框的方法" class="headerlink" title="CSS指定特定边框的方法"></a>CSS指定特定边框的方法</h2><pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">div</span><span class="token punctuation">&#123;</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
-    <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
-    <span class="token property">border-top</span><span class="token punctuation">:</span> 100px solid black<span class="token punctuation">;</span>
-    <span class="token property">border-right-width</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span>      <span class="token comment">/* 特定边框的宽度 */</span>
-    <span class="token property">border-right-style</span><span class="token punctuation">:</span> solid<span class="token punctuation">;</span>      <span class="token comment">/* 特定边框的样式 */</span>
-    <span class="token property">border-right-color</span><span class="token punctuation">:</span> green<span class="token punctuation">;</span>      <span class="token comment">/* 特定边框的颜色 */</span> 
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="border显示问题"><a href="#border显示问题" class="headerlink" title="border显示问题"></a>border显示问题</h2><pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token selector">div</span><span class="token punctuation">&#123;</span>
-    <span class="token property">width</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
-    <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
-    <span class="token property">border</span><span class="token punctuation">:</span> 1px solid black<span class="token punctuation">;</span>        <span class="token comment">/* 显示 */</span>
+<span class="token keyword">function</span> <span class="token function">SuperType</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>property <span class="token operator">=</span> <span class="token boolean">true</span>
+<span class="token punctuation">&#125;</span>
+<span class="token class-name">SuperType</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">getSuperValue</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>property
 <span class="token punctuation">&#125;</span>
 
-<span class="token property">border</span><span class="token punctuation">:</span> solid black<span class="token punctuation">;</span>        <span class="token comment">/* 不显示 */</span>
-<span class="token property">border</span><span class="token punctuation">:</span> 1px black<span class="token punctuation">;</span>          <span class="token comment">/* 不显示 */</span>
-<span class="token property">border</span><span class="token punctuation">:</span> 1px solid<span class="token punctuation">;</span>          <span class="token comment">/* 不显示 */</span>
+<span class="token keyword">function</span> <span class="token function">SubType</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>subproperty <span class="token operator">=</span> <span class="token boolean">false</span>
+<span class="token punctuation">&#125;</span>
 
-<span class="token comment">/* 设置边框时必须同时设置border-width border-style border-color 任何元素的缺失都会导致边框不显示*/</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token class-name">SubType</span><span class="token punctuation">.</span>prototype <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SuperType</span><span class="token punctuation">(</span><span class="token punctuation">)</span>     <span class="token comment">//构建prototype</span>
 
+<span class="token class-name">SubType</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">getSubValue</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span>subproperty
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>缺陷：</p>
+<p><strong>1 若父类对象包含引用类型数据，该数据会被所有子类对象共享</strong></p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">//关于父类对象包含引用类型数据的测试</span>
+<span class="token keyword">function</span> <span class="token function">SuperType</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'1'</span><span class="token punctuation">,</span> <span class="token string">'2'</span><span class="token punctuation">,</span> <span class="token string">'3'</span><span class="token punctuation">]</span>
+<span class="token punctuation">&#125;</span>
+<span class="token class-name">SuperType</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">changeArr</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">char</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>arr<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>char<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
 
+<span class="token keyword">function</span> <span class="token function">SubType</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+
+<span class="token punctuation">&#125;</span>
+
+<span class="token class-name">SubType</span><span class="token punctuation">.</span>prototype <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SuperType</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token class-name">SubType</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">getArr</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>arr<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">const</span> ins1 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SubType</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> ins2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SubType</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+ins1<span class="token punctuation">.</span><span class="token function">changeArr</span><span class="token punctuation">(</span><span class="token string">'4'</span><span class="token punctuation">)</span>
+ins2<span class="token punctuation">.</span><span class="token function">getArr</span><span class="token punctuation">(</span><span class="token punctuation">)</span>   <span class="token comment">//['1', '2', '3', '4']</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>2 创建子类对象时不能给父类构造函数传参</strong></p>
+<h2 id="借用构造函数继承"><a href="#借用构造函数继承" class="headerlink" title="借用构造函数继承"></a>借用构造函数继承</h2><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 通过call/apply方法在子类构造函数中调用父类构造函数</span>
+<span class="token keyword">function</span> <span class="token function">SuperType</span><span class="token punctuation">(</span><span class="token parameter">name</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">function</span> <span class="token function">SubType</span><span class="token punctuation">(</span><span class="token parameter">name<span class="token punctuation">,</span> age</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token function">SuperType</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> name<span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>缺陷：</p>
+<p><strong>父类方法无法重用，且定义在父类原型上的方法对子类不可见</strong></p>
+<h2 id="组合继承"><a href="#组合继承" class="headerlink" title="组合继承"></a>组合继承</h2><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 前面两种方法的结合，使用父类对象最为原型继承方法，使用父类构造函数获得数据</span>
+
+<span class="token keyword">function</span> <span class="token function">SuperType</span><span class="token punctuation">(</span><span class="token parameter">name</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name
+    <span class="token keyword">this</span><span class="token punctuation">.</span>arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span>
+<span class="token punctuation">&#125;</span>
+<span class="token class-name">SuperType</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">sayName</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">function</span> <span class="token function">SubType</span><span class="token punctuation">(</span><span class="token parameter">name<span class="token punctuation">,</span> age</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token function">SubType</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> name<span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age
+<span class="token punctuation">&#125;</span>
+
+<span class="token class-name">SubType</span><span class="token punctuation">.</span>prototype <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SuperType</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token class-name">SubType</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">sayAge</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>age<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>缺陷：</p>
+<p><strong>构建原型对象时多调用了一次父类构造函数，导致原型对象带上了无意义的父类数据</strong></p>
+<h2 id="组合寄生式继承"><a href="#组合寄生式继承" class="headerlink" title="组合寄生式继承"></a>组合寄生式继承</h2><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">
+<span class="token comment">// 使用空对象作为原型实现继承，避免了原型继承的缺陷</span>
+
+<span class="token keyword">function</span> <span class="token function">object</span><span class="token punctuation">(</span><span class="token parameter">target</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">function</span> <span class="token function">temp</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+    temp<span class="token punctuation">.</span>prototype <span class="token operator">=</span> target
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">temp</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">function</span> <span class="token function">inherit</span><span class="token punctuation">(</span><span class="token parameter">subType<span class="token punctuation">,</span> superType</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">let</span> prototype <span class="token operator">=</span> <span class="token function">object</span><span class="token punctuation">(</span>superType<span class="token punctuation">.</span>prototype<span class="token punctuation">)</span>
+    prototype<span class="token punctuation">.</span>construtor <span class="token operator">=</span> subType
+    subType<span class="token punctuation">.</span>prototype <span class="token operator">=</span> prototype
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">function</span> <span class="token function">SuperType</span><span class="token punctuation">(</span><span class="token parameter">name</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name
+<span class="token punctuation">&#125;</span>
+<span class="token class-name">SuperType</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">sayName</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">function</span> <span class="token function">SubType</span><span class="token punctuation">(</span><span class="token parameter">name<span class="token punctuation">,</span> age</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token function">SuperType</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> name<span class="token punctuation">)</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age
+<span class="token punctuation">&#125;</span>
+
+<span class="token function">inherit</span><span class="token punctuation">(</span>SubType<span class="token punctuation">,</span> SuperType<span class="token punctuation">)</span>
+
+<span class="token class-name">SubType</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">sayAge</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>age<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="参考《JS高级程序设计》"><a href="#参考《JS高级程序设计》" class="headerlink" title="参考《JS高级程序设计》"></a>参考《JS高级程序设计》</h2>
                 
             </div>
             <hr/>
@@ -547,7 +593,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://maplepudding.github.io/20210427/2021-4-27/">https://maplepudding.github.io/20210427/2021-4-27/</a>
+                    <a href="https://maplepudding.github.io/20210524/2021-5-24/">https://maplepudding.github.io/20210524/2021-5-24/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -589,12 +635,8 @@
                                     <span class="chip bg-color">Web前端</span>
                                 </a>
                             
-                                <a href="/tags/%E7%AC%94%E8%AF%95/">
-                                    <span class="chip bg-color">笔试</span>
-                                </a>
-                            
-                                <a href="/tags/CSS/">
-                                    <span class="chip bg-color">CSS</span>
+                                <a href="/tags/JavaScript/">
+                                    <span class="chip bg-color">JavaScript</span>
                                 </a>
                             
                         </div>
@@ -635,41 +677,43 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/20210429/2021-4-29/">
+                <a href="/20210524/2021-5-24/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="牛客HTML前端笔试题目知识点整理（长期更新）">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="JS常见继承方式解析">
                         
-                        <span class="card-title">牛客HTML前端笔试题目知识点整理（长期更新）</span>
+                        <span class="card-title">JS常见继承方式解析</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            笔试
+                            JS继承
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-29
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-24
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Web%E7%AC%94%E8%AF%95/" class="post-category">
-                                    Web笔试
+                            <a href="/categories/JavaScript/" class="post-category">
+                                    JavaScript
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -677,12 +721,8 @@
                         <span class="chip bg-color">Web前端</span>
                     </a>
                     
-                    <a href="/tags/%E7%AC%94%E8%AF%95/">
-                        <span class="chip bg-color">笔试</span>
-                    </a>
-                    
-                    <a href="/tags/HTML/">
-                        <span class="chip bg-color">HTML</span>
+                    <a href="/tags/JavaScript/">
+                        <span class="chip bg-color">JavaScript</span>
                     </a>
                     
                 </div>
@@ -696,13 +736,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/20210422/2021-4-22/">
+                <a href="/20210517/2021-5-17/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="牛客JS前端笔试题目知识点整理（长期更新）">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="JavaScript导出变量方式整理">
                         
-                        <span class="card-title">牛客JS前端笔试题目知识点整理（长期更新）</span>
+                        <span class="card-title">JavaScript导出变量方式整理</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -713,14 +753,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-22
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-17
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Web%E7%AC%94%E8%AF%95/" class="post-category">
-                                    Web笔试
+                            <a href="/categories/JavaScript/" class="post-category">
+                                    JavaScript
                                 </a>
                             
                             
@@ -732,10 +772,6 @@
                     
                     <a href="/tags/Web%E5%89%8D%E7%AB%AF/">
                         <span class="chip bg-color">Web前端</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%AC%94%E8%AF%95/">
-                        <span class="chip bg-color">笔试</span>
                     </a>
                     
                     <a href="/tags/JavaScript/">

@@ -6,7 +6,7 @@
   <link href="https://maplepudding.github.io/atom.xml" rel="self"/>
   
   <link href="https://maplepudding.github.io/"/>
-  <updated>2021-05-17T15:13:55.814Z</updated>
+  <updated>2021-05-24T14:58:15.009Z</updated>
   <id>https://maplepudding.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JS常见继承方式解析</title>
+    <link href="https://maplepudding.github.io/20210524/2021-5-24/"/>
+    <id>https://maplepudding.github.io/20210524/2021-5-24/</id>
+    <published>2021-05-24T14:54:45.197Z</published>
+    <updated>2021-05-24T14:58:15.009Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;img src=&quot;../img/2021-5-24.png&quot; alt=&quot;常见继承方式总结&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;原型链继承&quot;&gt;&lt;a href=&quot;#原型链继承&quot; class=&quot;headerlink&quot; title=&quot;原型链继承&quot;&gt;&lt;/a&gt;原型链继承&lt;/h2&gt;&lt;pre</summary>
+        
+      
+    
+    
+    
+    <category term="JavaScript" scheme="https://maplepudding.github.io/categories/JavaScript/"/>
+    
+    
+    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="JavaScript" scheme="https://maplepudding.github.io/tags/JavaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>JavaScript导出变量方式整理</title>
@@ -96,9 +124,9 @@
     
     <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
     
-    <category term="CSS" scheme="https://maplepudding.github.io/tags/CSS/"/>
-    
     <category term="笔试" scheme="https://maplepudding.github.io/tags/%E7%AC%94%E8%AF%95/"/>
+    
+    <category term="CSS" scheme="https://maplepudding.github.io/tags/CSS/"/>
     
   </entry>
   
