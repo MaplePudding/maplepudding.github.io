@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>关于Webpack的html-loader导致打包错误的一种解决方案</title>
+      <link href="20210525/2021-5-25/"/>
+      <url>20210525/2021-5-25/</url>
+      
+        <content type="html"><![CDATA[<h2 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h2><pre class="line-numbers language-none"><code class="language-none">Webpack             --&gt; 5.21.1Webpack-cli         --&gt; 4.7.0html-loader         --&gt; 2.x.xhtml-webpack-plugin --&gt; 5.3.1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>最近刚刚接触Webpack这个工具，在install html-loader和html-webpack-plugin打包后出现如下错误:</p><pre class="line-numbers language-none"><code class="language-none">ERROR in   Error: internal&#x2F;url.js:258    throw new ERR_INVALID_URL(input);    ^  TypeError [ERR_INVALID_URL]: Invalid URL:  - url.js:258 onParseError    internal&#x2F;url.js:258:9  - url.js:334 new URL    internal&#x2F;url.js:334:5  - url.js:331 new URL    internal&#x2F;url.js:331:22  - loader.js:9 eval    [index.html?.]&#x2F;[html-webpack-plugin]&#x2F;lib&#x2F;loader.js:9:34  - index.html:30 Object..&#x2F;node_modules&#x2F;html-webpack-plugin&#x2F;lib&#x2F;loader.js!.&#x2F;src&#x2F;index.html    E:&#x2F;webpackStudy&#x2F;src&#x2F;index.html:30:1  - index.html:73 __webpack_require__    E:&#x2F;webpackStudy&#x2F;src&#x2F;index.html:73:41  - index.html:154    E:&#x2F;webpackStudy&#x2F;src&#x2F;index.html:154:18  - index.html:155    E:&#x2F;webpackStudy&#x2F;src&#x2F;index.html:155:12  - index.js:142 HtmlWebpackPlugin.evaluateCompilationResult    [webpackStudy]&#x2F;[html-webpack-plugin]&#x2F;index.js:142:28<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>根据报错信息及网上收集到的信息推测是html-loader和html-webpack-plugin出现了冲突。尝试卸载html-loader并安装低版本后问题解决。由于本人水平有限，暂不清楚问题的原理。</p><h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><pre class="line-numbers language-none"><code class="language-none">npm uninstall html-loadernpm install --save-dev html-loader@1.0.0 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> JavaScript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Web前端 </tag>
+            
+            <tag> Webpack </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>JS常见继承方式解析</title>
       <link href="20210524/2021-5-24/"/>
       <url>20210524/2021-5-24/</url>
@@ -188,9 +215,9 @@
       
         <tags>
             
-            <tag> Leetcode </tag>
-            
             <tag> Algorithm </tag>
+            
+            <tag> Leetcode </tag>
             
         </tags>
       
@@ -215,9 +242,9 @@
       
         <tags>
             
-            <tag> Leetcode </tag>
-            
             <tag> Algorithm </tag>
+            
+            <tag> Leetcode </tag>
             
         </tags>
       

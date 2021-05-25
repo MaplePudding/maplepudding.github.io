@@ -6,7 +6,7 @@
   <link href="https://maplepudding.github.io/atom.xml" rel="self"/>
   
   <link href="https://maplepudding.github.io/"/>
-  <updated>2021-05-24T15:08:48.223Z</updated>
+  <updated>2021-05-25T13:55:16.462Z</updated>
   <id>https://maplepudding.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于Webpack的html-loader导致打包错误的一种解决方案</title>
+    <link href="https://maplepudding.github.io/20210525/2021-5-25/"/>
+    <id>https://maplepudding.github.io/20210525/2021-5-25/</id>
+    <published>2021-05-25T13:55:41.438Z</published>
+    <updated>2021-05-25T13:55:16.462Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;开发环境&quot;&gt;&lt;a href=&quot;#开发环境&quot; class=&quot;headerlink&quot; title=&quot;开发环境&quot;&gt;&lt;/a&gt;开发环境&lt;/h2&gt;&lt;pre class=&quot;line-numbers language-none&quot;&gt;&lt;code</summary>
+        
+      
+    
+    
+    
+    <category term="JavaScript" scheme="https://maplepudding.github.io/categories/JavaScript/"/>
+    
+    
+    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="Webpack" scheme="https://maplepudding.github.io/tags/Webpack/"/>
+    
+  </entry>
   
   <entry>
     <title>JS常见继承方式解析</title>
@@ -208,9 +235,9 @@
     <category term="Leetcode" scheme="https://maplepudding.github.io/categories/Leetcode/"/>
     
     
-    <category term="Leetcode" scheme="https://maplepudding.github.io/tags/Leetcode/"/>
-    
     <category term="Algorithm" scheme="https://maplepudding.github.io/tags/Algorithm/"/>
+    
+    <category term="Leetcode" scheme="https://maplepudding.github.io/tags/Leetcode/"/>
     
   </entry>
   
@@ -235,9 +262,9 @@
     <category term="Leetcode" scheme="https://maplepudding.github.io/categories/Leetcode/"/>
     
     
-    <category term="Leetcode" scheme="https://maplepudding.github.io/tags/Leetcode/"/>
-    
     <category term="Algorithm" scheme="https://maplepudding.github.io/tags/Algorithm/"/>
+    
+    <category term="Leetcode" scheme="https://maplepudding.github.io/tags/Leetcode/"/>
     
   </entry>
   
