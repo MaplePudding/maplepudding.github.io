@@ -447,7 +447,8 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>最近看了潇晨大佬的源码解读，写的很不错，下面以潇晨的blog为基础整理以下学习React源码的相关内容。本篇blog主要关注Fiber树根节点的构建</p>
+                <p>最近看了潇晨大佬的源码解读，写的很不错，下面以潇晨的blog为基础整理以下学习React源码的相关内容。</p>
+<p>本篇blog主要关注Fiber树根节点的构建过程</p>
 <p>从浏览器中可以看到这一部分函数的调用关系</p>
 <p><img src="/images/2021-6-6/stack.png" alt="函数调用关系"></p>
 <h2 id="Fiber树的基本概念"><a href="#Fiber树的基本概念" class="headerlink" title="Fiber树的基本概念"></a>Fiber树的基本概念</h2><p>React通过Fiber将真实的DOM结构映射到内存中，每一个Fiber可以看作是一个DOM节点，React会在内存中构建两个Fiber树，一个是根据当前DOM树构建的current Fiber，另一个是正在构建的workInProgress Fiber</p>
@@ -461,7 +462,7 @@
 <span class="token punctuation">&#125;</span>
 
 ReactDOM<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span><span class="token operator">&lt;</span>App <span class="token operator">/</span><span class="token operator">></span><span class="token punctuation">,</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"root"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>则改Fiber树的结构为</p>
+<p>则该Fiber树的结构为</p>
 <p><img src="/images/2021-6-6/fibertree.png" alt="Fiber树结构"></p>
 <p>从图中可以看出，通过child和return指针确定Fiber的父子关系，通过sibling指针连接兄弟节点，构建一个Fiber树时会采用类似DFS的方式，先构建其子节点，子节点构建结束后构建兄弟节点。</p>
 <h2 id="Fiber树根节点的首次构建"><a href="#Fiber树根节点的首次构建" class="headerlink" title="Fiber树根节点的首次构建"></a>Fiber树根节点的首次构建</h2><p>该过程调用的函数如下 </p>
@@ -485,7 +486,7 @@ ReactDOM<span class="token punctuation">.</span><span class="token function">ren
 <p><img src="/images//2021-6-6/createFiberRootProcess.png" alt="createFiberRoot内部函数调用关系"></p>
 <p>接下来更改FiberRoot和RootFiber的指针指向，此时两个对象的关系如图</p>
 <p><img src="/images/2021-6-6/relationship.png" alt="FiberRoot和RootFiber关系"></p>
-<h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><p>如发现文章内的错误或有疑问，可联系邮箱<a href="mailto:&#109;&#x61;&#112;&#108;&#101;&#x73;&#121;&#x72;&#x75;&#112;&#x72;&#x40;&#111;&#117;&#116;&#x6c;&#111;&#111;&#107;&#x2e;&#x63;&#111;&#109;">&#109;&#x61;&#112;&#108;&#101;&#x73;&#121;&#x72;&#x75;&#112;&#x72;&#x40;&#111;&#117;&#116;&#x6c;&#111;&#111;&#107;&#x2e;&#x63;&#111;&#109;</a></p>
+<h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><p>如发现文章内的错误或有疑问，可联系邮箱<a href="mailto:&#109;&#97;&#112;&#x6c;&#x65;&#115;&#x79;&#x72;&#x75;&#x70;&#114;&#64;&#111;&#117;&#x74;&#108;&#111;&#x6f;&#107;&#46;&#99;&#x6f;&#x6d;">&#109;&#97;&#112;&#x6c;&#x65;&#115;&#x79;&#x72;&#x75;&#x70;&#114;&#64;&#111;&#117;&#x74;&#108;&#111;&#x6f;&#107;&#46;&#99;&#x6f;&#x6d;</a></p>
 
                 
             </div>

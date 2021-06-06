@@ -6,7 +6,7 @@
   <link href="https://maplepudding.github.io/atom.xml" rel="self"/>
   
   <link href="https://maplepudding.github.io/"/>
-  <updated>2021-06-06T14:15:49.838Z</updated>
+  <updated>2021-06-06T14:18:21.935Z</updated>
   <id>https://maplepudding.github.io/</id>
   
   <author>
@@ -21,14 +21,15 @@
     <link href="https://maplepudding.github.io/20210606/2021-6-6/"/>
     <id>https://maplepudding.github.io/20210606/2021-6-6/</id>
     <published>2021-06-06T13:24:00.000Z</published>
-    <updated>2021-06-06T14:15:49.838Z</updated>
+    <updated>2021-06-06T14:18:21.935Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;最近看了潇晨大佬的源码解读，写的很不错，下面以潇晨的blog为基础整理以下学习React源码的相关内容。本篇blog主要关注Fiber树根节点的构建&lt;/p&gt;
+    <summary type="html">&lt;p&gt;最近看了潇晨大佬的源码解读，写的很不错，下面以潇晨的blog为基础整理以下学习React源码的相关内容。&lt;/p&gt;
+&lt;p&gt;本篇blog主要关注Fiber树根节点的构建过程&lt;/p&gt;
 &lt;p&gt;从浏览器中可以看到这一部分函数的调用关系&lt;/p&gt;
 &lt;p&gt;&lt;img</summary>
         
