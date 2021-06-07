@@ -6,7 +6,7 @@
   <link href="https://maplepudding.github.io/atom.xml" rel="self"/>
   
   <link href="https://maplepudding.github.io/"/>
-  <updated>2021-06-06T14:18:21.935Z</updated>
+  <updated>2021-06-07T15:30:17.273Z</updated>
   <id>https://maplepudding.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【React源码学习】0 补充 initializeUpdateQueue函数的调用</title>
+    <link href="https://maplepudding.github.io/20210607/2021-6-7/"/>
+    <id>https://maplepudding.github.io/20210607/2021-6-7/</id>
+    <published>2021-06-07T13:24:00.000Z</published>
+    <updated>2021-06-07T15:30:17.273Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;该函数的在createFiberRoot内调用，调用过程如下&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-javascript&quot; data-language=&quot;javascript&quot;&gt;&lt;code</summary>
+        
+      
+    
+    
+    
+    <category term="React" scheme="https://maplepudding.github.io/categories/React/"/>
+    
+    
+    <category term="React" scheme="https://maplepudding.github.io/tags/React/"/>
+    
+    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>【React源码学习】0 Fiber根节点的构建</title>

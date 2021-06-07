@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>【React源码学习】0 补充 initializeUpdateQueue函数的调用</title>
+      <link href="20210607/2021-6-7/"/>
+      <url>20210607/2021-6-7/</url>
+      
+        <content type="html"><![CDATA[<p>该函数的在createFiberRoot内调用，调用过程如下</p><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">createFiberRoot</span><span class="token punctuation">(</span><span class="token parameter">containerInfo<span class="token punctuation">,</span> tag<span class="token punctuation">,</span> hydrate<span class="token punctuation">,</span> hydrationCallbacks</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">var</span> root <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FiberRootNode</span><span class="token punctuation">(</span>containerInfo<span class="token punctuation">,</span> tag<span class="token punctuation">,</span> hydrate<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token keyword">var</span> uninitializedFiber <span class="token operator">=</span> <span class="token function">createHostRootFiber</span><span class="token punctuation">(</span>tag<span class="token punctuation">)</span><span class="token punctuation">;</span>    root<span class="token punctuation">.</span>current <span class="token operator">=</span> uninitializedFiber<span class="token punctuation">;</span>    uninitializedFiber<span class="token punctuation">.</span>stateNode <span class="token operator">=</span> root<span class="token punctuation">;</span>    <span class="token function">initializeUpdateQueue</span><span class="token punctuation">(</span>uninitializedFiber<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token keyword">return</span> root<span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>该函数接受一个fiber（RootFiber），源码如下</p><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">initializeUpdateQueue</span><span class="token punctuation">(</span><span class="token parameter">fiber</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>    <span class="token keyword">var</span> queue <span class="token operator">=</span> <span class="token punctuation">&#123;</span>        baseState<span class="token operator">:</span> fiber<span class="token punctuation">.</span>memoizedState<span class="token punctuation">,</span>        firstBaseUpdate<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>        lastBaseUpdate<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>        shared<span class="token operator">:</span> <span class="token punctuation">&#123;</span>            pending<span class="token operator">:</span> <span class="token keyword">null</span>        <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>        effects<span class="token operator">:</span> <span class="token keyword">null</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>    fiber<span class="token punctuation">.</span>updateQueue <span class="token operator">=</span> queue<span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>updateQueue是一个与组件更新相关的数据结构，</p><p>baseState -&gt; 该fiber本次更新前的state</p><p>firstBaseUpdate，lastBaseUpdate -&gt; 均是指向Update链表的指针</p><p>shared -&gt; 触发更新时，产生的Updatepending中形成单向环状链表。当由Update计算state时这个环会被剪开并连接在lastBaseUpdate后面。</p><p>(由于目前还是前端初学者，对React理解比较差，这一部分参考了<a href="https://react.iamkasong.com/state/update.html#updatequeue">React技术揭秘</a>)</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> React </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> React </tag>
+            
+            <tag> Web前端 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【React源码学习】0 Fiber根节点的构建</title>
       <link href="20210606/2021-6-6/"/>
       <url>20210606/2021-6-6/</url>
