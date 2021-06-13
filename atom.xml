@@ -6,7 +6,7 @@
   <link href="https://maplepudding.github.io/atom.xml" rel="self"/>
   
   <link href="https://maplepudding.github.io/"/>
-  <updated>2021-06-10T15:07:16.403Z</updated>
+  <updated>2021-06-13T05:46:53.181Z</updated>
   <id>https://maplepudding.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【React源码学习】1 Fiber双缓存的首次构建</title>
+    <link href="https://maplepudding.github.io/20210613/2021-6-13/"/>
+    <id>https://maplepudding.github.io/20210613/2021-6-13/</id>
+    <published>2021-06-13T13:24:00.000Z</published>
+    <updated>2021-06-13T05:46:53.181Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;什么是Fiber双缓存&quot;&gt;&lt;a href=&quot;#什么是Fiber双缓存&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="React" scheme="https://maplepudding.github.io/categories/React/"/>
+    
+    
+    <category term="React" scheme="https://maplepudding.github.io/tags/React/"/>
+    
+    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>检测js对象属性是否存在的几种方法</title>
