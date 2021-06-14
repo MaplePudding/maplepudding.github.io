@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="【React源码学习】1 Fiber双缓存的首次构建, Code">
+    <meta name="keywords" content="【React源码学习】2 mount阶段compleleWork工作流程, Code">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>【React源码学习】1 Fiber双缓存的首次构建 | Code</title>
+    <title>【React源码学习】2 mount阶段compleleWork工作流程 | Code</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -273,7 +273,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【React源码学习】1 Fiber双缓存的首次构建</h1>
+                    <h1 class="description center-align post-title">【React源码学习】2 mount阶段compleleWork工作流程</h1>
                 </div>
             </div>
         </div>
@@ -418,14 +418,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-06-13
+                    2021-06-14
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2021-06-13
+                    2021-06-14
                 </div>
                 
 
@@ -447,74 +447,89 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="什么是Fiber双缓存"><a href="#什么是Fiber双缓存" class="headerlink" title="什么是Fiber双缓存"></a>什么是Fiber双缓存</h2><p>React在内存中会构建两个Fiber树，当前显示的画面对应的是current Fiber树，React内部会根据Update对状态进行计算（计算过程暂不清楚），并构建一个新的workInProgress Fiber树。构建完成后将FiberRoot的current指针指向workInProgress的RootFiber节点，浏览器按照新的Fiber树进行渲染，两个Fiber树就完成了一次切换。</p>
-<p><img src="/images/2021-6-13/fiber.png" alt="Fiber双缓存"></p>
-<h2 id="mount阶段fiber双缓存的构建过程"><a href="#mount阶段fiber双缓存的构建过程" class="headerlink" title="mount阶段fiber双缓存的构建过程"></a>mount阶段fiber双缓存的构建过程</h2><p>该过程发生在FiberRoot和RootFiber构建之后，此时Fiber树的关系如图。<br><img src="/images/2021-6-13/fibertree.png" alt="fiber树内节点关系"></p>
-<h3 id="performSyncWorkOnRoot"><a href="#performSyncWorkOnRoot" class="headerlink" title="performSyncWorkOnRoot"></a>performSyncWorkOnRoot</h3><p>初次调用时由于workInProgress还没有构建，因此直接调用lanes = getNextLanes(root, NoLanes); 该函数根据传入的FiberRoot生成新的lanes（与组件更新优先级相关的变量）。</p>
-<h3 id="workLoopSync"><a href="#workLoopSync" class="headerlink" title="workLoopSync"></a>workLoopSync</h3><p>下面看一下源码</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">workLoopSync</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">while</span> <span class="token punctuation">(</span>workInProgress <span class="token operator">!==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token function">performUnitOfWork</span><span class="token punctuation">(</span>workInProgress<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>只要workInProgress不是null，该函数就会连续调用performUnitOfWork</p>
-<h3 id="performUnitOfWork"><a href="#performUnitOfWork" class="headerlink" title="performUnitOfWork"></a>performUnitOfWork</h3><p>该函数的参数时workInProgress的RootFiber，该函数内部调用beginWork$1</p>
-<h3 id="beginWork"><a href="#beginWork" class="headerlink" title="beginWork"></a>beginWork</h3><p>由于该函数第一次调用传入的是RootFiber，因此跳转到传入div节点时分析该过程，此时current是null，因此进入mount过程了。</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-    didReceiveUpdate <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>didReceiveUpdate用于标识Fiber是否需要更新，因为是mount，所以设置为false</p>
-<p>将传入节点（div）的Lanes设置为NoLanes(与更新优先级相关的变量)</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">workInProgress<span class="token punctuation">.</span>lanes <span class="token operator">=</span> NoLanes<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <p>测试代码如下</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
 
-<p>下面根据workInProgress的tag进入不同的构建过程。</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">case</span> HostComponent<span class="token operator">:</span>
-      <span class="token keyword">return</span> <span class="token function">updateHostComponent</span><span class="token punctuation">(</span>current<span class="token punctuation">,</span> workInProgress<span class="token punctuation">,</span> renderLanes<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<h3 id="updateHostComponent"><a href="#updateHostComponent" class="headerlink" title="updateHostComponent"></a>updateHostComponent</h3><p>该函数内部调用reconcileChildren将jsx对象构建成为fiber，并返回workInProgress.child</p>
-<h3 id="reconcileChildren"><a href="#reconcileChildren" class="headerlink" title="reconcileChildren"></a>reconcileChildren</h3><p>先不关注updateHostComponent，下面看一下reconcileChildren的源码</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">reconcileChildren</span><span class="token punctuation">(</span><span class="token parameter">current<span class="token punctuation">,</span> workInProgress<span class="token punctuation">,</span> nextChildren<span class="token punctuation">,</span> renderLanes</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>current <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    workInProgress<span class="token punctuation">.</span>child <span class="token operator">=</span> <span class="token function">mountChildFibers</span><span class="token punctuation">(</span>workInProgress<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> nextChildren<span class="token punctuation">,</span> renderLanes<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-    workInProgress<span class="token punctuation">.</span>child <span class="token operator">=</span> <span class="token function">reconcileChildFibers</span><span class="token punctuation">(</span>workInProgress<span class="token punctuation">,</span> current<span class="token punctuation">.</span>child<span class="token punctuation">,</span> nextChildren<span class="token punctuation">,</span> renderLanes<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>该函数接受四个参数，此时四个参数分别为null，div节点，数组（数组内包含的子元素，此时有两个jsx对象，一个文本对象），renderlanes优先级。由于current是null，将当前对象的child指针指向子节点</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">workInProgress<span class="token punctuation">.</span>child <span class="token operator">=</span> <span class="token function">mountChildFibers</span><span class="token punctuation">(</span>workInProgress<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> nextChildren<span class="token punctuation">,</span> renderLanes<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>mountChildFibers实际上是childReconciler的返回值，调用childReconciler返回的是函数reconcileChildFilbers</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> mountChildFibers <span class="token operator">=</span> <span class="token function">ChildReconciler</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>这段代码的调用实际上是</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">workInProgress<span class="token punctuation">.</span>child <span class="token operator">=</span> <span class="token function">reconcileChildFibers</span><span class="token punctuation">(</span>workInProgress<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> nextChildren<span class="token punctuation">,</span> renderLanes<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h3 id="reconcileChildFibers"><a href="#reconcileChildFibers" class="headerlink" title="reconcileChildFibers"></a>reconcileChildFibers</h3><p>函数内部根据传入newChild的类型选择创建新fiber的方式，此时newChild是一个包含文本对象和jsx对象的数组，因此调用</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isArray$1</span><span class="token punctuation">(</span>newChild<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> <span class="token function">reconcileChildrenArray</span><span class="token punctuation">(</span>returnFiber<span class="token punctuation">,</span> currentFirstChild<span class="token punctuation">,</span> newChild<span class="token punctuation">,</span> lanes<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="reconcileChildrenArray"><a href="#reconcileChildrenArray" class="headerlink" title="reconcileChildrenArray"></a>reconcileChildrenArray</h3><p>该函数内比较重要的部分如下</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token punctuation">;</span> newIdx <span class="token operator">&lt;</span> newChildren<span class="token punctuation">.</span>length<span class="token punctuation">;</span> newIdx<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">var</span> _newFiber <span class="token operator">=</span> <span class="token function">createChild</span><span class="token punctuation">(</span>returnFiber<span class="token punctuation">,</span> newChildren<span class="token punctuation">[</span>newIdx<span class="token punctuation">]</span><span class="token punctuation">,</span> lanes<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>_newFiber <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">continue</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>
+                <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">"container"</span><span class="token operator">></span>
+                    <span class="token operator">&lt;</span>h1<span class="token operator">></span>我是标题一<span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">></span>
+                    标题二
+                <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
-    lastPlacedIndex <span class="token operator">=</span> <span class="token function">placeChild</span><span class="token punctuation">(</span>_newFiber<span class="token punctuation">,</span> lastPlacedIndex<span class="token punctuation">,</span> newIdx<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>previousNewFiber <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        resultingFirstChild <span class="token operator">=</span> _newFiber<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="performUnitOfWork"><a href="#performUnitOfWork" class="headerlink" title="performUnitOfWork"></a>performUnitOfWork</h2><p>看一下源码</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">performUnitOfWork</span><span class="token punctuation">(</span><span class="token parameter">unitOfWork</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">var</span> current <span class="token operator">=</span> unitOfWork<span class="token punctuation">.</span>alternate<span class="token punctuation">;</span>
+    <span class="token function">setCurrentFiber</span><span class="token punctuation">(</span>unitOfWork<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> next<span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span> <span class="token punctuation">(</span>unitOfWork<span class="token punctuation">.</span>mode <span class="token operator">&amp;</span> ProfileMode<span class="token punctuation">)</span> <span class="token operator">!==</span> NoMode<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">startProfilerTimer</span><span class="token punctuation">(</span>unitOfWork<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        next <span class="token operator">=</span> <span class="token function">beginWork$1</span><span class="token punctuation">(</span>current<span class="token punctuation">,</span> unitOfWork<span class="token punctuation">,</span> subtreeRenderLanes<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">stopProfilerTimerIfRunningAndRecordDelta</span><span class="token punctuation">(</span>unitOfWork<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-        previousNewFiber<span class="token punctuation">.</span>sibling <span class="token operator">=</span> _newFiber<span class="token punctuation">;</span>
+        next <span class="token operator">=</span> <span class="token function">beginWork$1</span><span class="token punctuation">(</span>current<span class="token punctuation">,</span> unitOfWork<span class="token punctuation">,</span> subtreeRenderLanes<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
-    previousNewFiber <span class="token operator">=</span> _newFiber<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>该过程是对child数组的一次便利，首先调用createChild生成一个fiber，因为目前构建的是children的第一个元素，因此previousNewFiber == null，如果不是第一次构建，则将sibling指针指向其他的<br>兄弟元素，最终返回第一个子节点resultingFirstChild</p>
-<p>从当前来看reconcileChildren大概有两个功能</p>
+
+    <span class="token function">resetCurrentFiber</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    unitOfWork<span class="token punctuation">.</span>memoizedProps <span class="token operator">=</span> unitOfWork<span class="token punctuation">.</span>pendingProps<span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>next <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">completeUnitOfWork</span><span class="token punctuation">(</span>unitOfWork<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+        workInProgress <span class="token operator">=</span> next<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    ReactCurrentOwner$<span class="token number">2.</span>current <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>beginwork和completework都发生在同一个函数中，performUnitOfWork会不断调用beginwork创建workInProgress树，如果返回的next是null，表明当前fiber树达到最大深度（DFS），可以调用completeUnitOfWork（如果该节点只存在一个文本子节点，react会进行优化，不再调用beginwork，因此第一个进入completeUnitOfWork的是h1的fiber）</p>
+<h2 id="completeWork"><a href="#completeWork" class="headerlink" title="completeWork"></a>completeWork</h2><p>completeWork函数内会根据不同的workInProgress.tag进入不同的代码块，此时workInProgress == 5，进入HostComponent代码块。</p>
+<p>此时使用下面的代码判断mount阶段</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">if</span> <span class="token punctuation">(</span>current <span class="token operator">!==</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> workInProgress<span class="token punctuation">.</span>stateNode <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">updateHostComponent$1</span><span class="token punctuation">(</span>current<span class="token punctuation">,</span> workInProgress<span class="token punctuation">,</span> type<span class="token punctuation">,</span> newProps<span class="token punctuation">,</span> rootContainerInstance<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>current<span class="token punctuation">.</span>ref <span class="token operator">!==</span> workInProgress<span class="token punctuation">.</span>ref<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">markRef$1</span><span class="token punctuation">(</span>workInProgress<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>由于current和stateNode都是null，进入else</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> instance <span class="token operator">=</span> <span class="token function">createInstance</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> newProps<span class="token punctuation">,</span> rootContainerInstance<span class="token punctuation">,</span> currentHostContext<span class="token punctuation">,</span> workInProgress<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">appendAllChildren</span><span class="token punctuation">(</span>instance<span class="token punctuation">,</span> workInProgress<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+workInProgress<span class="token punctuation">.</span>stateNode <span class="token operator">=</span> instance<span class="token punctuation">;</span> 
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">finalizeInitialChildren</span><span class="token punctuation">(</span>instance<span class="token punctuation">,</span> type<span class="token punctuation">,</span> newProps<span class="token punctuation">,</span> rootContainerInstance<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">markUpdate</span><span class="token punctuation">(</span>workInProgress<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>该阶段涉及DOM节点的创建</p>
+<h3 id="createInstance"><a href="#createInstance" class="headerlink" title="createInstance"></a>createInstance</h3><p>看一下源码</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">createInstance</span><span class="token punctuation">(</span><span class="token parameter">type<span class="token punctuation">,</span> props<span class="token punctuation">,</span> rootContainerInstance<span class="token punctuation">,</span> hostContext<span class="token punctuation">,</span> internalInstanceHandle</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">var</span> parentNamespace<span class="token punctuation">;</span>
+   <span class="token punctuation">&#123;</span>
+    <span class="token keyword">var</span> hostContextDev <span class="token operator">=</span> hostContext<span class="token punctuation">;</span>
+    <span class="token function">validateDOMNesting</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> hostContextDev<span class="token punctuation">.</span>ancestorInfo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> props<span class="token punctuation">.</span>children <span class="token operator">===</span> <span class="token string">'string'</span> <span class="token operator">||</span> <span class="token keyword">typeof</span> props<span class="token punctuation">.</span>children <span class="token operator">===</span> <span class="token string">'number'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">var</span> string <span class="token operator">=</span> <span class="token string">''</span> <span class="token operator">+</span> props<span class="token punctuation">.</span>children<span class="token punctuation">;</span>
+        <span class="token keyword">var</span> ownAncestorInfo <span class="token operator">=</span> <span class="token function">updatedAncestorInfo</span><span class="token punctuation">(</span>hostContextDev<span class="token punctuation">.</span>ancestorInfo<span class="token punctuation">,</span> type<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">validateDOMNesting</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> string<span class="token punctuation">,</span> ownAncestorInfo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    parentNamespace <span class="token operator">=</span> hostContextDev<span class="token punctuation">.</span>namespace<span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">var</span> domElement <span class="token operator">=</span> <span class="token function">createElement</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> props<span class="token punctuation">,</span> rootContainerInstance<span class="token punctuation">,</span> parentNamespace<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">precacheFiberNode</span><span class="token punctuation">(</span>internalInstanceHandle<span class="token punctuation">,</span> domElement<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">updateFiberProps</span><span class="token punctuation">(</span>domElement<span class="token punctuation">,</span> props<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> domElement<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>该函数对props进行了处理，嗲用createElement创建了一个真实DOM</p>
+<h3 id="appendAllChildren"><a href="#appendAllChildren" class="headerlink" title="appendAllChildren"></a>appendAllChildren</h3><p>由于workInProgress的child是null，函数直接return</p>
+<h3 id="finalizeInitialChildren"><a href="#finalizeInitialChildren" class="headerlink" title="finalizeInitialChildren"></a>finalizeInitialChildren</h3><p>将创建的instance挂载到stateNode后，调用finalizeInitialChildren进行属性的初始化。</p>
+<h2 id="summary"><a href="#summary" class="headerlink" title="summary"></a>summary</h2><p>completeWork阶段函数调用关系如下<br><img src="/images/2021-6-14/summary" alt="completeWork"><br>mount阶段的completeWork大概做了两件事</p>
 <ul>
-<li>构建子节点之间的兄弟关系，即sibling指向</li>
-<li>获取第一个子节点作为父节点的child并返回</li>
+<li>根据Fiber创建真实DOM</li>
+<li>将真实DOM挂载到stateNode上</li>
 </ul>
-<p>到此为止第一个子节点的构建过程基本结束，后续还有一些收尾工作（暂时不关注），第二个节点的构建依然是类似的过程，在workLoopSync中循环调用performUnitOfWork直到所有节点构建结束。</p>
-<h2 id="summary"><a href="#summary" class="headerlink" title="summary"></a>summary</h2><p><img src="/images/2021-6-13/summary.png" alt="summary"></p>
 
                 
             </div>
@@ -541,7 +556,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://maplepudding.github.io/20210613/2021-6-13/">https://maplepudding.github.io/20210613/2021-6-13/</a>
+                    <a href="https://maplepudding.github.io/20210614/2021-6-14/">https://maplepudding.github.io/20210614/2021-6-14/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -625,9 +640,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/20210614/2021-6-14/">
                     <div class="card-image">
@@ -645,9 +661,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-14
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-14
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -660,6 +676,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -682,31 +699,31 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/20210610/2021-6-10/">
+                <a href="/20210613/2021-6-13/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="检测js对象属性是否存在的几种方法">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="【React源码学习】1 Fiber双缓存的首次构建">
                         
-                        <span class="card-title">检测js对象属性是否存在的几种方法</span>
+                        <span class="card-title">【React源码学习】1 Fiber双缓存的首次构建</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            JavaScript
+                            React源码阅读
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-10
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-13
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/JavaScript/" class="post-category">
-                                    JavaScript
+                            <a href="/categories/React/" class="post-category">
+                                    React
                                 </a>
                             
                             
@@ -716,12 +733,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Web%E5%89%8D%E7%AB%AF/">
-                        <span class="chip bg-color">Web前端</span>
+                    <a href="/tags/React/">
+                        <span class="chip bg-color">React</span>
                     </a>
                     
-                    <a href="/tags/JavaScript/">
-                        <span class="chip bg-color">JavaScript</span>
+                    <a href="/tags/Web%E5%89%8D%E7%AB%AF/">
+                        <span class="chip bg-color">Web前端</span>
                     </a>
                     
                 </div>
