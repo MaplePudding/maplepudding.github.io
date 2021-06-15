@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="【React源码学习】2 mount阶段compleleWork工作流程, Code">
+    <meta name="keywords" content="两种常见的反转链表方式, Code">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>【React源码学习】2 mount阶段compleleWork工作流程 | Code</title>
+    <title>两种常见的反转链表方式 | Code</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -268,12 +268,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【React源码学习】2 mount阶段compleleWork工作流程</h1>
+                    <h1 class="description center-align post-title">两种常见的反转链表方式</h1>
                 </div>
             </div>
         </div>
@@ -389,12 +389,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/React/">
-                                <span class="chip bg-color">React</span>
+                            <a href="/tags/Leetcode/">
+                                <span class="chip bg-color">Leetcode</span>
                             </a>
                         
-                            <a href="/tags/Web%E5%89%8D%E7%AB%AF/">
-                                <span class="chip bg-color">Web前端</span>
+                            <a href="/tags/Algorithm/">
+                                <span class="chip bg-color">Algorithm</span>
                             </a>
                         
                     </div>
@@ -405,8 +405,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/React/" class="post-category">
-                                React
+                            <a href="/categories/Leetcode/" class="post-category">
+                                Leetcode
                             </a>
                         
                     </div>
@@ -418,7 +418,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-06-14
+                    2021-06-15
                 </div>
                 
 
@@ -447,89 +447,44 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>测试代码如下</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">&#123;</span>
-    <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <h2 id="不考虑收尾元素的反转"><a href="#不考虑收尾元素的反转" class="headerlink" title="不考虑收尾元素的反转"></a>不考虑收尾元素的反转</h2><p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/75e878df47f24fdc9dc3e400ec6058ca?tpId=188&&tqId=38547&rp=1&ru=/activity/oj&qru=/ta/job-code-high-week/question-ranking">反转链表</a></p>
+<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">ReverseList</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> pHead<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        pre <span class="token operator">=</span> <span class="token boolean">None</span>
+        cur <span class="token operator">=</span> pHead
+        <span class="token keyword">while</span> cur<span class="token punctuation">:</span>
+            temp <span class="token operator">=</span> cur<span class="token punctuation">.</span><span class="token builtin">next</span>
+            cur<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> pre
+            pre <span class="token operator">=</span> cur
+            cur  <span class="token operator">=</span> temp
+        <span class="token keyword">return</span> pre<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="过程解析"><a href="#过程解析" class="headerlink" title="过程解析"></a>过程解析</h3><p><img src="/images/2021-6-15/p1-1.png" alt="process 1"></p>
+<p><img src="/images/2021-6-15/p1-2.png" alt="process 2"></p>
+<p><img src="/images/2021-6-15/p1-3.png" alt="process 3"></p>
+<h2 id="考虑首位元素的反转"><a href="#考虑首位元素的反转" class="headerlink" title="考虑首位元素的反转"></a>考虑首位元素的反转</h2><p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/b58434e200a648c589ca2063f1faf58c?tpId=188&&tqId=38555&rp=1&ru=/activity/oj&qru=/ta/job-code-high-week/question-ranking">链表内指定区间反转</a></p>
+<h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">reverseBetween</span><span class="token punctuation">(</span>self <span class="token punctuation">,</span> head <span class="token punctuation">,</span> m <span class="token punctuation">,</span> n <span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token keyword">not</span> head <span class="token keyword">or</span> <span class="token keyword">not</span> head<span class="token punctuation">.</span><span class="token builtin">next</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> head
+        dummy <span class="token operator">=</span> ListNode<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+        dummy<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> head
+        pre <span class="token operator">=</span> dummy
+        start <span class="token operator">=</span> head
+        
+        <span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>m <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            pre <span class="token operator">=</span> pre<span class="token punctuation">.</span><span class="token builtin">next</span>
+            start <span class="token operator">=</span> start<span class="token punctuation">.</span><span class="token builtin">next</span>
+        
+        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n <span class="token operator">-</span> m<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            nxt <span class="token operator">=</span> start<span class="token punctuation">.</span><span class="token builtin">next</span>
+            start<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> nxt<span class="token punctuation">.</span><span class="token builtin">next</span>
+            nxt<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> pre<span class="token punctuation">.</span><span class="token builtin">next</span>
+            pre<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> nxt
+            
+        <span class="token keyword">return</span> dummy<span class="token punctuation">.</span><span class="token builtin">next</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-        <span class="token keyword">return</span> <span class="token punctuation">(</span>
-                <span class="token operator">&lt;</span>div className<span class="token operator">=</span><span class="token string">"container"</span><span class="token operator">></span>
-                    <span class="token operator">&lt;</span>h1<span class="token operator">></span>我是标题一<span class="token operator">&lt;</span><span class="token operator">/</span>h1<span class="token operator">></span>
-                    标题二
-                <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
-        <span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="performUnitOfWork"><a href="#performUnitOfWork" class="headerlink" title="performUnitOfWork"></a>performUnitOfWork</h2><p>看一下源码</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">performUnitOfWork</span><span class="token punctuation">(</span><span class="token parameter">unitOfWork</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">var</span> current <span class="token operator">=</span> unitOfWork<span class="token punctuation">.</span>alternate<span class="token punctuation">;</span>
-    <span class="token function">setCurrentFiber</span><span class="token punctuation">(</span>unitOfWork<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">var</span> next<span class="token punctuation">;</span>
-
-    <span class="token keyword">if</span> <span class="token punctuation">(</span> <span class="token punctuation">(</span>unitOfWork<span class="token punctuation">.</span>mode <span class="token operator">&amp;</span> ProfileMode<span class="token punctuation">)</span> <span class="token operator">!==</span> NoMode<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token function">startProfilerTimer</span><span class="token punctuation">(</span>unitOfWork<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        next <span class="token operator">=</span> <span class="token function">beginWork$1</span><span class="token punctuation">(</span>current<span class="token punctuation">,</span> unitOfWork<span class="token punctuation">,</span> subtreeRenderLanes<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">stopProfilerTimerIfRunningAndRecordDelta</span><span class="token punctuation">(</span>unitOfWork<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-        next <span class="token operator">=</span> <span class="token function">beginWork$1</span><span class="token punctuation">(</span>current<span class="token punctuation">,</span> unitOfWork<span class="token punctuation">,</span> subtreeRenderLanes<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-
-    <span class="token function">resetCurrentFiber</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    unitOfWork<span class="token punctuation">.</span>memoizedProps <span class="token operator">=</span> unitOfWork<span class="token punctuation">.</span>pendingProps<span class="token punctuation">;</span>
-
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>next <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token function">completeUnitOfWork</span><span class="token punctuation">(</span>unitOfWork<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-        workInProgress <span class="token operator">=</span> next<span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-    ReactCurrentOwner$<span class="token number">2.</span>current <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>beginwork和completework都发生在同一个函数中，performUnitOfWork会不断调用beginwork创建workInProgress树，如果返回的next是null，表明当前fiber树达到最大深度（DFS），可以调用completeUnitOfWork（如果该节点只存在一个文本子节点，react会进行优化，不再调用beginwork，因此第一个进入completeUnitOfWork的是h1的fiber）</p>
-<h2 id="completeWork"><a href="#completeWork" class="headerlink" title="completeWork"></a>completeWork</h2><p>completeWork函数内会根据不同的workInProgress.tag进入不同的代码块，此时workInProgress == 5，进入HostComponent代码块。</p>
-<p>此时使用下面的代码判断mount阶段</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">if</span> <span class="token punctuation">(</span>current <span class="token operator">!==</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> workInProgress<span class="token punctuation">.</span>stateNode <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token function">updateHostComponent$1</span><span class="token punctuation">(</span>current<span class="token punctuation">,</span> workInProgress<span class="token punctuation">,</span> type<span class="token punctuation">,</span> newProps<span class="token punctuation">,</span> rootContainerInstance<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>current<span class="token punctuation">.</span>ref <span class="token operator">!==</span> workInProgress<span class="token punctuation">.</span>ref<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token function">markRef$1</span><span class="token punctuation">(</span>workInProgress<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>由于current和stateNode都是null，进入else</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> instance <span class="token operator">=</span> <span class="token function">createInstance</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> newProps<span class="token punctuation">,</span> rootContainerInstance<span class="token punctuation">,</span> currentHostContext<span class="token punctuation">,</span> workInProgress<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token function">appendAllChildren</span><span class="token punctuation">(</span>instance<span class="token punctuation">,</span> workInProgress<span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-workInProgress<span class="token punctuation">.</span>stateNode <span class="token operator">=</span> instance<span class="token punctuation">;</span> 
-<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">finalizeInitialChildren</span><span class="token punctuation">(</span>instance<span class="token punctuation">,</span> type<span class="token punctuation">,</span> newProps<span class="token punctuation">,</span> rootContainerInstance<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token function">markUpdate</span><span class="token punctuation">(</span>workInProgress<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>该阶段涉及DOM节点的创建</p>
-<h3 id="createInstance"><a href="#createInstance" class="headerlink" title="createInstance"></a>createInstance</h3><p>看一下源码</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">createInstance</span><span class="token punctuation">(</span><span class="token parameter">type<span class="token punctuation">,</span> props<span class="token punctuation">,</span> rootContainerInstance<span class="token punctuation">,</span> hostContext<span class="token punctuation">,</span> internalInstanceHandle</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">var</span> parentNamespace<span class="token punctuation">;</span>
-   <span class="token punctuation">&#123;</span>
-    <span class="token keyword">var</span> hostContextDev <span class="token operator">=</span> hostContext<span class="token punctuation">;</span>
-    <span class="token function">validateDOMNesting</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> hostContextDev<span class="token punctuation">.</span>ancestorInfo<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> props<span class="token punctuation">.</span>children <span class="token operator">===</span> <span class="token string">'string'</span> <span class="token operator">||</span> <span class="token keyword">typeof</span> props<span class="token punctuation">.</span>children <span class="token operator">===</span> <span class="token string">'number'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">var</span> string <span class="token operator">=</span> <span class="token string">''</span> <span class="token operator">+</span> props<span class="token punctuation">.</span>children<span class="token punctuation">;</span>
-        <span class="token keyword">var</span> ownAncestorInfo <span class="token operator">=</span> <span class="token function">updatedAncestorInfo</span><span class="token punctuation">(</span>hostContextDev<span class="token punctuation">.</span>ancestorInfo<span class="token punctuation">,</span> type<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token function">validateDOMNesting</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">,</span> string<span class="token punctuation">,</span> ownAncestorInfo<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-    parentNamespace <span class="token operator">=</span> hostContextDev<span class="token punctuation">.</span>namespace<span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-
-    <span class="token keyword">var</span> domElement <span class="token operator">=</span> <span class="token function">createElement</span><span class="token punctuation">(</span>type<span class="token punctuation">,</span> props<span class="token punctuation">,</span> rootContainerInstance<span class="token punctuation">,</span> parentNamespace<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">precacheFiberNode</span><span class="token punctuation">(</span>internalInstanceHandle<span class="token punctuation">,</span> domElement<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">updateFiberProps</span><span class="token punctuation">(</span>domElement<span class="token punctuation">,</span> props<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> domElement<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>该函数对props进行了处理，嗲用createElement创建了一个真实DOM</p>
-<h3 id="appendAllChildren"><a href="#appendAllChildren" class="headerlink" title="appendAllChildren"></a>appendAllChildren</h3><p>由于workInProgress的child是null，函数直接return</p>
-<h3 id="finalizeInitialChildren"><a href="#finalizeInitialChildren" class="headerlink" title="finalizeInitialChildren"></a>finalizeInitialChildren</h3><p>将创建的instance挂载到stateNode后，调用finalizeInitialChildren进行属性的初始化。</p>
-<h2 id="summary"><a href="#summary" class="headerlink" title="summary"></a>summary</h2><p>completeWork阶段函数调用关系如下<br><img src="/images/2021-6-14/summary.png" alt="completeWork"><br>mount阶段的completeWork大概做了两件事</p>
-<ul>
-<li>根据Fiber创建真实DOM</li>
-<li>将真实DOM挂载到stateNode上</li>
-</ul>
+<h3 id="过程解析-1"><a href="#过程解析-1" class="headerlink" title="过程解析"></a>过程解析</h3><p><img src="/images/2021-6-15/p2-1.png" alt="process 1"></p>
+<p><img src="/images/2021-6-15/p2-2.png" alt="process 2"></p>
 
                 
             </div>
@@ -556,7 +511,7 @@ workInProgress<span class="token punctuation">.</span>stateNode <span class="tok
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://maplepudding.github.io/20210614/2021-6-14/">https://maplepudding.github.io/20210614/2021-6-14/</a>
+                    <a href="https://maplepudding.github.io/20210615/2021-6-15/">https://maplepudding.github.io/20210615/2021-6-15/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -594,12 +549,12 @@ workInProgress<span class="token punctuation">.</span>stateNode <span class="tok
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/React/">
-                                    <span class="chip bg-color">React</span>
+                                <a href="/tags/Leetcode/">
+                                    <span class="chip bg-color">Leetcode</span>
                                 </a>
                             
-                                <a href="/tags/Web%E5%89%8D%E7%AB%AF/">
-                                    <span class="chip bg-color">Web前端</span>
+                                <a href="/tags/Algorithm/">
+                                    <span class="chip bg-color">Algorithm</span>
                                 </a>
                             
                         </div>
@@ -640,9 +595,10 @@ workInProgress<span class="token punctuation">.</span>stateNode <span class="tok
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/20210615/2021-6-15/">
                     <div class="card-image">
@@ -660,9 +616,9 @@ workInProgress<span class="token punctuation">.</span>stateNode <span class="tok
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-15
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-15
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -675,6 +631,7 @@ workInProgress<span class="token punctuation">.</span>stateNode <span class="tok
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -697,13 +654,13 @@ workInProgress<span class="token punctuation">.</span>stateNode <span class="tok
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/20210613/2021-6-13/">
+                <a href="/20210614/2021-6-14/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="【React源码学习】1 Fiber双缓存的首次构建">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="【React源码学习】2 mount阶段compleleWork工作流程">
                         
-                        <span class="card-title">【React源码学习】1 Fiber双缓存的首次构建</span>
+                        <span class="card-title">【React源码学习】2 mount阶段compleleWork工作流程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -714,7 +671,7 @@ workInProgress<span class="token punctuation">.</span>stateNode <span class="tok
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-14
                             </span>
                         <span class="publish-author">
                             

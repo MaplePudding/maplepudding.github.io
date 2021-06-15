@@ -6,7 +6,7 @@
   <link href="https://maplepudding.github.io/atom.xml" rel="self"/>
   
   <link href="https://maplepudding.github.io/"/>
-  <updated>2021-06-14T03:08:26.886Z</updated>
+  <updated>2021-06-14T14:42:43.683Z</updated>
   <id>https://maplepudding.github.io/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>两种常见的反转链表方式</title>
+    <link href="https://maplepudding.github.io/20210615/2021-6-15/"/>
+    <id>https://maplepudding.github.io/20210615/2021-6-15/</id>
+    <published>2021-06-15T13:24:00.000Z</published>
+    <updated>2021-06-14T14:42:43.683Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;不考虑收尾元素的反转&quot;&gt;&lt;a href=&quot;#不考虑收尾元素的反转&quot; class=&quot;headerlink&quot; title=&quot;不考虑收尾元素的反转&quot;&gt;&lt;/a&gt;不考虑收尾元素的反转&lt;/h2&gt;&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="https://maplepudding.github.io/categories/Leetcode/"/>
+    
+    
+    <category term="Leetcode" scheme="https://maplepudding.github.io/tags/Leetcode/"/>
+    
+    <category term="Algorithm" scheme="https://maplepudding.github.io/tags/Algorithm/"/>
+    
+  </entry>
+  
+  <entry>
     <title>【React源码学习】2 mount阶段compleleWork工作流程</title>
     <link href="https://maplepudding.github.io/20210614/2021-6-14/"/>
     <id>https://maplepudding.github.io/20210614/2021-6-14/</id>
     <published>2021-06-14T13:24:00.000Z</published>
-    <updated>2021-06-14T03:08:26.886Z</updated>
+    <updated>2021-06-14T14:42:18.845Z</updated>
     
     
       
