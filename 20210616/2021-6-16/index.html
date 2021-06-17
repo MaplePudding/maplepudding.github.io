@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="两种常见的反转链表方式, Code">
+    <meta name="keywords" content="Webpack学习笔记(一), Code">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>两种常见的反转链表方式 | Code</title>
+    <title>Webpack学习笔记(一) | Code</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -268,12 +268,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">两种常见的反转链表方式</h1>
+                    <h1 class="description center-align post-title">Webpack学习笔记(一)</h1>
                 </div>
             </div>
         </div>
@@ -389,12 +389,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Leetcode/">
-                                <span class="chip bg-color">Leetcode</span>
+                            <a href="/tags/Web%E5%89%8D%E7%AB%AF/">
+                                <span class="chip bg-color">Web前端</span>
                             </a>
                         
-                            <a href="/tags/Algorithm/">
-                                <span class="chip bg-color">Algorithm</span>
+                            <a href="/tags/Webpack/">
+                                <span class="chip bg-color">Webpack</span>
                             </a>
                         
                     </div>
@@ -405,8 +405,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Leetcode/" class="post-category">
-                                Leetcode
+                            <a href="/categories/Webpack/" class="post-category">
+                                Webpack
                             </a>
                         
                     </div>
@@ -418,14 +418,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-06-15
+                    2021-06-16
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2021-06-14
+                    2021-06-15
                 </div>
                 
 
@@ -447,44 +447,127 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="不考虑收尾元素的反转"><a href="#不考虑收尾元素的反转" class="headerlink" title="不考虑收尾元素的反转"></a>不考虑收尾元素的反转</h2><p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/75e878df47f24fdc9dc3e400ec6058ca?tpId=188&&tqId=38547&rp=1&ru=/activity/oj&qru=/ta/job-code-high-week/question-ranking">反转链表</a></p>
-<h3 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">ReverseList</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> pHead<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        pre <span class="token operator">=</span> <span class="token boolean">None</span>
-        cur <span class="token operator">=</span> pHead
-        <span class="token keyword">while</span> cur<span class="token punctuation">:</span>
-            temp <span class="token operator">=</span> cur<span class="token punctuation">.</span><span class="token builtin">next</span>
-            cur<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> pre
-            pre <span class="token operator">=</span> cur
-            cur  <span class="token operator">=</span> temp
-        <span class="token keyword">return</span> pre<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="过程解析"><a href="#过程解析" class="headerlink" title="过程解析"></a>过程解析</h3><p><img src="/images/2021-6-15/p1-1.png" alt="process 1"></p>
-<p><img src="/images/2021-6-15/p1-2.png" alt="process 2"></p>
-<p><img src="/images/2021-6-15/p1-3.png" alt="process 3"></p>
-<h2 id="考虑首位元素的反转"><a href="#考虑首位元素的反转" class="headerlink" title="考虑首位元素的反转"></a>考虑首位元素的反转</h2><p><a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/b58434e200a648c589ca2063f1faf58c?tpId=188&&tqId=38555&rp=1&ru=/activity/oj&qru=/ta/job-code-high-week/question-ranking">链表内指定区间反转</a></p>
-<h3 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">:</span>
-    <span class="token keyword">def</span> <span class="token function">reverseBetween</span><span class="token punctuation">(</span>self <span class="token punctuation">,</span> head <span class="token punctuation">,</span> m <span class="token punctuation">,</span> n <span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">if</span> <span class="token keyword">not</span> head <span class="token keyword">or</span> <span class="token keyword">not</span> head<span class="token punctuation">.</span><span class="token builtin">next</span><span class="token punctuation">:</span>
-            <span class="token keyword">return</span> head
-        dummy <span class="token operator">=</span> ListNode<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
-        dummy<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> head
-        pre <span class="token operator">=</span> dummy
-        start <span class="token operator">=</span> head
-        
-        <span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>m <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            pre <span class="token operator">=</span> pre<span class="token punctuation">.</span><span class="token builtin">next</span>
-            start <span class="token operator">=</span> start<span class="token punctuation">.</span><span class="token builtin">next</span>
-        
-        <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n <span class="token operator">-</span> m<span class="token punctuation">)</span><span class="token punctuation">:</span>
-            nxt <span class="token operator">=</span> start<span class="token punctuation">.</span><span class="token builtin">next</span>
-            start<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> nxt<span class="token punctuation">.</span><span class="token builtin">next</span>
-            nxt<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> pre<span class="token punctuation">.</span><span class="token builtin">next</span>
-            pre<span class="token punctuation">.</span><span class="token builtin">next</span> <span class="token operator">=</span> nxt
-            
-        <span class="token keyword">return</span> dummy<span class="token punctuation">.</span><span class="token builtin">next</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <h2 id="webpack基本概念"><a href="#webpack基本概念" class="headerlink" title="webpack基本概念"></a>webpack基本概念</h2><h3 id="entry"><a href="#entry" class="headerlink" title="entry"></a>entry</h3><p>用于指定打包文件的入口</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">entry<span class="token operator">:</span> <span class="token string">'./src/index.js'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="output"><a href="#output" class="headerlink" title="output"></a>output</h3><p>指定输出的文件名即目录，一个对象</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span>
+output<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    filename<span class="token operator">:</span> <span class="token string">'bundle.js'</span><span class="token punctuation">,</span>
+    path<span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'dist'</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="module"><a href="#module" class="headerlink" title="module"></a>module</h3><p>用于添加loader，loader可用于css预处理等工作</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">module<span class="token operator">:</span><span class="token punctuation">&#123;</span>
+    rules<span class="token operator">:</span><span class="token punctuation">[</span>
 
-<h3 id="过程解析-1"><a href="#过程解析-1" class="headerlink" title="过程解析"></a>过程解析</h3><p><img src="/images/2021-6-15/p2-1.png" alt="process 1"></p>
-<p><img src="/images/2021-6-15/p2-2.png" alt="process 2"></p>
+    <span class="token punctuation">]</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="plugins"><a href="#plugins" class="headerlink" title="plugins"></a>plugins</h3><p>数组，plugin可用于指定html模板等工作</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">plugins<span class="token operator">:</span><span class="token punctuation">[</span>
+
+<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<h3 id="mode"><a href="#mode" class="headerlink" title="mode"></a>mode</h3><p>指定webpack打包的模式，可选生产模式和开发模式</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">mode<span class="token operator">:</span> <span class="token string">'development'</span><span class="token operator">/</span><span class="token string">'production'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="打包css文件"><a href="#打包css文件" class="headerlink" title="打包css文件"></a>打包css文件</h2><p>处理css需要两个loader，style-loader和css-loader。css-loader将css文件转化为commonJS模块，并引入，style-loader创建style标签，并将css插入。</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">//less文件的处理</span>
+<span class="token punctuation">&#123;</span>
+    test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.less$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+    use<span class="token operator">:</span><span class="token punctuation">[</span>
+        <span class="token string">'style-loader'</span><span class="token punctuation">,</span>
+        <span class="token string">'css-loader'</span><span class="token punctuation">,</span>
+        <span class="token string">'less-loader'</span>
+    <span class="token punctuation">]</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>webpack会反向使用loader，use内的loader要从后向前写。</p>
+<p>使用mini-css-extract-plugin将css提取为单独文件</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token punctuation">&#123;</span>
+    test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.less$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+    use<span class="token operator">:</span><span class="token punctuation">[</span>
+        miniCssExtractPugin<span class="token punctuation">.</span>loader<span class="token punctuation">,</span>
+        <span class="token string">'css-loader'</span><span class="token punctuation">,</span>
+        <span class="token string">'less-loader'</span>
+    <span class="token punctuation">]</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">,</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="打包html文件"><a href="#打包html文件" class="headerlink" title="打包html文件"></a>打包html文件</h2><p>打包html需要借助html-webpack-plugin</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">new</span> <span class="token class-name">htmlWebpackPlugin</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+    template<span class="token operator">:</span> <span class="token string">'./src/index.html'</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>template指定html模板</p>
+<h2 id="打包图片"><a href="#打包图片" class="headerlink" title="打包图片"></a>打包图片</h2><h3 id="css-js文件内图片的打包"><a href="#css-js文件内图片的打包" class="headerlink" title="css/js文件内图片的打包"></a>css/js文件内图片的打包</h3><p>使用url-loader</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token punctuation">&#123;</span>
+    test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.(png|jpg)$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+    use<span class="token operator">:</span><span class="token punctuation">[</span>
+        <span class="token string">'url-loader'</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    options<span class="token operator">:</span><span class="token punctuation">&#123;</span>
+        limit<span class="token operator">:</span> <span class="token number">1</span> <span class="token operator">*</span> <span class="token number">1024</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>options用来指定图片是否需要base64处理</p>
+<h3 id="html内的图片资源"><a href="#html内的图片资源" class="headerlink" title="html内的图片资源"></a>html内的图片资源</h3><p>使用html-loader处理图片</p>
+<h2 id="使用babel增强js兼容性"><a href="#使用babel增强js兼容性" class="headerlink" title="使用babel增强js兼容性"></a>使用babel增强js兼容性</h2><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token punctuation">&#123;</span>
+    test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.js$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+    exclude<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">node_modules</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+    loader<span class="token operator">:</span> <span class="token string">'babel-loader'</span><span class="token punctuation">,</span>
+    options<span class="token operator">:</span><span class="token punctuation">&#123;</span>
+        presets<span class="token operator">:</span><span class="token punctuation">[</span><span class="token string">'@babel/preset-env'</span><span class="token punctuation">]</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>exclude用于排除文件夹（第三方库）</li>
+<li>options指定babel的预设</li>
+</ul>
+<h2 id="开启DevServer"><a href="#开启DevServer" class="headerlink" title="开启DevServer"></a>开启DevServer</h2><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">devServer<span class="token operator">:</span><span class="token punctuation">&#123;</span>
+    contentBase<span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'dist'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    compress<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    port<span class="token operator">:</span> <span class="token number">3000</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>contentBase指定目标路径（打包后输出路径）</li>
+<li>compress代码</li>
+</ul>
+<h2 id="HMR"><a href="#HMR" class="headerlink" title="HMR"></a>HMR</h2><p>针对devServer的热更新选项</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">devServer<span class="token operator">:</span><span class="token punctuation">&#123;</span>
+    contentBase<span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'dist'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    compress<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    port<span class="token operator">:</span> <span class="token number">3000</span><span class="token punctuation">,</span>
+    hot<span class="token operator">:</span> <span class="token boolean">true</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>此时修改css文件并不会因此js重新加载</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">if</span><span class="token punctuation">(</span>module<span class="token punctuation">.</span>hot<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    module<span class="token punctuation">.</span>hot<span class="token punctuation">.</span><span class="token function">accept</span><span class="token punctuation">(</span>str<span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        
+    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>该方法对文件的更新进行某种拦截（原理暂不清楚），实现热更新。</p>
+<h2 id="sourcemap"><a href="#sourcemap" class="headerlink" title="sourcemap"></a>sourcemap</h2><p>用于对代码报错位置追踪</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">devtool<span class="token operator">:</span> <span class="token string">'source-map'</span><span class="token operator">/</span><span class="token string">'inline-source-map/'</span>hidden<span class="token operator">-</span>source<span class="token operator">-</span>map<span class="token string">'/'</span>eval<span class="token operator">-</span>source<span class="token operator">-</span>map'<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="tree-shaking"><a href="#tree-shaking" class="headerlink" title="tree shaking"></a>tree shaking</h2><p>用于排除无意义的代码，在package.json加入如下代码防止排除css等文件</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token property">"sideEffects"</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token string">"*.css"</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="代码分割"><a href="#代码分割" class="headerlink" title="代码分割"></a>代码分割</h2><h3 id="分割node-modules代码"><a href="#分割node-modules代码" class="headerlink" title="分割node_modules代码"></a>分割node_modules代码</h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">optimization<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    splitChunks<span class="token operator">:</span><span class="token punctuation">&#123;</span>
+        chunks<span class="token operator">:</span> <span class="token string">'all'</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="动态导入"><a href="#动态导入" class="headerlink" title="动态导入"></a>动态导入</h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">import</span> <span class="token punctuation">(</span>filename<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="懒加载"><a href="#懒加载" class="headerlink" title="懒加载"></a>懒加载</h2><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function-variable function">onclick</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token comment">/* webpackChunkName: 'test', webpackPrefetch: true */</span>filename<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>func<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+
+
+
+
+
+
 
                 
             </div>
@@ -511,7 +594,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://maplepudding.github.io/20210615/2021-6-15/">https://maplepudding.github.io/20210615/2021-6-15/</a>
+                    <a href="https://maplepudding.github.io/20210616/2021-6-16/">https://maplepudding.github.io/20210616/2021-6-16/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -549,12 +632,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Leetcode/">
-                                    <span class="chip bg-color">Leetcode</span>
+                                <a href="/tags/Web%E5%89%8D%E7%AB%AF/">
+                                    <span class="chip bg-color">Web前端</span>
                                 </a>
                             
-                                <a href="/tags/Algorithm/">
-                                    <span class="chip bg-color">Algorithm</span>
+                                <a href="/tags/Webpack/">
+                                    <span class="chip bg-color">Webpack</span>
                                 </a>
                             
                         </div>
@@ -599,66 +682,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/20210616/2021-6-16/">
+                <a href="/20210617/2021-6-17/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Webpack学习笔记(一)">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="【React源码学习】3 从setState分析update流程">
                         
-                        <span class="card-title">Webpack学习笔记(一)</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            Webpack
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-16
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Webpack/" class="post-category">
-                                    Webpack
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Web%E5%89%8D%E7%AB%AF/">
-                        <span class="chip bg-color">Web前端</span>
-                    </a>
-                    
-                    <a href="/tags/Webpack/">
-                        <span class="chip bg-color">Webpack</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/20210614/2021-6-14/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="【React源码学习】2 mount阶段compleleWork工作流程">
-                        
-                        <span class="card-title">【React源码学习】2 mount阶段compleleWork工作流程</span>
+                        <span class="card-title">【React源码学习】3 从setState分析update流程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -668,9 +698,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-14
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-17
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -692,6 +722,59 @@
                     
                     <a href="/tags/Web%E5%89%8D%E7%AB%AF/">
                         <span class="chip bg-color">Web前端</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/20210615/2021-6-15/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="两种常见的反转链表方式">
+                        
+                        <span class="card-title">两种常见的反转链表方式</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            leetcode
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-15
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Leetcode/" class="post-category">
+                                    Leetcode
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Leetcode/">
+                        <span class="chip bg-color">Leetcode</span>
+                    </a>
+                    
+                    <a href="/tags/Algorithm/">
+                        <span class="chip bg-color">Algorithm</span>
                     </a>
                     
                 </div>
