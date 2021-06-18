@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="【React源码学习】3 从setState分析update流程, Code">
+    <meta name="keywords" content="NC92 最长公共子序列 -II, Code">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>【React源码学习】3 从setState分析update流程 | Code</title>
+    <title>NC92 最长公共子序列 -II | Code</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -268,12 +268,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【React源码学习】3 从setState分析update流程</h1>
+                    <h1 class="description center-align post-title">NC92 最长公共子序列 -II</h1>
                 </div>
             </div>
         </div>
@@ -389,12 +389,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/React/">
-                                <span class="chip bg-color">React</span>
+                            <a href="/tags/Leetcode/">
+                                <span class="chip bg-color">Leetcode</span>
                             </a>
                         
-                            <a href="/tags/Web%E5%89%8D%E7%AB%AF/">
-                                <span class="chip bg-color">Web前端</span>
+                            <a href="/tags/Algorithm/">
+                                <span class="chip bg-color">Algorithm</span>
                             </a>
                         
                     </div>
@@ -405,8 +405,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/React/" class="post-category">
-                                React
+                            <a href="/categories/Leetcode/" class="post-category">
+                                Leetcode
                             </a>
                         
                     </div>
@@ -418,14 +418,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-06-17
+                    2021-06-18
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2021-06-17
+                    2021-06-18
                 </div>
                 
 
@@ -447,134 +447,89 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>今天来看一下setState时fiber如何update，本次demo代码如下</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token keyword">extends</span> <span class="token class-name">React<span class="token punctuation">.</span>Component</span> <span class="token punctuation">&#123;</span>
-    state <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
-        count<span class="token operator">:</span> <span class="token number">0</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
-    <span class="token function-variable function">click</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span><span class="token punctuation">&#123;</span>
-        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">setState</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>count<span class="token operator">:</span> <span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>count <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+                <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token constant">LCS</span><span class="token punctuation">(</span> <span class="token parameter">s1 <span class="token punctuation">,</span>  s2</span> <span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">let</span> res <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">let</span> len1 <span class="token operator">=</span> s1<span class="token punctuation">.</span>length
+    <span class="token keyword">let</span> len2 <span class="token operator">=</span> s2<span class="token punctuation">.</span>length
+    <span class="token keyword">let</span> l1 <span class="token operator">=</span> len1
+    <span class="token keyword">let</span> l2 <span class="token operator">=</span> len2
+    
+    <span class="token keyword">if</span><span class="token punctuation">(</span>l1 <span class="token operator">===</span> <span class="token number">0</span> <span class="token operator">||</span> l2 <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token string">"-1"</span>
     <span class="token punctuation">&#125;</span>
-
-    <span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-        <span class="token keyword">return</span> <span class="token operator">&lt;</span>p onClick<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token keyword">this</span><span class="token punctuation">.</span>click<span class="token punctuation">&#125;</span><span class="token operator">></span><span class="token punctuation">&#123;</span><span class="token keyword">this</span><span class="token punctuation">.</span>state<span class="token punctuation">.</span>count<span class="token punctuation">&#125;</span><span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">></span>
+    
+    <span class="token keyword">let</span> dp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span>len1 <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len1 <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span>len2 <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
     <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>触发setState时的调用栈<br><img src="/images/2021-6-17/callstack.png" alt="setState调用栈"></p>
-<h2 id="setState"><a href="#setState" class="headerlink" title="setState"></a>setState</h2><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token class-name">Component</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">setState</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">partialState<span class="token punctuation">,</span> callback</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> partialState <span class="token operator">===</span> <span class="token string">'object'</span> <span class="token operator">||</span> <span class="token keyword">typeof</span> partialState <span class="token operator">===</span> <span class="token string">'function'</span> <span class="token operator">||</span> partialState <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token punctuation">&#123;</span>
-      <span class="token keyword">throw</span> <span class="token function">Error</span><span class="token punctuation">(</span> <span class="token string">"setState(...): takes an object of state variables to update or a function which returns an object of state variables."</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-  <span class="token punctuation">&#125;</span>
-  <span class="token keyword">this</span><span class="token punctuation">.</span>updater<span class="token punctuation">.</span><span class="token function">enqueueSetState</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> partialState<span class="token punctuation">,</span> callback<span class="token punctuation">,</span> <span class="token string">'setState'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>setState内部对传入的state进行类型检查，然后直接调用enqueueSetState</p>
-<h2 id="enqueueSetState"><a href="#enqueueSetState" class="headerlink" title="enqueueSetState"></a>enqueueSetState</h2><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">inst<span class="token punctuation">,</span> payload<span class="token punctuation">,</span> callback</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">var</span> fiber <span class="token operator">=</span> <span class="token function">get</span><span class="token punctuation">(</span>inst<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">var</span> eventTime <span class="token operator">=</span> <span class="token function">requestEventTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">var</span> lane <span class="token operator">=</span> <span class="token function">requestUpdateLane</span><span class="token punctuation">(</span>fiber<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">var</span> update <span class="token operator">=</span> <span class="token function">createUpdate</span><span class="token punctuation">(</span>eventTime<span class="token punctuation">,</span> lane<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    update<span class="token punctuation">.</span>payload <span class="token operator">=</span> payload<span class="token punctuation">;</span>
-
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>callback <span class="token operator">!==</span> <span class="token keyword">undefined</span> <span class="token operator">&amp;&amp;</span> callback <span class="token operator">!==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token punctuation">&#123;</span>
-        <span class="token function">warnOnInvalidCallback</span><span class="token punctuation">(</span>callback<span class="token punctuation">,</span> <span class="token string">'setState'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token punctuation">&#125;</span>
-
-      update<span class="token punctuation">.</span>callback <span class="token operator">=</span> callback<span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-
-    <span class="token function">enqueueUpdate</span><span class="token punctuation">(</span>fiber<span class="token punctuation">,</span> update<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">scheduleUpdateOnFiber</span><span class="token punctuation">(</span>fiber<span class="token punctuation">,</span> lane<span class="token punctuation">,</span> eventTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>传入的三个参数：</p>
-<ul>
-<li>inst是根组件，当前是App Component</li>
-<li>payload：传入的state，此时是{count : 1}</li>
-<li>callback是setState的第二个参数，此时undefined</li>
-</ul>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> eventTime <span class="token operator">=</span> <span class="token function">requestEventTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">var</span> lane <span class="token operator">=</span> <span class="token function">requestUpdateLane</span><span class="token punctuation">(</span>fiber<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">var</span> update <span class="token operator">=</span> <span class="token function">createUpdate</span><span class="token punctuation">(</span>eventTime<span class="token punctuation">,</span> lane<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>这三段代码用来回去eventTime，lane（优先级相关），update（一个update对象）。重点看一下createUpdate</p>
-<h2 id="createUpdate"><a href="#createUpdate" class="headerlink" title="createUpdate"></a>createUpdate</h2><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">createUpdate</span><span class="token punctuation">(</span><span class="token parameter">eventTime<span class="token punctuation">,</span> lane</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">var</span> update <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
-        eventTime<span class="token operator">:</span> eventTime<span class="token punctuation">,</span>
-        lane<span class="token operator">:</span> lane<span class="token punctuation">,</span>
-        tag<span class="token operator">:</span> UpdateState<span class="token punctuation">,</span>
-        payload<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
-        callback<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
-        next<span class="token operator">:</span> <span class="token keyword">null</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
-   <span class="token keyword">return</span> update<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>createUpdate根据传入的time和lane创建一个update对象，next指针用来连接其他update对象</p>
-<h2 id="enqueueUpdate"><a href="#enqueueUpdate" class="headerlink" title="enqueueUpdate"></a>enqueueUpdate</h2><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">enqueueUpdate</span><span class="token punctuation">(</span><span class="token parameter">fiber<span class="token punctuation">,</span> update</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">var</span> updateQueue <span class="token operator">=</span> fiber<span class="token punctuation">.</span>updateQueue<span class="token punctuation">;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>updateQueue <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">return</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-    <span class="token keyword">var</span> sharedQueue <span class="token operator">=</span> updateQueue<span class="token punctuation">.</span>shared<span class="token punctuation">;</span>
-    <span class="token keyword">var</span> pending <span class="token operator">=</span> sharedQueue<span class="token punctuation">.</span>pending<span class="token punctuation">;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>pending <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        update<span class="token punctuation">.</span>next <span class="token operator">=</span> update<span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-        update<span class="token punctuation">.</span>next <span class="token operator">=</span> pending<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
-        pending<span class="token punctuation">.</span>next <span class="token operator">=</span> update<span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-    sharedQueue<span class="token punctuation">.</span>pending <span class="token operator">=</span> update<span class="token punctuation">;</span>
-    <span class="token punctuation">&#123;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>currentlyProcessingQueue <span class="token operator">===</span> sharedQueue <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>didWarnUpdateInsideUpdate<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token function">error</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            didWarnUpdateInsideUpdate <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len1 <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">let</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> len2 <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>s1<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">==</span> s2<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> dp<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span>
+            <span class="token punctuation">&#125;</span><span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+                dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> dp<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span>
+            <span class="token punctuation">&#125;</span>
         <span class="token punctuation">&#125;</span>
     <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>该函数先获取了根组件的updateQueue，updateQueue的基本结构如下</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token punctuation">&#123;</span>
-    baseState<span class="token operator">:</span> <span class="token punctuation">&#123;</span>count<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">&#125;</span>
-    effects<span class="token operator">:</span> <span class="token keyword">null</span>
-    firstBaseUpdate<span class="token operator">:</span> <span class="token keyword">null</span>
-    lastBaseUpdate<span class="token operator">:</span> <span class="token keyword">null</span>
-    shared<span class="token operator">:</span> <span class="token punctuation">&#123;</span>pending<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<ul>
-<li>baseState即更新前的state</li>
-<li>firstBaseUpdate指针指向update链表（update对象以next连接）的第一个update</li>
-<li>lastBaseUpdate指向最后一个update对象</li>
-<li>shared.pending指向一个当前产生的update的环状链表的最后一个update</li>
-</ul>
-<p>看一下这一部分</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> sharedQueue <span class="token operator">=</span> updateQueue<span class="token punctuation">.</span>shared<span class="token punctuation">;</span>
-<span class="token keyword">var</span> pending <span class="token operator">=</span> sharedQueue<span class="token punctuation">.</span>pending<span class="token punctuation">;</span>
-<span class="token keyword">if</span> <span class="token punctuation">(</span>pending <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    update<span class="token punctuation">.</span>next <span class="token operator">=</span> update<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-    update<span class="token punctuation">.</span>next <span class="token operator">=</span> pending<span class="token punctuation">.</span>next<span class="token punctuation">;</span>
-    pending<span class="token punctuation">.</span>next <span class="token operator">=</span> update<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>这一部分将update加入到pending的环状链表的最后一个元素</p>
-<h2 id="scheduleUpdateOnFiber"><a href="#scheduleUpdateOnFiber" class="headerlink" title="scheduleUpdateOnFiber"></a>scheduleUpdateOnFiber</h2><p>将update加入到链表中后调用scheduleUpdateOnFiber，对update进行调度，markUpdateLaneFromeFIberToRoot执行结束后调用根据优先级调用performSyncWorkOnRoot开始render阶段</p>
-<h3 id="markUpdateLaneFromFiberToRoot"><a href="#markUpdateLaneFromFiberToRoot" class="headerlink" title="markUpdateLaneFromFiberToRoot"></a>markUpdateLaneFromFiberToRoot</h3><p>该函数将fiber的lane不断递归向上合并</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">sourceFiber<span class="token punctuation">.</span>lanes <span class="token operator">=</span> <span class="token function">mergeLanes</span><span class="token punctuation">(</span>sourceFiber<span class="token punctuation">.</span>lanes<span class="token punctuation">,</span> lane<span class="token punctuation">)</span>
-alternate<span class="token punctuation">.</span>lanes <span class="token operator">=</span> <span class="token function">mergeLanes</span><span class="token punctuation">(</span>alternate<span class="token punctuation">.</span>lanes<span class="token punctuation">,</span> lane<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>这一段合并了产生更新的fiber和App fiber的lane，同时对另一个fiber树的lane进行相同操作</p>
-<p>下面是递归向上合并的代码</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">while</span> <span class="token punctuation">(</span>parent <span class="token operator">!==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    parent<span class="token punctuation">.</span>childLanes <span class="token operator">=</span> <span class="token function">mergeLanes</span><span class="token punctuation">(</span>parent<span class="token punctuation">.</span>childLanes<span class="token punctuation">,</span> lane<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    alternate <span class="token operator">=</span> parent<span class="token punctuation">.</span>alternate<span class="token punctuation">;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>alternate <span class="token operator">!==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        alternate<span class="token punctuation">.</span>childLanes <span class="token operator">=</span> <span class="token function">mergeLanes</span><span class="token punctuation">(</span>alternate<span class="token punctuation">.</span>childLanes<span class="token punctuation">,</span> lane<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-        <span class="token comment">//some code</span>
+    
+    <span class="token keyword">while</span><span class="token punctuation">(</span>l1 <span class="token operator">&amp;&amp;</span> l2<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>s1<span class="token punctuation">[</span>l1 <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">===</span> s2<span class="token punctuation">[</span>l2 <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            res<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>s1<span class="token punctuation">[</span>l1 <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+            <span class="token operator">--</span>l1
+            <span class="token operator">--</span>l2
+        <span class="token punctuation">&#125;</span><span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>dp<span class="token punctuation">[</span>l1 <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>l2<span class="token punctuation">]</span> <span class="token operator">></span> dp<span class="token punctuation">[</span>l1<span class="token punctuation">]</span><span class="token punctuation">[</span>l2 <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                <span class="token operator">--</span>l1
+            <span class="token punctuation">&#125;</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>dp<span class="token punctuation">[</span>l1 <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>l2<span class="token punctuation">]</span> <span class="token operator">&lt;</span> dp<span class="token punctuation">[</span>l1<span class="token punctuation">]</span><span class="token punctuation">[</span>l2 <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                <span class="token operator">--</span>l2
+            <span class="token punctuation">&#125;</span><span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+                <span class="token operator">--</span>l1
+                <span class="token operator">--</span>l2
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
     <span class="token punctuation">&#125;</span>
-    node <span class="token operator">=</span> parent<span class="token punctuation">;</span>
-    parent <span class="token operator">=</span> parent<span class="token punctuation">.</span>return<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>这一部分不断将当前的lane合并到parent fiber的childlane</p>
-<h2 id="summary"><a href="#summary" class="headerlink" title="summary"></a>summary</h2><p><img src="/images/2021-6-17/summary.png" alt="summary"></p>
+    
+    <span class="token keyword">if</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>length <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> <span class="token string">"-1"</span>
+    <span class="token punctuation">&#125;</span><span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> res<span class="token punctuation">.</span><span class="token function">reverse</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">''</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>初始化二维dp数组</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> dp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span>len1 <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len1 <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span>len2 <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>动态规划的核心部分, dp内保存的是指s1[0] -&gt; s1[i-1]与s2[0] -&gt; s2[j-1]中最长公共序列的长度, 如果当前字符相等，则公共序列长度可以+1</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len1 <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">let</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> len2 <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>s1<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">==</span> s2<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> dp<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span>
+        <span class="token punctuation">&#125;</span><span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+            dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> dp<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>反向遍历字符串，如果字符相等，则这两个字符一定在公共序列中（因为dp[i][j] = dp[i - 1][j - 1] + 1）</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">if</span><span class="token punctuation">(</span>s1<span class="token punctuation">[</span>l1 <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">===</span> s2<span class="token punctuation">[</span>l2 <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    res<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>s1<span class="token punctuation">[</span>l1 <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    <span class="token operator">--</span>l1
+    <span class="token operator">--</span>l2
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>如果字符不相等可以分为三种情况</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">dp<span class="token punctuation">[</span>l1 <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>l2<span class="token punctuation">]</span> <span class="token operator">></span> dp<span class="token punctuation">[</span>l1<span class="token punctuation">]</span><span class="token punctuation">[</span>l2 <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ol>
+<li><p>dp[l1][l2]表示到l1和l2为止，最长的子序列长度。dp[l1 - 1][l2] &gt; dp[l1][l2 - 1]说明不考虑s1[l1-1]与s2[l2-1]时，dp[l1-1][l2]的公共子序列长度&gt;dp[l1][l2 - 1]的子序列长度，即字符s1[l1-1]不在子序列中，<strong>该字符的存在没有对dp的值产生影响</strong>，可以不考虑。因此–l1</p>
+</li>
+<li><p>第二种情况同上</p>
+</li>
+<li><p>如果同时不考虑最后两个字符没有对dp值产生影响，说明这两个字符都不在子序列中（根据循环条件，两个字符一定不相等）</p>
+</li>
+</ol>
 
                 
             </div>
@@ -601,7 +556,7 @@ alternate<span class="token punctuation">.</span>lanes <span class="token operat
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://maplepudding.github.io/20210617/2021-6-17/">https://maplepudding.github.io/20210617/2021-6-17/</a>
+                    <a href="https://maplepudding.github.io/20210618/2021-6-18(2)/">https://maplepudding.github.io/20210618/2021-6-18(2)/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -639,12 +594,12 @@ alternate<span class="token punctuation">.</span>lanes <span class="token operat
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/React/">
-                                    <span class="chip bg-color">React</span>
+                                <a href="/tags/Leetcode/">
+                                    <span class="chip bg-color">Leetcode</span>
                                 </a>
                             
-                                <a href="/tags/Web%E5%89%8D%E7%AB%AF/">
-                                    <span class="chip bg-color">Web前端</span>
+                                <a href="/tags/Algorithm/">
+                                    <span class="chip bg-color">Algorithm</span>
                                 </a>
                             
                         </div>
@@ -689,13 +644,13 @@ alternate<span class="token punctuation">.</span>lanes <span class="token operat
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/20210618/2021-6-18(2)/">
+                <a href="/20210618/2021-6-18(1)/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="NC92 最长公共子序列 -II">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="NC128 容器盛水问题">
                         
-                        <span class="card-title">NC92 最长公共子序列 -II</span>
+                        <span class="card-title">NC128 容器盛水问题</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -742,31 +697,31 @@ alternate<span class="token punctuation">.</span>lanes <span class="token operat
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/20210616/2021-6-16/">
+                <a href="/20210617/2021-6-17/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Webpack学习笔记(一)">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="【React源码学习】3 从setState分析update流程">
                         
-                        <span class="card-title">Webpack学习笔记(一)</span>
+                        <span class="card-title">【React源码学习】3 从setState分析update流程</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Webpack
+                            React源码阅读
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-16
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-17
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Webpack/" class="post-category">
-                                    Webpack
+                            <a href="/categories/React/" class="post-category">
+                                    React
                                 </a>
                             
                             
@@ -776,12 +731,12 @@ alternate<span class="token punctuation">.</span>lanes <span class="token operat
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Web%E5%89%8D%E7%AB%AF/">
-                        <span class="chip bg-color">Web前端</span>
+                    <a href="/tags/React/">
+                        <span class="chip bg-color">React</span>
                     </a>
                     
-                    <a href="/tags/Webpack/">
-                        <span class="chip bg-color">Webpack</span>
+                    <a href="/tags/Web%E5%89%8D%E7%AB%AF/">
+                        <span class="chip bg-color">Web前端</span>
                     </a>
                     
                 </div>
