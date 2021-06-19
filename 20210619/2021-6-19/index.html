@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="关于Type xxx is not assignable to type IntrinsicAttributes的一种解决方法(无状态组件), Code">
+    <meta name="keywords" content="【React源码学习】4 Diff算法 单节点Diff, Code">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>关于Type xxx is not assignable to type IntrinsicAttributes的一种解决方法(无状态组件) | Code</title>
+    <title>【React源码学习】4 Diff算法 单节点Diff | Code</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -268,12 +268,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">关于Type xxx is not assignable to type IntrinsicAttributes的一种解决方法(无状态组件)</h1>
+                    <h1 class="description center-align post-title">【React源码学习】4 Diff算法 单节点Diff</h1>
                 </div>
             </div>
         </div>
@@ -389,10 +389,6 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/TypeScript/">
-                                <span class="chip bg-color">TypeScript</span>
-                            </a>
-                        
                             <a href="/tags/React/">
                                 <span class="chip bg-color">React</span>
                             </a>
@@ -409,8 +405,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Web/" class="post-category">
-                                Web
+                            <a href="/categories/React/" class="post-category">
+                                React
                             </a>
                         
                     </div>
@@ -422,7 +418,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2020-12-04
+                    2021-06-19
                 </div>
                 
 
@@ -451,21 +447,130 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>组件代码：</p>
-<pre class="line-numbers language-typescript" data-language="typescript"><code class="language-typescript"><span class="token keyword">interface</span> <span class="token class-name">MyProps</span><span class="token punctuation">&#123;</span>
-    uiMode<span class="token operator">:</span><span class="token builtin">boolean</span>
-<span class="token punctuation">&#125;</span>
+                <p>本次实验的demo如下</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">const</span> <span class="token punctuation">[</span>toggle<span class="token punctuation">,</span> setToggle<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token keyword">const</span> ChatCpt <span class="token operator">:</span> React<span class="token punctuation">.</span>FunctionComponent<span class="token operator">&lt;</span>MyProps<span class="token operator">></span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span>props<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">const</span> a <span class="token operator">=</span> <span class="token operator">&lt;</span>div key<span class="token operator">=</span><span class="token string">"a"</span><span class="token operator">></span>a<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> b <span class="token operator">=</span> <span class="token operator">&lt;</span>div key<span class="token operator">=</span><span class="token string">"b"</span><span class="token operator">></span>b<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span><span class="token punctuation">;</span>
 
-    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>props<span class="token punctuation">.</span>uiMode<span class="token punctuation">)</span>
-    
-    <span class="token keyword">return</span><span class="token punctuation">(</span>
-        <span class="token operator">&lt;</span>div id<span class="token operator">=</span><span class="token string">"chatCpt"</span><span class="token operator">></span>
-
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+        <span class="token operator">&lt;</span>div
+            onClick<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+                <span class="token function">setToggle</span><span class="token punctuation">(</span><span class="token operator">!</span>toggle<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span>
+        <span class="token operator">></span>
+            <span class="token punctuation">&#123;</span>toggle <span class="token operator">?</span> a <span class="token operator">:</span> b<span class="token punctuation">&#125;</span>
         <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
-    <span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="performUnitOfWork"><a href="#performUnitOfWork" class="headerlink" title="performUnitOfWork"></a>performUnitOfWork</h2><p>第一次节点切换时先看一下performUnitOfWork</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> current <span class="token operator">=</span> unitOfWork<span class="token punctuation">.</span>alternate<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><strong>current指向的是workInProgress的同层fiber</strong>，react的diff是基于同层fiber的对比</p>
+<p>performUnitOfWork内调用了beginWork，看一下beginWork的参数。</p>
+<p>此时current.pendingProps.children === current.memoizedProps.children</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token punctuation">&#123;</span>
+    $$<span class="token keyword">typeof</span><span class="token operator">:</span> <span class="token function">Symbol</span><span class="token punctuation">(</span>react<span class="token punctuation">.</span>element<span class="token punctuation">)</span>
+    key<span class="token operator">:</span> <span class="token string">"a"</span>
+    props<span class="token operator">:</span> <span class="token punctuation">&#123;</span>children<span class="token operator">:</span> <span class="token string">"a"</span><span class="token punctuation">&#125;</span>
+    ref<span class="token operator">:</span> <span class="token keyword">null</span>
+    type<span class="token operator">:</span> <span class="token string">"div"</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>workInProgress的memoizedProps.children</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token punctuation">&#123;</span>
+    $$<span class="token keyword">typeof</span><span class="token operator">:</span> <span class="token function">Symbol</span><span class="token punctuation">(</span>react<span class="token punctuation">.</span>element<span class="token punctuation">)</span>
+    key<span class="token operator">:</span> <span class="token string">"a"</span>
+    props<span class="token operator">:</span> <span class="token punctuation">&#123;</span>children<span class="token operator">:</span> <span class="token string">"a"</span><span class="token punctuation">&#125;</span>
+    ref<span class="token operator">:</span> <span class="token keyword">null</span>
+    type<span class="token operator">:</span> <span class="token string">"div"</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>而pendingProps.children变成了</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token punctuation">&#123;</span>
+    $$<span class="token keyword">typeof</span><span class="token operator">:</span> <span class="token function">Symbol</span><span class="token punctuation">(</span>react<span class="token punctuation">.</span>element<span class="token punctuation">)</span>
+    key<span class="token operator">:</span> <span class="token string">"b"</span>
+    props<span class="token operator">:</span> <span class="token punctuation">&#123;</span>children<span class="token operator">:</span> <span class="token string">"b"</span><span class="token punctuation">&#125;</span>
+    ref<span class="token operator">:</span> <span class="token keyword">null</span>
+    type<span class="token operator">:</span> <span class="token string">"div"</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>也就是说jsx对象的变化先出现在了workInProgress的pendingProps上，下面对比oldProps和newProps</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> oldProps <span class="token operator">=</span> current<span class="token punctuation">.</span>memoizedProps<span class="token punctuation">;</span>
+<span class="token keyword">var</span> newProps <span class="token operator">=</span> workInProgress<span class="token punctuation">.</span>pendingProps<span class="token punctuation">;</span>
+
+<span class="token keyword">if</span> <span class="token punctuation">(</span>oldProps <span class="token operator">!==</span> newProps<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    didReceiveUpdate <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>    <span class="token comment">//ture</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>根据workInProgress的tag调用updateHostComponent</p>
+<h2 id="updateHostComponent"><a href="#updateHostComponent" class="headerlink" title="updateHostComponent"></a>updateHostComponent</h2><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> nextProps <span class="token operator">=</span> workInProgress<span class="token punctuation">.</span>pendingProps<span class="token punctuation">;</span>
+<span class="token keyword">var</span> prevProps <span class="token operator">=</span> current <span class="token operator">!==</span> <span class="token keyword">null</span> <span class="token operator">?</span> current<span class="token punctuation">.</span>memoizedProps <span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> nextChildren <span class="token operator">=</span> nextProps<span class="token punctuation">.</span>children<span class="token punctuation">;</span>
+
+<span class="token comment">// some code</span>
+
+<span class="token function">reconcileChildren</span><span class="token punctuation">(</span>current<span class="token punctuation">,</span> workInProgress<span class="token punctuation">,</span> nextChildren<span class="token punctuation">,</span> renderLanes<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>updateHostComponet获取pedingProps和memoizedProps然后调用reconcileChildren</p>
+<h2 id="reconcileChildren"><a href="#reconcileChildren" class="headerlink" title="reconcileChildren"></a>reconcileChildren</h2><p>此时收到的三个参数</p>
+<ol>
+<li>current是workInProgress.alternate，详见performUnitOfWork</li>
+<li>workInProgress，当前的核心feiber</li>
+<li>nextChildren是workInProgress的pendingProps，新的jsx体现在该属性上</li>
+</ol>
+<p>reconcileChildren内部调用reconcileChildFibers, 该函数和mountChildFibers都是childReconciler的返回值</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">workInProgress<span class="token punctuation">.</span>child <span class="token operator">=</span> <span class="token function">reconcileChildFibers</span><span class="token punctuation">(</span>workInProgress<span class="token punctuation">,</span> current<span class="token punctuation">.</span>child<span class="token punctuation">,</span> nextChildren<span class="token punctuation">,</span> renderLanes<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="reconcileChildFibers"><a href="#reconcileChildFibers" class="headerlink" title="reconcileChildFibers"></a>reconcileChildFibers</h2><p>前三个参数：</p>
+<ol>
+<li>workInProgress fiber</li>
+<li>workInProgress.alternate.child</li>
+<li>workInProgress.pendingProps.children</li>
+</ol>
+<p>reconcileChildFibers内调用reconcileSingleElement（单节点diff）和placeSingleChild</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">if</span> <span class="token punctuation">(</span>isObject<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">switch</span> <span class="token punctuation">(</span>newChild<span class="token punctuation">.</span>$$<span class="token keyword">typeof</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">case</span> <span class="token constant">REACT_ELEMENT_TYPE</span><span class="token operator">:</span>
+            <span class="token keyword">return</span> <span class="token function">placeSingleChild</span><span class="token punctuation">(</span><span class="token function">reconcileSingleElement</span><span class="token punctuation">(</span>returnFiber<span class="token punctuation">,</span> currentFirstChild<span class="token punctuation">,</span> newChild<span class="token punctuation">,</span> lanes<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">case</span> <span class="token constant">REACT_PORTAL_TYPE</span><span class="token operator">:</span>
+            <span class="token comment">// some code</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="reconcileSingleElement-单节点diff"><a href="#reconcileSingleElement-单节点diff" class="headerlink" title="reconcileSingleElement(单节点diff)"></a>reconcileSingleElement(单节点diff)</h2><p>reconcileSIngleElement根据child != null进入update还是mount, 此时进行update</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">while</span> <span class="token punctuation">(</span>child <span class="token operator">!==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>child<span class="token punctuation">.</span>key <span class="token operator">===</span> key<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">switch</span> <span class="token punctuation">(</span>child<span class="token punctuation">.</span>tag<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token keyword">case</span> Fragment<span class="token operator">:</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token comment">// some code</span>
+        <span class="token punctuation">&#125;</span>
+      <span class="token keyword">case</span> Block<span class="token operator">:</span>
+      <span class="token keyword">default</span><span class="token operator">:</span>
+        <span class="token punctuation">&#123;</span>
+          <span class="token keyword">if</span> <span class="token punctuation">(</span>child<span class="token punctuation">.</span>elementType <span class="token operator">===</span> element<span class="token punctuation">.</span>type <span class="token operator">||</span> <span class="token punctuation">(</span><span class="token function">isCompatibleFamilyForHotReloading</span><span class="token punctuation">(</span>child<span class="token punctuation">,</span> element<span class="token punctuation">)</span> <span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// some code</span>
+  <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">deleteChild</span><span class="token punctuation">(</span>returnFiber<span class="token punctuation">,</span> child<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>child.key === ‘a’ 而 element.key === b,节点无法复用，直接删除,复用的逻辑以后会补充</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token function">deleteChild</span><span class="token punctuation">(</span>returnFiber<span class="token punctuation">,</span> child<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token operator">|</span>
+        <span class="token operator">|</span>
+       \<span class="token operator">|</span><span class="token operator">/</span>
+childToDelete<span class="token punctuation">.</span>flags <span class="token operator">=</span> Deletion<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>先不考虑effect的逻辑，当fiber无法复用时给current.child打上Deletion flag</p>
+<p>由于fiber无法复用，因此创建新的fiber</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> _created4 <span class="token operator">=</span> <span class="token function">createFiberFromElement</span><span class="token punctuation">(</span>element<span class="token punctuation">,</span> returnFiber<span class="token punctuation">.</span>mode<span class="token punctuation">,</span> lanes<span class="token punctuation">)</span><span class="token punctuation">;</span>
+_created4<span class="token punctuation">.</span>ref <span class="token operator">=</span> <span class="token function">coerceRef</span><span class="token punctuation">(</span>returnFiber<span class="token punctuation">,</span> currentFirstChild<span class="token punctuation">,</span> element<span class="token punctuation">)</span><span class="token punctuation">;</span>
+_created4<span class="token punctuation">.</span>return <span class="token operator">=</span> returnFiber<span class="token punctuation">;</span>
+<span class="token keyword">return</span> _created4<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="placeSingleChild"><a href="#placeSingleChild" class="headerlink" title="placeSingleChild"></a>placeSingleChild</h2><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">if</span> <span class="token punctuation">(</span>shouldTrackSideEffects <span class="token operator">&amp;&amp;</span> newFiber<span class="token punctuation">.</span>alternate <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    newFiber<span class="token punctuation">.</span>flags <span class="token operator">=</span> Placement<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>Placement是代表插入的flag，给新的fiber当上Placement</p>
+<p>其实fiber对比值得就是current.child fiber与新的jsx(workInProgress.pendingProps.children)之间的对比，无法复用就给current.child打上Deletion flag，同时根据新的jsx创建新的fiber挂载到workInProgress.child上，同时打上Placement flag。</p>
+<h2 id="summary"><a href="#summary" class="headerlink" title="summary"></a>summary</h2><p>总结一下reconcile相关函数的调用关系</p>
+<p><img src="/images/2021-6-19/singleDiff.png" alt="reconcileRelation"></p>
+<p>single Diff的工作流程</p>
+<p><img src="/images/2021-6-19/singleDissProcess.png" alt="process"></p>
 
                 
             </div>
@@ -492,7 +597,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://maplepudding.github.io/20201204/2020-12-3/">https://maplepudding.github.io/20201204/2020-12-3/</a>
+                    <a href="https://maplepudding.github.io/20210619/2021-6-19/">https://maplepudding.github.io/20210619/2021-6-19/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -529,10 +634,6 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/TypeScript/">
-                                    <span class="chip bg-color">TypeScript</span>
-                                </a>
                             
                                 <a href="/tags/React/">
                                     <span class="chip bg-color">React</span>
@@ -580,29 +681,84 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/20210126/2021-1-26(2)/">
+                <a href="/20210619/2021-6-19/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Leetcode 2. Add Two Numbers">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="【React源码学习】4 Diff算法 单节点Diff">
                         
-                        <span class="card-title">Leetcode 2. Add Two Numbers</span>
+                        <span class="card-title">【React源码学习】4 Diff算法 单节点Diff</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Leetcode
+                            React源码阅读
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-01-26
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-19
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/React/" class="post-category">
+                                    React
+                                </a>
+                            
+                            
                         </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/React/">
+                        <span class="chip bg-color">React</span>
+                    </a>
+                    
+                    <a href="/tags/Web%E5%89%8D%E7%AB%AF/">
+                        <span class="chip bg-color">Web前端</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/20210618/2021-6-18(1)/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="NC128 容器盛水问题">
+                        
+                        <span class="card-title">NC128 容器盛水问题</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            leetcode
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-18
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -624,64 +780,6 @@
                     
                     <a href="/tags/Algorithm/">
                         <span class="chip bg-color">Algorithm</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/20201204/2020-12-3/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="关于Type xxx is not assignable to type IntrinsicAttributes的一种解决方法(无状态组件)">
-                        
-                        <span class="card-title">关于Type xxx is not assignable to type IntrinsicAttributes的一种解决方法(无状态组件)</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            web
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-12-04
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Web/" class="post-category">
-                                    Web
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/TypeScript/">
-                        <span class="chip bg-color">TypeScript</span>
-                    </a>
-                    
-                    <a href="/tags/React/">
-                        <span class="chip bg-color">React</span>
-                    </a>
-                    
-                    <a href="/tags/Web%E5%89%8D%E7%AB%AF/">
-                        <span class="chip bg-color">Web前端</span>
                     </a>
                     
                 </div>

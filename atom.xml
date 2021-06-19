@@ -6,7 +6,7 @@
   <link href="https://maplepudding.github.io/atom.xml" rel="self"/>
   
   <link href="https://maplepudding.github.io/"/>
-  <updated>2021-06-18T12:38:22.157Z</updated>
+  <updated>2021-06-19T06:00:58.234Z</updated>
   <id>https://maplepudding.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【React源码学习】4 Diff算法 单节点Diff</title>
+    <link href="https://maplepudding.github.io/20210619/2021-6-19/"/>
+    <id>https://maplepudding.github.io/20210619/2021-6-19/</id>
+    <published>2021-06-19T13:24:00.000Z</published>
+    <updated>2021-06-19T06:00:58.234Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;本次实验的demo如下&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-javascript&quot; data-language=&quot;javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    <category term="React" scheme="https://maplepudding.github.io/categories/React/"/>
+    
+    
+    <category term="React" scheme="https://maplepudding.github.io/tags/React/"/>
+    
+    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>NC128 容器盛水问题</title>
@@ -542,34 +570,6 @@
     <category term="Leetcode" scheme="https://maplepudding.github.io/tags/Leetcode/"/>
     
     <category term="Algorithm" scheme="https://maplepudding.github.io/tags/Algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>关于Type xxx is not assignable to type IntrinsicAttributes的一种解决方法(无状态组件)</title>
-    <link href="https://maplepudding.github.io/20201204/2020-12-3/"/>
-    <id>https://maplepudding.github.io/20201204/2020-12-3/</id>
-    <published>2020-12-04T08:39:00.000Z</published>
-    <updated>2021-01-26T03:49:21.493Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;组件代码：&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-typescript&quot; data-language=&quot;typescript&quot;&gt;&lt;code class=&quot;language-typescript&quot;&gt;&lt;span class=&quot;token</summary>
-        
-      
-    
-    
-    
-    <category term="Web" scheme="https://maplepudding.github.io/categories/Web/"/>
-    
-    
-    <category term="TypeScript" scheme="https://maplepudding.github.io/tags/TypeScript/"/>
-    
-    <category term="React" scheme="https://maplepudding.github.io/tags/React/"/>
     
   </entry>
   
