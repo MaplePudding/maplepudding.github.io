@@ -6,7 +6,7 @@
   <link href="https://maplepudding.github.io/atom.xml" rel="self"/>
   
   <link href="https://maplepudding.github.io/"/>
-  <updated>2021-06-22T12:08:04.872Z</updated>
+  <updated>2021-06-23T08:44:52.186Z</updated>
   <id>https://maplepudding.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Webpack学习笔记(二) 配置一个React开发环境</title>
+    <link href="https://maplepudding.github.io/20210623/2021-6-23/"/>
+    <id>https://maplepudding.github.io/20210623/2021-6-23/</id>
+    <published>2021-06-23T13:24:00.000Z</published>
+    <updated>2021-06-23T08:44:52.186Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;这篇blog将基于webpack实现一个最最最基本的react开发环境&lt;br&gt;ps: 我觉得过度依赖开发工具不是好的习惯，因此希望了解一下相关配置&lt;/p&gt;
+&lt;p&gt;首先初始化一个node环境&lt;/p&gt;
+&lt;pre class=&quot;line-numbers</summary>
+        
+      
+    
+    
+    
+    <category term="Webpack" scheme="https://maplepudding.github.io/categories/Webpack/"/>
+    
+    
+    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="Webpack" scheme="https://maplepudding.github.io/tags/Webpack/"/>
+    
+  </entry>
   
   <entry>
     <title>【React源码学习】4 Diff算法 多节点Diff</title>
@@ -543,33 +572,6 @@
     <category term="笔试" scheme="https://maplepudding.github.io/tags/%E7%AC%94%E8%AF%95/"/>
     
     <category term="JavaScript" scheme="https://maplepudding.github.io/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>关于a标签各个伪类之间的权重关系整理（link visited hover active）</title>
-    <link href="https://maplepudding.github.io/20210416/2021-4-16/"/>
-    <id>https://maplepudding.github.io/20210416/2021-4-16/</id>
-    <published>2021-04-16T05:24:00.000Z</published>
-    <updated>2021-06-19T06:42:57.273Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;测试代码&quot;&gt;&lt;a href=&quot;#测试代码&quot; class=&quot;headerlink&quot; title=&quot;测试代码&quot;&gt;&lt;/a&gt;测试代码&lt;/h2&gt;&lt;pre class=&quot;line-numbers language-html&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Web前端" scheme="https://maplepudding.github.io/categories/Web%E5%89%8D%E7%AB%AF/"/>
-    
-    
-    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="CSS" scheme="https://maplepudding.github.io/tags/CSS/"/>
     
   </entry>
   
