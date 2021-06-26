@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Webpack学习笔记(二) 配置一个React开发环境, Code">
+    <meta name="keywords" content="【React源码学习】5 EffectList的构建过程, Code">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Webpack学习笔记(二) 配置一个React开发环境 | Code</title>
+    <title>【React源码学习】5 EffectList的构建过程 | Code</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -268,12 +268,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Webpack学习笔记(二) 配置一个React开发环境</h1>
+                    <h1 class="description center-align post-title">【React源码学习】5 EffectList的构建过程</h1>
                 </div>
             </div>
         </div>
@@ -389,12 +389,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Web%E5%89%8D%E7%AB%AF/">
-                                <span class="chip bg-color">Web前端</span>
+                            <a href="/tags/React/">
+                                <span class="chip bg-color">React</span>
                             </a>
                         
-                            <a href="/tags/Webpack/">
-                                <span class="chip bg-color">Webpack</span>
+                            <a href="/tags/Web%E5%89%8D%E7%AB%AF/">
+                                <span class="chip bg-color">Web前端</span>
                             </a>
                         
                     </div>
@@ -405,8 +405,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Webpack/" class="post-category">
-                                Webpack
+                            <a href="/categories/React/" class="post-category">
+                                React
                             </a>
                         
                     </div>
@@ -418,14 +418,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-06-23
+                    2021-06-26
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2021-06-23
+                    2021-06-26
                 </div>
                 
 
@@ -447,115 +447,67 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>这篇blog将基于webpack实现一个最最最基本的react开发环境<br>ps: 我觉得过度依赖开发工具不是好的习惯，因此希望了解一下相关配置</p>
-<p>首先初始化一个node环境</p>
-<pre class="line-numbers language-none"><code class="language-none">npm init<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <p>demo</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">const</span> <span class="token punctuation">[</span>toggle<span class="token punctuation">,</span> setToggle<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> a <span class="token operator">=</span> <span class="token operator">&lt;</span>div key<span class="token operator">=</span><span class="token string">"a"</span><span class="token operator">></span>a<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> b <span class="token operator">=</span> <span class="token operator">&lt;</span>div key<span class="token operator">=</span><span class="token string">"b"</span><span class="token operator">></span>b<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span><span class="token punctuation">;</span>
 
-<p>然后初始化相关文件夹，文件结构看起来应该是这样</p>
-<pre class="line-numbers language-none"><code class="language-none">Project
-    |-- webpack.config.js
-    |-- package.json
-    |-- babel.config.json
-    |-- src
-        |--index.js
-        |--index.html
-        |--index.css
-        |--App.js<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>下面打开webpack.config.js, 开始写配置文件</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span>
-<span class="token keyword">const</span> htmlWebpackPluugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'html-webpack-plugin'</span><span class="token punctuation">)</span>
-<span class="token keyword">const</span> miniCssExtractPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'mini-css-extract-plugin'</span><span class="token punctuation">)</span>
-
-
-module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
-    entry<span class="token operator">:</span> <span class="token string">'./src/index.js'</span><span class="token punctuation">,</span>
-    output<span class="token operator">:</span><span class="token punctuation">&#123;</span>
-        path<span class="token operator">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'dist/'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-        filename<span class="token operator">:</span> <span class="token string">'dist.js'</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-    module<span class="token operator">:</span><span class="token punctuation">&#123;</span>
-        rules<span class="token operator">:</span><span class="token punctuation">[</span>
-            <span class="token punctuation">&#123;</span>
-                test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.(js|jsx)</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
-                exclude<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">(node_modules)</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
-                use<span class="token operator">:</span><span class="token punctuation">[</span>
-                    <span class="token string">'babel-loader'</span>
-                <span class="token punctuation">]</span>
-            <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-            <span class="token punctuation">&#123;</span>
-                test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.css</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
-                use<span class="token operator">:</span><span class="token punctuation">[</span>
-                    miniCssExtractPlugin<span class="token punctuation">.</span>loader<span class="token punctuation">,</span>
-                    <span class="token string">'css-loader'</span>
-                <span class="token punctuation">]</span>
-            <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">]</span>
-    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-    plugins<span class="token operator">:</span><span class="token punctuation">[</span>
-        <span class="token keyword">new</span> <span class="token class-name">htmlWebpackPluugin</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
-            template<span class="token operator">:</span> <span class="token string">'./src/index.html'</span>
-        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
-        <span class="token keyword">new</span> <span class="token class-name">miniCssExtractPlugin</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token punctuation">]</span><span class="token punctuation">,</span>
-    mode<span class="token operator">:</span> <span class="token string">'development'</span><span class="token punctuation">,</span>
-    devServer<span class="token operator">:</span><span class="token punctuation">&#123;</span>
-        contentBase<span class="token operator">:</span> <span class="token string">'./dist'</span><span class="token punctuation">,</span>
-        port<span class="token operator">:</span> <span class="token number">3000</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>只有最简单的配置，需要file-loader可以自行添加</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token punctuation">&#123;</span>
-    test<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.(js|jsx)</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
-    exclude<span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">(node_modules)</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
-    use<span class="token operator">:</span><span class="token punctuation">[</span>
-        <span class="token string">'babel-loader'</span>
-    <span class="token punctuation">]</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>使用babel-loader引导babel将jsx转化为js</p>
-<p>看一下babel的配置</p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
-    <span class="token property">"presets"</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token string">"@babel/env"</span><span class="token punctuation">,</span> <span class="token string">"@babel/preset-react"</span><span class="token punctuation">]</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>@babel/env包含babel的基础配置，@babel/preset-react将react（jsx）编译成js</p>
-<p>然后添加相关的依赖</p>
-<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token property">"devDependencies"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-    <span class="token property">"@babel/core"</span><span class="token operator">:</span> <span class="token string">"^7.14.6"</span><span class="token punctuation">,</span>
-    <span class="token property">"@babel/preset-env"</span><span class="token operator">:</span> <span class="token string">"^7.14.7"</span><span class="token punctuation">,</span>
-    <span class="token property">"@babel/preset-react"</span><span class="token operator">:</span> <span class="token string">"^7.14.5"</span><span class="token punctuation">,</span>
-    <span class="token property">"babel-loader"</span><span class="token operator">:</span> <span class="token string">"^8.2.2"</span><span class="token punctuation">,</span>
-    <span class="token property">"css-loader"</span><span class="token operator">:</span> <span class="token string">"^5.2.6"</span><span class="token punctuation">,</span>
-    <span class="token property">"html-webpack-plugin"</span><span class="token operator">:</span> <span class="token string">"^5.3.2"</span><span class="token punctuation">,</span>
-    <span class="token property">"mini-css-extract-plugin"</span><span class="token operator">:</span> <span class="token string">"^1.6.0"</span><span class="token punctuation">,</span>
-    <span class="token property">"style-loader"</span><span class="token operator">:</span> <span class="token string">"^2.0.0"</span><span class="token punctuation">,</span>
-    <span class="token property">"webpack-dev-server"</span><span class="token operator">:</span> <span class="token string">"^3.11.2"</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-<span class="token property">"dependencies"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
-    <span class="token property">"react"</span><span class="token operator">:</span> <span class="token string">"^17.0.2"</span><span class="token punctuation">,</span>
-    <span class="token property">"react-dom"</span><span class="token operator">:</span> <span class="token string">"^17.0.2"</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>无脑npm install即可</p>
-<p>使用最简单的React代码测试一下</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">//App.js</span>
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">return</span> <span class="token punctuation">(</span>
-        <span class="token operator">&lt;</span>div<span class="token operator">></span>
-            Hello World
+        <span class="token operator">&lt;</span>div
+            onClick<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+                <span class="token function">setToggle</span><span class="token punctuation">(</span><span class="token operator">!</span>toggle<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span>
+        <span class="token operator">></span>
+            <span class="token punctuation">&#123;</span>toggle <span class="token operator">?</span> a <span class="token operator">:</span> b<span class="token punctuation">&#125;</span>
         <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
     <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="efectList的构建"><a href="#efectList的构建" class="headerlink" title="efectList的构建"></a>efectList的构建</h2><p>触发更新后直接看<div key="a">a</div>的diff过程</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">deleteChild</span><span class="token punctuation">(</span><span class="token parameter">returnFiber<span class="token punctuation">,</span> childToDelete</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>shouldTrackSideEffects<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span> 
+  <span class="token keyword">var</span> last <span class="token operator">=</span> returnFiber<span class="token punctuation">.</span>lastEffect<span class="token punctuation">;</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>last <span class="token operator">!==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      last<span class="token punctuation">.</span>nextEffect <span class="token operator">=</span> childToDelete<span class="token punctuation">;</span>
+      returnFiber<span class="token punctuation">.</span>lastEffect <span class="token operator">=</span> childToDelete<span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+      returnFiber<span class="token punctuation">.</span>firstEffect <span class="token operator">=</span> returnFiber<span class="token punctuation">.</span>lastEffect <span class="token operator">=</span> childToDelete<span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+
+  childToDelete<span class="token punctuation">.</span>nextEffect <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+  childToDelete<span class="token punctuation">.</span>flags <span class="token operator">=</span> Deletion<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>returnFiber时workInProgress的父fiber，childToDelete是正在diff的current fiber，由于key不相同，打上Deletion的同时设置了effect list</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">if</span> <span class="token punctuation">(</span>last <span class="token operator">!==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    last<span class="token punctuation">.</span>nextEffect <span class="token operator">=</span> childToDelete<span class="token punctuation">;</span>
+    returnFiber<span class="token punctuation">.</span>lastEffect <span class="token operator">=</span> childToDelete<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+    returnFiber<span class="token punctuation">.</span>firstEffect <span class="token operator">=</span> returnFiber<span class="token punctuation">.</span>lastEffect <span class="token operator">=</span> childToDelete<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>子节点要发生变化（Deletion）时，将子fiber添加到父fiber的effect list上，可以说effect list保存的是将要改变的子fiber</p>
+<h2 id="effectList的连接"><a href="#effectList的连接" class="headerlink" title="effectList的连接"></a>effectList的连接</h2><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">if</span> <span class="token punctuation">(</span>completedWork<span class="token punctuation">.</span>lastEffect <span class="token operator">!==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>returnFiber<span class="token punctuation">.</span>lastEffect <span class="token operator">!==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        returnFiber<span class="token punctuation">.</span>lastEffect<span class="token punctuation">.</span>nextEffect <span class="token operator">=</span> completedWork<span class="token punctuation">.</span>firstEffect<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    returnFiber<span class="token punctuation">.</span>lastEffect <span class="token operator">=</span> completedWork<span class="token punctuation">.</span>lastEffect<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span>
 
-<span class="token comment">//index.js</span>
-<span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">'react'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> ReactDOM <span class="token keyword">from</span> <span class="token string">'react-dom'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> App <span class="token keyword">from</span> <span class="token string">'./App'</span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token string">'./index.css'</span>
-ReactDOM<span class="token punctuation">.</span><span class="token function">render</span><span class="token punctuation">(</span>
-	<span class="token operator">&lt;</span>App <span class="token operator">/</span><span class="token operator">></span><span class="token punctuation">,</span>
-	document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'root'</span><span class="token punctuation">)</span>
-<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">if</span> <span class="token punctuation">(</span>flags <span class="token operator">></span> PerformedWork<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>returnFiber<span class="token punctuation">.</span>lastEffect <span class="token operator">!==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        returnFiber<span class="token punctuation">.</span>lastEffect<span class="token punctuation">.</span>nextEffect <span class="token operator">=</span> completedWork<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+        returnFiber<span class="token punctuation">.</span>firstEffect <span class="token operator">=</span> completedWork<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    returnFiber<span class="token punctuation">.</span>lastEffect <span class="token operator">=</span> completedWork<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>运行</p>
-<pre class="line-numbers language-none"><code class="language-none">webpack server &#x2F;&#x2F;webpack 也可<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>在向上调用completeWork时，会将beginWork中构建的effectList传递给父fiber的lastEffect（returnFiber.lastEffect.nextEffect = completeWork.lastEffect），这样就完成了链表的连接。在root上可以拿到完整的effectList</p>
+<h2 id="summary"><a href="#summary" class="headerlink" title="summary"></a>summary</h2><p><img src="/images/2021-6-26/effect.png" alt="demo完整的effectList"></p>
 
                 
             </div>
@@ -582,7 +534,7 @@ ReactDOM<span class="token punctuation">.</span><span class="token function">ren
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://maplepudding.github.io/20210623/2021-6-23/">https://maplepudding.github.io/20210623/2021-6-23/</a>
+                    <a href="https://maplepudding.github.io/20210626/2021-6-26/">https://maplepudding.github.io/20210626/2021-6-26/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -620,12 +572,12 @@ ReactDOM<span class="token punctuation">.</span><span class="token function">ren
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Web%E5%89%8D%E7%AB%AF/">
-                                    <span class="chip bg-color">Web前端</span>
+                                <a href="/tags/React/">
+                                    <span class="chip bg-color">React</span>
                                 </a>
                             
-                                <a href="/tags/Webpack/">
-                                    <span class="chip bg-color">Webpack</span>
+                                <a href="/tags/Web%E5%89%8D%E7%AB%AF/">
+                                    <span class="chip bg-color">Web前端</span>
                                 </a>
                             
                         </div>
@@ -666,9 +618,10 @@ ReactDOM<span class="token punctuation">.</span><span class="token function">ren
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/20210626/2021-6-26/">
                     <div class="card-image">
@@ -686,9 +639,9 @@ ReactDOM<span class="token punctuation">.</span><span class="token function">ren
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-26
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-26
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -701,6 +654,7 @@ ReactDOM<span class="token punctuation">.</span><span class="token function">ren
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -723,31 +677,31 @@ ReactDOM<span class="token punctuation">.</span><span class="token function">ren
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/20210622/2021-6-22(2)/">
+                <a href="/20210623/2021-6-23/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="【React源码学习】4 Diff算法 多节点Diff">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Webpack学习笔记(二) 配置一个React开发环境">
                         
-                        <span class="card-title">【React源码学习】4 Diff算法 多节点Diff</span>
+                        <span class="card-title">Webpack学习笔记(二) 配置一个React开发环境</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            React源码阅读
+                            Webpack
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-22
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-23
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/React/" class="post-category">
-                                    React
+                            <a href="/categories/Webpack/" class="post-category">
+                                    Webpack
                                 </a>
                             
                             
@@ -757,12 +711,12 @@ ReactDOM<span class="token punctuation">.</span><span class="token function">ren
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/React/">
-                        <span class="chip bg-color">React</span>
-                    </a>
-                    
                     <a href="/tags/Web%E5%89%8D%E7%AB%AF/">
                         <span class="chip bg-color">Web前端</span>
+                    </a>
+                    
+                    <a href="/tags/Webpack/">
+                        <span class="chip bg-color">Webpack</span>
                     </a>
                     
                 </div>

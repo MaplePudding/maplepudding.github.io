@@ -6,7 +6,7 @@
   <link href="https://maplepudding.github.io/atom.xml" rel="self"/>
   
   <link href="https://maplepudding.github.io/"/>
-  <updated>2021-06-23T08:44:52.186Z</updated>
+  <updated>2021-06-26T15:07:27.597Z</updated>
   <id>https://maplepudding.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【React源码学习】5 EffectList的构建过程</title>
+    <link href="https://maplepudding.github.io/20210626/2021-6-26/"/>
+    <id>https://maplepudding.github.io/20210626/2021-6-26/</id>
+    <published>2021-06-26T13:24:00.000Z</published>
+    <updated>2021-06-26T15:07:27.597Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;demo&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-javascript&quot; data-language=&quot;javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token</summary>
+        
+      
+    
+    
+    
+    <category term="React" scheme="https://maplepudding.github.io/categories/React/"/>
+    
+    
+    <category term="React" scheme="https://maplepudding.github.io/tags/React/"/>
+    
+    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>Webpack学习笔记(二) 配置一个React开发环境</title>
@@ -542,36 +570,6 @@
     <category term="CSS" scheme="https://maplepudding.github.io/tags/CSS/"/>
     
     <category term="笔试" scheme="https://maplepudding.github.io/tags/%E7%AC%94%E8%AF%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>牛客JS前端笔试题目知识点整理（长期更新）</title>
-    <link href="https://maplepudding.github.io/20210422/2021-4-22/"/>
-    <id>https://maplepudding.github.io/20210422/2021-4-22/</id>
-    <published>2021-04-22T01:19:15.677Z</published>
-    <updated>2021-06-19T06:43:11.285Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;关于js函数的声明方式&quot;&gt;&lt;a href=&quot;#关于js函数的声明方式&quot; class=&quot;headerlink&quot; title=&quot;关于js函数的声明方式&quot;&gt;&lt;/a&gt;关于js函数的声明方式&lt;/h2&gt;&lt;p&gt;js常用定义函数的方式有两种&lt;/p&gt;
-&lt;p&gt;1</summary>
-        
-      
-    
-    
-    
-    <category term="Web笔试" scheme="https://maplepudding.github.io/categories/Web%E7%AC%94%E8%AF%95/"/>
-    
-    
-    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="笔试" scheme="https://maplepudding.github.io/tags/%E7%AC%94%E8%AF%95/"/>
-    
-    <category term="JavaScript" scheme="https://maplepudding.github.io/tags/JavaScript/"/>
     
   </entry>
   
