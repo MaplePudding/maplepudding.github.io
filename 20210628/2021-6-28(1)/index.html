@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="【React源码学习】5 EffectList的构建过程, Code">
+    <meta name="keywords" content="Node.js学习笔记(一) Buffer的简单使用, Code">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>【React源码学习】5 EffectList的构建过程 | Code</title>
+    <title>Node.js学习笔记(一) Buffer的简单使用 | Code</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -268,12 +268,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【React源码学习】5 EffectList的构建过程</h1>
+                    <h1 class="description center-align post-title">Node.js学习笔记(一) Buffer的简单使用</h1>
                 </div>
             </div>
         </div>
@@ -389,12 +389,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/React/">
-                                <span class="chip bg-color">React</span>
-                            </a>
-                        
                             <a href="/tags/Web%E5%89%8D%E7%AB%AF/">
                                 <span class="chip bg-color">Web前端</span>
+                            </a>
+                        
+                            <a href="/tags/Node/">
+                                <span class="chip bg-color">Node</span>
                             </a>
                         
                     </div>
@@ -405,8 +405,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/React/" class="post-category">
-                                React
+                            <a href="/categories/Node/" class="post-category">
+                                Node
                             </a>
                         
                     </div>
@@ -418,14 +418,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-06-26
+                    2021-06-28
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2021-06-26
+                    2021-06-28
                 </div>
                 
 
@@ -447,67 +447,35 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>demo</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">const</span> <span class="token punctuation">[</span>toggle<span class="token punctuation">,</span> setToggle<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">const</span> a <span class="token operator">=</span> <span class="token operator">&lt;</span>div key<span class="token operator">=</span><span class="token string">"a"</span><span class="token operator">></span>a<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span><span class="token punctuation">;</span>
-    <span class="token keyword">const</span> b <span class="token operator">=</span> <span class="token operator">&lt;</span>div key<span class="token operator">=</span><span class="token string">"b"</span><span class="token operator">></span>b<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span><span class="token punctuation">;</span>
+                <p>一直没有系统学习过Node.js, 今天开个坑，整理一下Node相关的内容</p>
+<p>Node引入Buffer就是为了更方便处理二进制数据，下面整理一下Buffer常用api的作用</p>
+<h2 id="Buffer-from"><a href="#Buffer-from" class="headerlink" title="Buffer.from"></a>Buffer.from</h2><p>通过传入的对象创建一个Buffer</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">Buffer<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span> <span class="token comment">//&lt;Buffer 61>  返回字符a的二进制码的十进制形式</span>
 
-    <span class="token keyword">return</span> <span class="token punctuation">(</span>
-        <span class="token operator">&lt;</span>div
-            onClick<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
-                <span class="token function">setToggle</span><span class="token punctuation">(</span><span class="token operator">!</span>toggle<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span>
-        <span class="token operator">></span>
-            <span class="token punctuation">&#123;</span>toggle <span class="token operator">?</span> a <span class="token operator">:</span> b<span class="token punctuation">&#125;</span>
-        <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
-    <span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+Buffer<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment">// &lt;Buffer 01 02 03> 传入一个数组，数组每一项用来设置Buffer的值</span>
 
-<h2 id="efectList的构建"><a href="#efectList的构建" class="headerlink" title="efectList的构建"></a>efectList的构建</h2><p>触发更新后直接看key=a的处理过程</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">deleteChild</span><span class="token punctuation">(</span><span class="token parameter">returnFiber<span class="token punctuation">,</span> childToDelete</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>shouldTrackSideEffects<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span> 
-  <span class="token keyword">var</span> last <span class="token operator">=</span> returnFiber<span class="token punctuation">.</span>lastEffect<span class="token punctuation">;</span>
+Buffer<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span>Buffer<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">//&lt;Buffer 01 02 03> 获取一个Buffer的拷贝</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>last <span class="token operator">!==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      last<span class="token punctuation">.</span>nextEffect <span class="token operator">=</span> childToDelete<span class="token punctuation">;</span>
-      returnFiber<span class="token punctuation">.</span>lastEffect <span class="token operator">=</span> childToDelete<span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-      returnFiber<span class="token punctuation">.</span>firstEffect <span class="token operator">=</span> returnFiber<span class="token punctuation">.</span>lastEffect <span class="token operator">=</span> childToDelete<span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
+<h2 id="Buffer-alloc"><a href="#Buffer-alloc" class="headerlink" title="Buffer.alloc"></a>Buffer.alloc</h2><p>就像malloc一样，分配一块n字节的空间</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">Buffer<span class="token punctuation">.</span><span class="token function">alloc</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span> <span class="token comment">//&lt;Buffer 00 00 00 00 00> 申请一块五字节的空间，每一份都用0填充</span>
 
-  childToDelete<span class="token punctuation">.</span>nextEffect <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
-  childToDelete<span class="token punctuation">.</span>flags <span class="token operator">=</span> Deletion<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+Buffer<span class="token punctuation">.</span><span class="token function">alloc</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>  <span class="token comment">//&lt;Buffer 01 01 01 01 01> alloc还支持第二个参数，用于指定初始值</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
-<p>returnFiber时workInProgress的父fiber，childToDelete是正在diff的current fiber，由于key不相同，打上Deletion的同时设置了effect list</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">if</span> <span class="token punctuation">(</span>last <span class="token operator">!==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    last<span class="token punctuation">.</span>nextEffect <span class="token operator">=</span> childToDelete<span class="token punctuation">;</span>
-    returnFiber<span class="token punctuation">.</span>lastEffect <span class="token operator">=</span> childToDelete<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-    returnFiber<span class="token punctuation">.</span>firstEffect <span class="token operator">=</span> returnFiber<span class="token punctuation">.</span>lastEffect <span class="token operator">=</span> childToDelete<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>子节点要发生变化（Deletion）时，将子fiber添加到父fiber的effect list上，可以说effect list保存的是将要改变的子fiber</p>
-<h2 id="effectList的连接"><a href="#effectList的连接" class="headerlink" title="effectList的连接"></a>effectList的连接</h2><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">if</span> <span class="token punctuation">(</span>completedWork<span class="token punctuation">.</span>lastEffect <span class="token operator">!==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>returnFiber<span class="token punctuation">.</span>lastEffect <span class="token operator">!==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        returnFiber<span class="token punctuation">.</span>lastEffect<span class="token punctuation">.</span>nextEffect <span class="token operator">=</span> completedWork<span class="token punctuation">.</span>firstEffect<span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-    returnFiber<span class="token punctuation">.</span>lastEffect <span class="token operator">=</span> completedWork<span class="token punctuation">.</span>lastEffect<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
+<h2 id="Buffer与字符串的转换"><a href="#Buffer与字符串的转换" class="headerlink" title="Buffer与字符串的转换"></a>Buffer与字符串的转换</h2><p>（Buffer和字符串的关系真的很密切）</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">Buffer<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">'Hello'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">//Hello from 和 toString可以实现Buffer与String的转换</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<span class="token keyword">if</span> <span class="token punctuation">(</span>flags <span class="token operator">></span> PerformedWork<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>returnFiber<span class="token punctuation">.</span>lastEffect <span class="token operator">!==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        returnFiber<span class="token punctuation">.</span>lastEffect<span class="token punctuation">.</span>nextEffect <span class="token operator">=</span> completedWork<span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-        returnFiber<span class="token punctuation">.</span>firstEffect <span class="token operator">=</span> completedWork<span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-    returnFiber<span class="token punctuation">.</span>lastEffect <span class="token operator">=</span> completedWork<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="拼接Buffer"><a href="#拼接Buffer" class="headerlink" title="拼接Buffer"></a>拼接Buffer</h2><p>就像拼接数组一样，使用concat</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">Buffer<span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span><span class="token punctuation">[</span>Buffer<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">,</span> Buffer<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">'b'</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">//&lt;Buffer 61 62> 传入一个包含Buffer的数组</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>在向上调用completeWork时，会将beginWork中构建的effectList传递给父fiber的lastEffect（returnFiber.lastEffect.nextEffect = completeWork.lastEffect），这样就完成了链表的连接。在root上可以拿到完整的effectList</p>
-<h2 id="summary"><a href="#summary" class="headerlink" title="summary"></a>summary</h2><p><img src="/images/2021-6-26/effect.png" alt="demo完整的effectList"></p>
+<h2 id="isBuffer"><a href="#isBuffer" class="headerlink" title="isBuffer"></a>isBuffer</h2><p>就像isArray一样,判断一个对象是不是Buffer</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">Buffer<span class="token punctuation">.</span><span class="token function">isBuffer</span><span class="token punctuation">(</span><span class="token punctuation">(</span>Buffer<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">//true</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="indexOf"><a href="#indexOf" class="headerlink" title="indexOf"></a>indexOf</h2><p>和数组一样的方法</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token punctuation">(</span>Buffer<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span> <span class="token comment">//0 内部应该是某种类型转换</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="length"><a href="#length" class="headerlink" title="length"></a>length</h2><p>同样Buffer也有length属性（甚至也可以下标访问）</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token punctuation">(</span>Buffer<span class="token punctuation">.</span><span class="token function">from</span><span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>length   <span class="token comment">// 1</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 
                 
             </div>
@@ -534,7 +502,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://maplepudding.github.io/20210626/2021-6-26/">https://maplepudding.github.io/20210626/2021-6-26/</a>
+                    <a href="https://maplepudding.github.io/20210628/2021-6-28(1)/">https://maplepudding.github.io/20210628/2021-6-28(1)/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -572,12 +540,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/React/">
-                                    <span class="chip bg-color">React</span>
-                                </a>
-                            
                                 <a href="/tags/Web%E5%89%8D%E7%AB%AF/">
                                     <span class="chip bg-color">Web前端</span>
+                                </a>
+                            
+                                <a href="/tags/Node/">
+                                    <span class="chip bg-color">Node</span>
                                 </a>
                             
                         </div>
@@ -618,17 +586,72 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/20210628/2021-6-28(2)/">
+                <a href="/20210628/2021-6-28(1)/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="NC49 最长的括号子串">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Node.js学习笔记(一) Buffer的简单使用">
                         
-                        <span class="card-title">NC49 最长的括号子串</span>
+                        <span class="card-title">Node.js学习笔记(一) Buffer的简单使用</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            Node
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-28
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Node/" class="post-category">
+                                    Node
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Web%E5%89%8D%E7%AB%AF/">
+                        <span class="chip bg-color">Web前端</span>
+                    </a>
+                    
+                    <a href="/tags/Node/">
+                        <span class="chip bg-color">Node</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/20210628/2021-6-28(3)/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="NC126 换钱的最少货币数">
+                        
+                        <span class="card-title">NC126 换钱的最少货币数</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -638,9 +661,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-28
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-28
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -662,59 +685,6 @@
                     
                     <a href="/tags/Algorithm/">
                         <span class="chip bg-color">Algorithm</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/20210623/2021-6-23/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Webpack学习笔记(二) 配置一个React开发环境">
-                        
-                        <span class="card-title">Webpack学习笔记(二) 配置一个React开发环境</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            Webpack
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-23
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Webpack/" class="post-category">
-                                    Webpack
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Web%E5%89%8D%E7%AB%AF/">
-                        <span class="chip bg-color">Web前端</span>
-                    </a>
-                    
-                    <a href="/tags/Webpack/">
-                        <span class="chip bg-color">Webpack</span>
                     </a>
                     
                 </div>

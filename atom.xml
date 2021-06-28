@@ -6,7 +6,7 @@
   <link href="https://maplepudding.github.io/atom.xml" rel="self"/>
   
   <link href="https://maplepudding.github.io/"/>
-  <updated>2021-06-26T15:07:27.597Z</updated>
+  <updated>2021-06-28T14:40:19.065Z</updated>
   <id>https://maplepudding.github.io/</id>
   
   <author>
@@ -17,11 +17,94 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Node.js学习笔记(一) Buffer的简单使用</title>
+    <link href="https://maplepudding.github.io/20210628/2021-6-28(1)/"/>
+    <id>https://maplepudding.github.io/20210628/2021-6-28(1)/</id>
+    <published>2021-06-28T13:24:00.000Z</published>
+    <updated>2021-06-28T14:40:19.065Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;一直没有系统学习过Node.js, 今天开个坑，整理一下Node相关的内容&lt;/p&gt;
+&lt;p&gt;Node引入Buffer就是为了更方便处理二进制数据，下面整理一下Buffer常用api的作用&lt;/p&gt;
+&lt;h2 id=&quot;Buffer-from&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="Node" scheme="https://maplepudding.github.io/categories/Node/"/>
+    
+    
+    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="Node" scheme="https://maplepudding.github.io/tags/Node/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>NC126 换钱的最少货币数</title>
+    <link href="https://maplepudding.github.io/20210628/2021-6-28(3)/"/>
+    <id>https://maplepudding.github.io/20210628/2021-6-28(3)/</id>
+    <published>2021-06-28T13:24:00.000Z</published>
+    <updated>2021-06-28T14:41:46.298Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;解法&quot;&gt;&lt;a href=&quot;#解法&quot; class=&quot;headerlink&quot; title=&quot;解法&quot;&gt;&lt;/a&gt;解法&lt;/h2&gt;&lt;pre class=&quot;line-numbers language-javascript&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="https://maplepudding.github.io/categories/Leetcode/"/>
+    
+    
+    <category term="Leetcode" scheme="https://maplepudding.github.io/tags/Leetcode/"/>
+    
+    <category term="Algorithm" scheme="https://maplepudding.github.io/tags/Algorithm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>NC49 最长的括号子串</title>
+    <link href="https://maplepudding.github.io/20210628/2021-6-28(2)/"/>
+    <id>https://maplepudding.github.io/20210628/2021-6-28(2)/</id>
+    <published>2021-06-28T13:24:00.000Z</published>
+    <updated>2021-06-28T14:41:07.768Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;解法&quot;&gt;&lt;a href=&quot;#解法&quot; class=&quot;headerlink&quot; title=&quot;解法&quot;&gt;&lt;/a&gt;解法&lt;/h2&gt;&lt;pre class=&quot;line-numbers language-javascript&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Leetcode" scheme="https://maplepudding.github.io/categories/Leetcode/"/>
+    
+    
+    <category term="Leetcode" scheme="https://maplepudding.github.io/tags/Leetcode/"/>
+    
+    <category term="Algorithm" scheme="https://maplepudding.github.io/tags/Algorithm/"/>
+    
+  </entry>
+  
+  <entry>
     <title>【React源码学习】5 EffectList的构建过程</title>
     <link href="https://maplepudding.github.io/20210626/2021-6-26/"/>
     <id>https://maplepudding.github.io/20210626/2021-6-26/</id>
     <published>2021-06-26T13:24:00.000Z</published>
-    <updated>2021-06-26T15:07:27.597Z</updated>
+    <updated>2021-06-26T15:11:15.746Z</updated>
     
     
       
@@ -484,92 +567,6 @@
     <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
     
     <category term="JavaScript" scheme="https://maplepudding.github.io/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JavaScript导出变量方式整理</title>
-    <link href="https://maplepudding.github.io/20210517/2021-5-17/"/>
-    <id>https://maplepudding.github.io/20210517/2021-5-17/</id>
-    <published>2021-05-17T15:11:09.915Z</published>
-    <updated>2021-06-19T06:43:32.142Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;CommonJs-AMD导出&quot;&gt;&lt;a href=&quot;#CommonJs-AMD导出&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="JavaScript" scheme="https://maplepudding.github.io/categories/JavaScript/"/>
-    
-    
-    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="JavaScript" scheme="https://maplepudding.github.io/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>牛客HTML前端笔试题目知识点整理（长期更新）</title>
-    <link href="https://maplepudding.github.io/20210429/2021-4-29/"/>
-    <id>https://maplepudding.github.io/20210429/2021-4-29/</id>
-    <published>2021-04-29T05:29:55.273Z</published>
-    <updated>2021-06-19T06:43:23.819Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;关于noscript标签&quot;&gt;&lt;a href=&quot;#关于noscript标签&quot; class=&quot;headerlink&quot; title=&quot;关于noscript标签&quot;&gt;&lt;/a&gt;关于noscript标签&lt;/h2&gt;&lt;pre class=&quot;line-numbers</summary>
-        
-      
-    
-    
-    
-    <category term="Web笔试" scheme="https://maplepudding.github.io/categories/Web%E7%AC%94%E8%AF%95/"/>
-    
-    
-    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="笔试" scheme="https://maplepudding.github.io/tags/%E7%AC%94%E8%AF%95/"/>
-    
-    <category term="HTML" scheme="https://maplepudding.github.io/tags/HTML/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>牛客CSS前端笔试题目知识点整理（长期更新）</title>
-    <link href="https://maplepudding.github.io/20210427/2021-4-27/"/>
-    <id>https://maplepudding.github.io/20210427/2021-4-27/</id>
-    <published>2021-04-27T00:55:31.338Z</published>
-    <updated>2021-06-19T06:43:18.599Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;CSS清除浮动方法整理&quot;&gt;&lt;a href=&quot;#CSS清除浮动方法整理&quot; class=&quot;headerlink&quot; title=&quot;CSS清除浮动方法整理&quot;&gt;&lt;/a&gt;CSS清除浮动方法整理&lt;/h2&gt;&lt;p&gt;测试代码&lt;/p&gt;
-&lt;pre class=&quot;line-numbers</summary>
-        
-      
-    
-    
-    
-    <category term="Web笔试" scheme="https://maplepudding.github.io/categories/Web%E7%AC%94%E8%AF%95/"/>
-    
-    
-    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="CSS" scheme="https://maplepudding.github.io/tags/CSS/"/>
-    
-    <category term="笔试" scheme="https://maplepudding.github.io/tags/%E7%AC%94%E8%AF%95/"/>
     
   </entry>
   
