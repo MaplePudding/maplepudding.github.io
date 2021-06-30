@@ -4,6 +4,60 @@
   
     
     <entry>
+      <title>JZ10 矩形覆盖</title>
+      <link href="20210630/2021-6-30(1)/"/>
+      <url>20210630/2021-6-30(1)/</url>
+      
+        <content type="html"><![CDATA[<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">rectCover</span><span class="token punctuation">(</span><span class="token parameter">number</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>    <span class="token keyword">if</span><span class="token punctuation">(</span>number <span class="token operator">===</span> <span class="token number">0</span> <span class="token operator">||</span> number <span class="token operator">===</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>        <span class="token keyword">return</span> number    <span class="token punctuation">&#125;</span>    <span class="token keyword">let</span> dp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span>number <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>    dp<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>    dp<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> number <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>        dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> dp<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> dp<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">]</span>    <span class="token punctuation">&#125;</span>        <span class="token keyword">return</span> dp<span class="token punctuation">[</span>number<span class="token punctuation">]</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>解法本质上和跳台阶一样，以number == 3的情况为例,dp[i]代表有i个位置时摆放方式</p><ol><li>左侧第一个方块竖着放，右边还剩两个空方块，此时有几种摆放方式呢？显然是dp[2],因为左边确定是竖着，只要考虑右边空着的位置即可</li><li>左侧横着，那左侧就需要两个方块，此时右边还剩一个空的，此时的摆放方式就是dp[1],因为左边两个确定了。<br>那dp[3] = dp[2] + dp[1],对于dp[4]也是一样的做法。因此<strong>dp[i] = dp[i - 1] + dp[i - 2]</strong></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Leetcode </tag>
+            
+            <tag> Algorithm </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>JZ4 重建二叉树</title>
+      <link href="20210630/2021-6-30(2)/"/>
+      <url>20210630/2021-6-30(2)/</url>
+      
+        <content type="html"><![CDATA[<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">reConstructBinaryTree</span><span class="token punctuation">(</span><span class="token parameter">pre<span class="token punctuation">,</span> vin</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>pre<span class="token punctuation">.</span>length <span class="token operator">||</span> <span class="token operator">!</span>vin<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>        <span class="token keyword">return</span> <span class="token keyword">null</span>    <span class="token punctuation">&#125;</span>    <span class="token keyword">let</span> root <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">TreeNode</span><span class="token punctuation">(</span>pre<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>    <span class="token keyword">let</span> index <span class="token operator">=</span> vin<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span>pre<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>        root<span class="token punctuation">.</span>left <span class="token operator">=</span> <span class="token function">reConstructBinaryTree</span><span class="token punctuation">(</span>pre<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> index <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> vin<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> index<span class="token punctuation">)</span><span class="token punctuation">)</span>    root<span class="token punctuation">.</span>right <span class="token operator">=</span> <span class="token function">reConstructBinaryTree</span><span class="token punctuation">(</span>pre<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span>index <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> vin<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span>index <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>        <span class="token keyword">return</span> root<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>了解前序遍历和中序遍历的特点后比较简单，看一下前序遍历的代码可知，pre数组内的第一个元素就是根元素。然后在中序遍历vin数组内找到该元素，根据中序遍历的特点，vin数组内pre[0]左边就是左子树的成员，pre[0]右侧就是右子树的成员。根据两侧成员数量就可以得到pre[1] -&gt; pre[index]就是左子树的部分，pre[index + 1]到最后就是右子树的部分，于是有了下面的代码</p><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">root<span class="token punctuation">.</span>left <span class="token operator">=</span> <span class="token function">reConstructBinaryTree</span><span class="token punctuation">(</span>pre<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> index <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> vin<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> index<span class="token punctuation">)</span><span class="token punctuation">)</span>root<span class="token punctuation">.</span>right <span class="token operator">=</span> <span class="token function">reConstructBinaryTree</span><span class="token punctuation">(</span>pre<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span>index <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> vin<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span>index <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>不断递归即可</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Leetcode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Leetcode </tag>
+            
+            <tag> Algorithm </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Node.js学习笔记(一) Buffer的简单使用</title>
       <link href="20210628/2021-6-28(1)/"/>
       <url>20210628/2021-6-28(1)/</url>
