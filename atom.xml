@@ -6,7 +6,7 @@
   <link href="https://maplepudding.github.io/atom.xml" rel="self"/>
   
   <link href="https://maplepudding.github.io/"/>
-  <updated>2021-06-30T05:06:21.078Z</updated>
+  <updated>2021-07-04T15:08:47.052Z</updated>
   <id>https://maplepudding.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【React源码学习】6 commitMutationEffects的调用过程</title>
+    <link href="https://maplepudding.github.io/20210704/2021-7-4/"/>
+    <id>https://maplepudding.github.io/20210704/2021-7-4/</id>
+    <published>2021-07-04T13:24:00.000Z</published>
+    <updated>2021-07-04T15:08:47.052Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;demo&lt;/p&gt;
+&lt;h2 id=&quot;更新DOM&quot;&gt;&lt;a href=&quot;#更新DOM&quot; class=&quot;headerlink&quot; title=&quot;更新DOM&quot;&gt;&lt;/a&gt;更新DOM&lt;/h2&gt;&lt;pre class=&quot;line-numbers language-javascript&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="React" scheme="https://maplepudding.github.io/categories/React/"/>
+    
+    
+    <category term="React" scheme="https://maplepudding.github.io/tags/React/"/>
+    
+    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>JZ10 矩形覆盖</title>
@@ -526,36 +554,6 @@
         
     <summary type="html">&lt;p&gt;该函数的在createFiberRoot内调用，调用过程如下&lt;/p&gt;
 &lt;pre class=&quot;line-numbers language-javascript&quot; data-language=&quot;javascript&quot;&gt;&lt;code</summary>
-        
-      
-    
-    
-    
-    <category term="React" scheme="https://maplepudding.github.io/categories/React/"/>
-    
-    
-    <category term="React" scheme="https://maplepudding.github.io/tags/React/"/>
-    
-    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【React源码学习】0 Fiber根节点的构建</title>
-    <link href="https://maplepudding.github.io/20210606/2021-6-6/"/>
-    <id>https://maplepudding.github.io/20210606/2021-6-6/</id>
-    <published>2021-06-06T13:24:00.000Z</published>
-    <updated>2021-06-19T06:43:56.247Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;最近看了潇晨大佬的源码解读，写的很不错，下面以潇晨的blog为基础整理以下学习React源码的相关内容。&lt;/p&gt;
-&lt;p&gt;本篇blog主要关注Fiber树根节点的构建过程&lt;/p&gt;
-&lt;p&gt;从浏览器中可以看到这一部分函数的调用关系&lt;/p&gt;
-&lt;p&gt;&lt;img</summary>
         
       
     

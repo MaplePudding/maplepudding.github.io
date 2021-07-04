@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="JZ10 矩形覆盖, Code">
+    <meta name="keywords" content="【React源码学习】6 commitMutationEffects的调用过程, Code">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>JZ10 矩形覆盖 | Code</title>
+    <title>【React源码学习】6 commitMutationEffects的调用过程 | Code</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -268,12 +268,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">JZ10 矩形覆盖</h1>
+                    <h1 class="description center-align post-title">【React源码学习】6 commitMutationEffects的调用过程</h1>
                 </div>
             </div>
         </div>
@@ -389,12 +389,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Leetcode/">
-                                <span class="chip bg-color">Leetcode</span>
+                            <a href="/tags/React/">
+                                <span class="chip bg-color">React</span>
                             </a>
                         
-                            <a href="/tags/Algorithm/">
-                                <span class="chip bg-color">Algorithm</span>
+                            <a href="/tags/Web%E5%89%8D%E7%AB%AF/">
+                                <span class="chip bg-color">Web前端</span>
                             </a>
                         
                     </div>
@@ -405,8 +405,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Leetcode/" class="post-category">
-                                Leetcode
+                            <a href="/categories/React/" class="post-category">
+                                React
                             </a>
                         
                     </div>
@@ -418,14 +418,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-06-30
+                    2021-07-04
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2021-06-30
+                    2021-07-04
                 </div>
                 
 
@@ -447,27 +447,119 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">rectCover</span><span class="token punctuation">(</span><span class="token parameter">number</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#123;</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span>number <span class="token operator">===</span> <span class="token number">0</span> <span class="token operator">||</span> number <span class="token operator">===</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-        <span class="token keyword">return</span> number
-    <span class="token punctuation">&#125;</span>
-    <span class="token keyword">let</span> dp <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span>number <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">fill</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
-    dp<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
-    dp<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">1</span>
-    
-    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> number <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-        dp<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> dp<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> dp<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">]</span>
-    <span class="token punctuation">&#125;</span>
-    
-    <span class="token keyword">return</span> dp<span class="token punctuation">[</span>number<span class="token punctuation">]</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <p>demo</p>
+<h2 id="更新DOM"><a href="#更新DOM" class="headerlink" title="更新DOM"></a>更新DOM</h2><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">const</span> <span class="token punctuation">[</span>c<span class="token punctuation">,</span> setC<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
 
-<h2 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h2><p>解法本质上和跳台阶一样，以number == 3的情况为例,dp[i]代表有i个位置时摆放方式</p>
-<ol>
-<li>左侧第一个方块竖着放，右边还剩两个空方块，此时有几种摆放方式呢？显然是dp[2],因为左边确定是竖着，只要考虑右边空着的位置即可</li>
-<li>左侧横着，那左侧就需要两个方块，此时右边还剩一个空的，此时的摆放方式就是dp[1],因为左边两个确定了。<br>那dp[3] = dp[2] + dp[1],对于dp[4]也是一样的做法。因此<strong>dp[i] = dp[i - 1] + dp[i - 2]</strong></li>
-</ol>
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+        <span class="token operator">&lt;</span>div onClick<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span><span class="token punctuation">&#123;</span>
+            <span class="token function">setC</span><span class="token punctuation">(</span>c <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token operator">></span>
+            <span class="token punctuation">&#123;</span>c<span class="token punctuation">&#125;</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="commitMutationEffects"><a href="#commitMutationEffects" class="headerlink" title="commitMutationEffects"></a>commitMutationEffects</h3><p>commitMutationEffects阶段主要进行DOM更新操作，下面看一下过程</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">if</span> <span class="token punctuation">(</span>flags <span class="token operator">&amp;</span> Ref<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">var</span> current <span class="token operator">=</span> nextEffect<span class="token punctuation">.</span>alternate<span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>current <span class="token operator">!==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">commitDetachRef</span><span class="token punctuation">(</span>current<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>这一部分主要进行解绑ref的操作，因为dom可能发生变化，在改变dom前通过commitDetachRef进行解绑。</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> primaryFlags <span class="token operator">=</span> flags <span class="token operator">&amp;</span> <span class="token punctuation">(</span>Placement <span class="token operator">|</span> Update <span class="token operator">|</span> Deletion <span class="token operator">|</span> Hydrating<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>这一段获取flag，demo没有涉及插入删除操作，因此获取到的flag是Update,然后进行更新操作</p>
+<h3 id="commitWork"><a href="#commitWork" class="headerlink" title="commitWork"></a>commitWork</h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">case</span> Update<span class="token operator">:</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">var</span> _current3 <span class="token operator">=</span> nextEffect<span class="token punctuation">.</span>alternate<span class="token punctuation">;</span>
+    <span class="token function">commitWork</span><span class="token punctuation">(</span>_current3<span class="token punctuation">,</span> nextEffect<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>从switch case进入更新函数，调用commitWork，在commitWork内根据tag进入下面的逻辑</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">case</span> HostComponent<span class="token operator">:</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">var</span> instance <span class="token operator">=</span> finishedWork<span class="token punctuation">.</span>stateNode<span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>instance <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">var</span> newProps <span class="token operator">=</span> finishedWork<span class="token punctuation">.</span>memoizedProps<span class="token punctuation">;</span> 
+        <span class="token keyword">var</span> oldProps <span class="token operator">=</span> current <span class="token operator">!==</span> <span class="token keyword">null</span> <span class="token operator">?</span> current<span class="token punctuation">.</span>memoizedProps <span class="token operator">:</span> newProps<span class="token punctuation">;</span>
+        <span class="token keyword">var</span> type <span class="token operator">=</span> finishedWork<span class="token punctuation">.</span>type<span class="token punctuation">;</span> <span class="token comment">// TODO: Type the updateQueue to be specific to host components.</span>
+
+        <span class="token keyword">var</span> updatePayload <span class="token operator">=</span> finishedWork<span class="token punctuation">.</span>updateQueue<span class="token punctuation">;</span>
+        finishedWork<span class="token punctuation">.</span>updateQueue <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>updatePayload <span class="token operator">!==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token function">commitUpdate</span><span class="token punctuation">(</span>instance<span class="token punctuation">,</span> updatePayload<span class="token punctuation">,</span> type<span class="token punctuation">,</span> oldProps<span class="token punctuation">,</span> newProps<span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>finishedWork.stateNode就是在completeWork阶段生成的DOM对象，此时引用的未更新的DOM。获取updateQueue后调用commitUpdate</p>
+<h3 id="commitUpdate"><a href="#commitUpdate" class="headerlink" title="commitUpdate"></a>commitUpdate</h3><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">commitUpdate</span><span class="token punctuation">(</span><span class="token parameter">domElement<span class="token punctuation">,</span> updatePayload<span class="token punctuation">,</span> type<span class="token punctuation">,</span> oldProps<span class="token punctuation">,</span> newProps<span class="token punctuation">,</span> internalInstanceHandle</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">updateFiberProps</span><span class="token punctuation">(</span>domElement<span class="token punctuation">,</span> newProps<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    <span class="token function">updateProperties</span><span class="token punctuation">(</span>domElement<span class="token punctuation">,</span> updatePayload<span class="token punctuation">,</span> type<span class="token punctuation">,</span> oldProps<span class="token punctuation">,</span> newProps<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>updateFiberProps将newProps挂载到dom的一个特殊id上（这个属性应该是根据某种算法生成的）</p>
+<p>updateProperties调用updateDOMProperties</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> updatePayload<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i <span class="token operator">+=</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">var</span> propKey <span class="token operator">=</span> updatePayload<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> propValue <span class="token operator">=</span> updatePayload<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>propKey <span class="token operator">===</span> <span class="token constant">STYLE</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token function">setValueForStyles</span><span class="token punctuation">(</span>domElement<span class="token punctuation">,</span> propValue<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>propKey <span class="token operator">===</span> <span class="token constant">DANGEROUSLY_SET_INNER_HTML</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token function">setInnerHTML</span><span class="token punctuation">(</span>domElement<span class="token punctuation">,</span> propValue<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>propKey <span class="token operator">===</span> <span class="token constant">CHILDREN</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token function">setTextContent</span><span class="token punctuation">(</span>domElement<span class="token punctuation">,</span> propValue<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+      <span class="token function">setValueForProperty</span><span class="token punctuation">(</span>domElement<span class="token punctuation">,</span> propKey<span class="token punctuation">,</span> propValue<span class="token punctuation">,</span> isCustomComponentTag<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>updateDOMProperties内遍历updateQueue，根据属性更新DOM。</p>
+<p>下面换个demo，看一下插入DOM的逻辑</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">function</span> <span class="token function">App</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">const</span> <span class="token punctuation">[</span>c<span class="token punctuation">,</span> setC<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">const</span> a <span class="token operator">=</span> <span class="token operator">&lt;</span>div key<span class="token operator">=</span><span class="token string">"a"</span><span class="token operator">></span>a<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> b <span class="token operator">=</span> <span class="token operator">&lt;</span>div key<span class="token operator">=</span><span class="token string">"b"</span><span class="token operator">></span>b<span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">(</span>
+        <span class="token operator">&lt;</span>div onClick<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span><span class="token punctuation">&#123;</span>
+            <span class="token function">setC</span><span class="token punctuation">(</span>c <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token operator">></span>
+            <span class="token punctuation">&#123;</span>c <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">===</span> <span class="token number">1</span> <span class="token operator">?</span> a <span class="token operator">:</span> b<span class="token punctuation">&#125;</span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">></span>
+
+    <span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>触发更新后进入下面的部分</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">case</span> Deletion<span class="token operator">:</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token function">commitDeletion</span><span class="token punctuation">(</span>root<span class="token punctuation">,</span> nextEffect<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>effectList的第一个fiber是workInProgress.alternate(先被打上deletion的fiber，下一个就是placement的fiber)，然后调用相应的unmount函数，根据parent的情况调用removeChild，移除DOM节点</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">removeChild</span><span class="token punctuation">(</span><span class="token parameter">parentInstance<span class="token punctuation">,</span> child</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    parentInstance<span class="token punctuation">.</span><span class="token function">removeChild</span><span class="token punctuation">(</span>child<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>(其实到这个地方才知道effectList为啥要包含current fiber树上即将被删除的fiber，因为react内是删除DOM和添加DOM的操作，而不是替换，所以current fiber树和workInProgress fiber树上有变化的fiber都要加入到effectList)</p>
+<p>看一下第二个effect的插入逻辑</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">case</span> Placement<span class="token operator">:</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token function">commitPlacement</span><span class="token punctuation">(</span>nextEffect<span class="token punctuation">)</span><span class="token punctuation">;</span> 
+    nextEffect<span class="token punctuation">.</span>flags <span class="token operator">&amp;=</span> <span class="token operator">~</span>Placement<span class="token punctuation">;</span>
+    <span class="token keyword">break</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>在commitPlacement内调用下面的代码</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">if</span> <span class="token punctuation">(</span>isContainer<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">insertOrAppendPlacementNodeIntoContainer</span><span class="token punctuation">(</span>finishedWork<span class="token punctuation">,</span> before<span class="token punctuation">,</span> parent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">insertOrAppendPlacementNode</span><span class="token punctuation">(</span>finishedWork<span class="token punctuation">,</span> before<span class="token punctuation">,</span> parent<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>根据parent与node的关系调用不同的插入函数</p>
 
                 
             </div>
@@ -494,7 +586,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://maplepudding.github.io/20210630/2021-6-30(1)/">https://maplepudding.github.io/20210630/2021-6-30(1)/</a>
+                    <a href="https://maplepudding.github.io/20210704/2021-7-4/">https://maplepudding.github.io/20210704/2021-7-4/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -532,12 +624,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Leetcode/">
-                                    <span class="chip bg-color">Leetcode</span>
+                                <a href="/tags/React/">
+                                    <span class="chip bg-color">React</span>
                                 </a>
                             
-                                <a href="/tags/Algorithm/">
-                                    <span class="chip bg-color">Algorithm</span>
+                                <a href="/tags/Web%E5%89%8D%E7%AB%AF/">
+                                    <span class="chip bg-color">Web前端</span>
                                 </a>
                             
                         </div>
@@ -578,9 +670,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/20210704/2021-7-4/">
                     <div class="card-image">
@@ -598,9 +691,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-07-04
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-04
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -613,6 +706,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -635,13 +729,13 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/20210630/2021-6-30(2)/">
+                <a href="/20210630/2021-6-30(1)/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="JZ4 重建二叉树">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="JZ10 矩形覆盖">
                         
-                        <span class="card-title">JZ4 重建二叉树</span>
+                        <span class="card-title">JZ10 矩形覆盖</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
