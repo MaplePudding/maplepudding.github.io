@@ -6,7 +6,7 @@
   <link href="https://maplepudding.github.io/atom.xml" rel="self"/>
   
   <link href="https://maplepudding.github.io/"/>
-  <updated>2021-07-09T13:31:01.824Z</updated>
+  <updated>2021-07-17T08:18:06.169Z</updated>
   <id>https://maplepudding.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【React源码学习】3 从setState分析update流程</title>
+    <link href="https://maplepudding.github.io/20210717/2021-7-17/"/>
+    <id>https://maplepudding.github.io/20210717/2021-7-17/</id>
+    <published>2021-07-17T13:24:00.000Z</published>
+    <updated>2021-07-17T08:18:06.169Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;很简单的demo，一个button而已，看一下setState过程发生了啥&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-javascript&quot; data-language=&quot;javascript&quot;&gt;&lt;code</summary>
+        
+      
+    
+    
+    
+    <category term="React" scheme="https://maplepudding.github.io/categories/React/"/>
+    
+    
+    <category term="React" scheme="https://maplepudding.github.io/tags/React/"/>
+    
+    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>【React源码学习】7 函数式组件触发更新的方式</title>
@@ -402,34 +430,6 @@
     <category term="Leetcode" scheme="https://maplepudding.github.io/tags/Leetcode/"/>
     
     <category term="Algorithm" scheme="https://maplepudding.github.io/tags/Algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【React源码学习】3 从setState分析update流程</title>
-    <link href="https://maplepudding.github.io/20210617/2021-6-17/"/>
-    <id>https://maplepudding.github.io/20210617/2021-6-17/</id>
-    <published>2021-06-17T13:24:00.000Z</published>
-    <updated>2021-06-19T06:44:53.294Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;今天来看一下setState时fiber如何update，本次demo代码如下&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-javascript&quot; data-language=&quot;javascript&quot;&gt;&lt;code</summary>
-        
-      
-    
-    
-    
-    <category term="React" scheme="https://maplepudding.github.io/categories/React/"/>
-    
-    
-    <category term="React" scheme="https://maplepudding.github.io/tags/React/"/>
-    
-    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
