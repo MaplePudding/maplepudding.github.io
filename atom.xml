@@ -6,7 +6,7 @@
   <link href="https://maplepudding.github.io/atom.xml" rel="self"/>
   
   <link href="https://maplepudding.github.io/"/>
-  <updated>2021-07-17T08:18:06.169Z</updated>
+  <updated>2021-07-21T14:15:41.309Z</updated>
   <id>https://maplepudding.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【lodash源码阅读】0 从toNumber看lodash的类型检测</title>
+    <link href="https://maplepudding.github.io/20210721/2021-7-21/"/>
+    <id>https://maplepudding.github.io/20210721/2021-7-21/</id>
+    <published>2021-07-21T13:24:00.000Z</published>
+    <updated>2021-07-21T14:15:41.309Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;偶然看到了lodash的类型检测，感觉很细致，这次仔细分析一下&lt;/p&gt;
+&lt;p&gt;先贴上toNumber的代码&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-javascript&quot; data-language=&quot;javascript&quot;&gt;&lt;code</summary>
+        
+      
+    
+    
+    
+    <category term="lodash" scheme="https://maplepudding.github.io/categories/lodash/"/>
+    
+    
+    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="lodash" scheme="https://maplepudding.github.io/tags/lodash/"/>
+    
+  </entry>
   
   <entry>
     <title>【React源码学习】3 从setState分析update流程</title>
@@ -539,34 +568,6 @@
     <category term="React" scheme="https://maplepudding.github.io/tags/React/"/>
     
     <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>检测js对象属性是否存在的几种方法</title>
-    <link href="https://maplepudding.github.io/20210610/2021-6-10/"/>
-    <id>https://maplepudding.github.io/20210610/2021-6-10/</id>
-    <published>2021-06-10T13:24:00.000Z</published>
-    <updated>2021-06-19T06:44:13.688Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;开发过程中经常需要检测某个属性是否存在，下面对常用的检测方法进行整理&lt;/p&gt;
-&lt;h2 id=&quot;使用in检测&quot;&gt;&lt;a href=&quot;#使用in检测&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="JavaScript" scheme="https://maplepudding.github.io/categories/JavaScript/"/>
-    
-    
-    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="JavaScript" scheme="https://maplepudding.github.io/tags/JavaScript/"/>
     
   </entry>
   
