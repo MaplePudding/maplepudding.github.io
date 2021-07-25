@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="【lodash源码阅读】0 从toNumber看lodash的类型检测, Code">
+    <meta name="keywords" content="async与generator的联系, Code">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>【lodash源码阅读】0 从toNumber看lodash的类型检测 | Code</title>
+    <title>async与generator的联系 | Code</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -268,12 +268,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【lodash源码阅读】0 从toNumber看lodash的类型检测</h1>
+                    <h1 class="description center-align post-title">async与generator的联系</h1>
                 </div>
             </div>
         </div>
@@ -393,8 +393,8 @@
                                 <span class="chip bg-color">Web前端</span>
                             </a>
                         
-                            <a href="/tags/lodash/">
-                                <span class="chip bg-color">lodash</span>
+                            <a href="/tags/JavaScript/">
+                                <span class="chip bg-color">JavaScript</span>
                             </a>
                         
                     </div>
@@ -405,8 +405,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/lodash/" class="post-category">
-                                lodash
+                            <a href="/categories/js/" class="post-category">
+                                js
                             </a>
                         
                     </div>
@@ -418,14 +418,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-07-21
+                    2021-07-25
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2021-07-21
+                    2021-07-25
                 </div>
                 
 
@@ -447,93 +447,137 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>偶然看到了lodash的类型检测，感觉很细致，这次仔细分析一下</p>
-<p>先贴上toNumber的代码</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> reTrim <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^\s+|\s+$</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span>
-<span class="token keyword">const</span> reIsBadHex <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^[-+]0x[0-9a-f]+$</span><span class="token regex-delimiter">/</span><span class="token regex-flags">i</span></span>
-<span class="token keyword">const</span> reIsBinary <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^0b[01]+$</span><span class="token regex-delimiter">/</span><span class="token regex-flags">i</span></span>
-<span class="token keyword">const</span> reIsOctal <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^0o[0-7]+$</span><span class="token regex-delimiter">/</span><span class="token regex-flags">i</span></span>
+                <h2 id="generator的简单用法"><a href="#generator的简单用法" class="headerlink" title="generator的简单用法"></a>generator的简单用法</h2><p>今天研究了一下async函数的基本原理，和generator关系很大，首先看一下一个简单的generator函数</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token operator">*</span><span class="token function">gen</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">yield</span> <span class="token number">1</span>
+    <span class="token keyword">yield</span> <span class="token number">2</span>
+    <span class="token keyword">yield</span> <span class="token number">3</span>
+<span class="token punctuation">&#125;</span>
 
-<span class="token keyword">function</span> <span class="token function">toNumber</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> value <span class="token operator">===</span> <span class="token string">'number'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> value
+<span class="token keyword">let</span> g <span class="token operator">=</span> <span class="token function">gen</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">4</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>g<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">/**
+ * &#123; value: 1, done: false &#125;
+ * &#123; value: 2, done: false &#125;
+ * &#123; value: 3, done: false &#125;
+ * &#123; value: undefined, done: true &#125;
+ * /</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>generator函数运行到yield之前会停下，必须调用next才会向下运行，每次调用next会返回一个对象{value, done}, 并且next可以接收参数，作为上一个yield的返回值。</p>
+<h2 id="async的简单用法"><a href="#async的简单用法" class="headerlink" title="async的简单用法"></a>async的简单用法</h2><p>贴代码</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">promiseCreater</span><span class="token punctuation">(</span><span class="token parameter">timeout</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=></span><span class="token punctuation">&#123;</span>
+        <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span><span class="token punctuation">&#123;</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>timeout<span class="token punctuation">)</span>
+            <span class="token function">resolve</span><span class="token punctuation">(</span>timeout<span class="token punctuation">)</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> timeout<span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">asyncTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">await</span> <span class="token function">promiseCreater</span><span class="token punctuation">(</span><span class="token number">3000</span><span class="token punctuation">)</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"done"</span><span class="token punctuation">)</span>
+    <span class="token keyword">await</span> <span class="token function">promiseCreater</span><span class="token punctuation">(</span><span class="token number">2000</span><span class="token punctuation">)</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"done"</span><span class="token punctuation">)</span>
+    <span class="token keyword">await</span> <span class="token function">promiseCreater</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"done"</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token function">asyncTest</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">/***
+ * 3000
+ * done
+ * 2000
+ * done
+ * 1000
+ * done
+ * /</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>await在执行promise是阻塞代码，结果符合预期。</p>
+<h2 id="async与generator的联系"><a href="#async与generator的联系" class="headerlink" title="async与generator的联系"></a>async与generator的联系</h2><p>仔细看一下就会发现yield的阻塞作用很像await对promise的阻塞作用，也就是说通过generator函数自动调用next可以实现类似await的效果，promise执行结束时会调用then方法，可以将next放在then方法内实现自动执行。整理完思路下面简单实现一个自驱动的generator</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">promiseCreater</span><span class="token punctuation">(</span><span class="token parameter">timeout</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=></span><span class="token punctuation">&#123;</span>
+        <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span><span class="token punctuation">&#123;</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>timeout<span class="token punctuation">)</span>
+            <span class="token function">resolve</span><span class="token punctuation">(</span>timeout<span class="token punctuation">)</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> timeout<span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">function</span> <span class="token operator">*</span><span class="token function">gen</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">let</span> a <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">promiseCreater</span><span class="token punctuation">(</span><span class="token number">3000</span><span class="token punctuation">)</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+    <span class="token keyword">let</span> b <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">promiseCreater</span><span class="token punctuation">(</span><span class="token number">2000</span><span class="token punctuation">)</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span>
+    <span class="token keyword">let</span> c <span class="token operator">=</span> <span class="token keyword">yield</span> <span class="token function">promiseCreater</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">)</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">function</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token parameter">gen</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token keyword">let</span> g <span class="token operator">=</span> <span class="token function">gen</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">function</span> <span class="token function">_next</span><span class="token punctuation">(</span><span class="token parameter">val</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token keyword">let</span> res <span class="token operator">=</span> g<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>done<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> res<span class="token punctuation">.</span>value
+        <span class="token punctuation">&#125;</span>
+        res<span class="token punctuation">.</span>value<span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">val</span><span class="token punctuation">)</span> <span class="token operator">=></span><span class="token punctuation">&#123;</span>
+            <span class="token function">_next</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token function">_next</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token function">run</span><span class="token punctuation">(</span>gen<span class="token punctuation">)</span>
+
+<span class="token comment">/***
+ * 3000
+ * 3000
+ * 2000
+ * 2000
+ * 1000
+ * 1000
+ * /</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>自驱动的原理就是then方法会在promise执行结束后执行，将next的调用放在then方法中就可以在promise结束后调用自动调用next，同时将val传递给next作为上一个yield的参数。</p>
+<p>不过这个run方法很简陋，我们默认后面接的就是promise，而且没有相关的异常处理。</p>
+<h2 id="babel对async的处理"><a href="#babel对async的处理" class="headerlink" title="babel对async的处理"></a>babel对async的处理</h2><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">
+<span class="token comment">// run方法</span>
+<span class="token keyword">function</span> <span class="token function">_asyncToGenerator</span><span class="token punctuation">(</span><span class="token parameter">fn</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">return</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">var</span> self <span class="token operator">=</span> <span class="token keyword">this</span>
+    <span class="token keyword">var</span> args <span class="token operator">=</span> arguments
+    <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">Promise</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token keyword">var</span> gen <span class="token operator">=</span> <span class="token function">fn</span><span class="token punctuation">.</span><span class="token function">apply</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">function</span> <span class="token function">_next</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">asyncGeneratorStep</span><span class="token punctuation">(</span>gen<span class="token punctuation">,</span> resolve<span class="token punctuation">,</span> reject<span class="token punctuation">,</span> _next<span class="token punctuation">,</span> _throw<span class="token punctuation">,</span> <span class="token string">'next'</span><span class="token punctuation">,</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">&#125;</span>
+      <span class="token keyword">function</span> <span class="token function">_throw</span><span class="token punctuation">(</span><span class="token parameter">err</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">asyncGeneratorStep</span><span class="token punctuation">(</span>gen<span class="token punctuation">,</span> resolve<span class="token punctuation">,</span> reject<span class="token punctuation">,</span> _next<span class="token punctuation">,</span> _throw<span class="token punctuation">,</span> <span class="token string">'throw'</span><span class="token punctuation">,</span> err<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">&#125;</span>
+      <span class="token function">_next</span><span class="token punctuation">(</span><span class="token keyword">undefined</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">function</span> <span class="token function">asyncGeneratorStep</span><span class="token punctuation">(</span><span class="token parameter">gen<span class="token punctuation">,</span> resolve<span class="token punctuation">,</span> reject<span class="token punctuation">,</span> _next<span class="token punctuation">,</span> _throw<span class="token punctuation">,</span> key<span class="token punctuation">,</span> arg</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">var</span> info <span class="token operator">=</span> gen<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">(</span>arg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">var</span> value <span class="token operator">=</span> info<span class="token punctuation">.</span>value<span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">reject</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span><span class="token punctuation">;</span>
   <span class="token punctuation">&#125;</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isSymbol</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> <span class="token constant">NAN</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>info<span class="token punctuation">.</span>done<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token function">resolve</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+    Promise<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>_next<span class="token punctuation">,</span> _throw<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">&#125;</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isObject</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">const</span> other <span class="token operator">=</span> <span class="token keyword">typeof</span> value<span class="token punctuation">.</span>valueOf <span class="token operator">===</span> <span class="token string">'function'</span> <span class="token operator">?</span> value<span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> value
-    value <span class="token operator">=</span> <span class="token function">isObject</span><span class="token punctuation">(</span>other<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>other<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token template-punctuation string">`</span></span> <span class="token operator">:</span> other
-  <span class="token punctuation">&#125;</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> value <span class="token operator">!==</span> <span class="token string">'string'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> value <span class="token operator">===</span> <span class="token number">0</span> <span class="token operator">?</span> value <span class="token operator">:</span> <span class="token operator">+</span>value
-  <span class="token punctuation">&#125;</span>
-  value <span class="token operator">=</span> value<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span>reTrim<span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span>
-  <span class="token keyword">const</span> isBinary <span class="token operator">=</span> reIsBinary<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
-  <span class="token keyword">return</span> <span class="token punctuation">(</span>isBinary <span class="token operator">||</span> reIsOctal<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token operator">?</span> <span class="token function">freeParseInt</span><span class="token punctuation">(</span>value<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> isBinary <span class="token operator">?</span> <span class="token number">2</span> <span class="token operator">:</span> <span class="token number">8</span><span class="token punctuation">)</span>
-    <span class="token operator">:</span> <span class="token punctuation">(</span>reIsBadHex<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token constant">NAN</span> <span class="token operator">:</span> <span class="token operator">+</span>value<span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>首先一句话概括一下toNumber的作用，尽最大可能将参数转化为number，如果无法转化就返回NaN</p>
-<p>首先用typeof检测一下最简单的number，如果是number返回即可。</p>
-<p>然后检测es6新加入的symbol，看一下isSymbol的代码, symbol不能转化为number，直接返回NaN即可</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">isSymbol</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">const</span> type <span class="token operator">=</span> <span class="token keyword">typeof</span> value
-
-    <span class="token comment">/**
-     * const sym = Symbol("foo");
-     * typeof sym;     // "symbol"
-     * const symObj = Oject(sym);
-     * typeof symObj;  // "object"
-     */</span>
-    <span class="token keyword">return</span> type <span class="token operator">==</span> <span class="token string">'symbol'</span> <span class="token operator">||</span> <span class="token punctuation">(</span>type <span class="token operator">===</span> <span class="token string">'object'</span> <span class="token operator">&amp;&amp;</span> value <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> <span class="token function">getTag</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">'[object Symbol]'</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>用typeof检测普通的symbol返回的就是’symbol’， 另一种特殊情况就是下面这样</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> s <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"symbol"</span><span class="token punctuation">)</span>
-<span class="token keyword">let</span> os <span class="token operator">=</span> <span class="token function">Object</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>
-<span class="token keyword">typeof</span> os <span class="token comment">// Object</span>
-<span class="token class-name">Object</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>os<span class="token punctuation">)</span>  <span class="token comment">//[object Symbol]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>使用Object封装过的Symbol需要用getTag进行检测</p>
-<p>总结一下Symbol的检测方式</p>
-<ol>
-<li>普通的Symbol用typeof即可</li>
-<li>Object封装的Symbol用Object.prototype.toString.call(Symbold)</li>
-</ol>
-<p>接下来是对Object的检测，看一下isObject的源码</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">isObject</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">const</span> type <span class="token operator">=</span> <span class="token keyword">typeof</span> value
-    <span class="token keyword">return</span> value <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>type <span class="token operator">===</span> <span class="token string">'object'</span> <span class="token operator">||</span> type <span class="token operator">===</span> <span class="token string">'function'</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span>   <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>typeof Object的返回值有两种比较特殊的情况，null和function，function也属于Object。如果isObject返回true，调一下下面的代码</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> other <span class="token operator">=</span> <span class="token keyword">typeof</span> value<span class="token punctuation">.</span>valueOf <span class="token operator">===</span> <span class="token string">'function'</span> <span class="token operator">?</span> value<span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> value
-value <span class="token operator">=</span> <span class="token function">isObject</span><span class="token punctuation">(</span>other<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>other<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token template-punctuation string">`</span></span> <span class="token operator">:</span> other<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>为了尽力转化为number，先调一下valueOf（这个时候还检测valueOf是否是function）。然后看一下valueOf的返回值是否是基本值，这里的模板字符串相当于调用toString方法</p>
-<p>总结一下对于object对象的处理方式</p>
-<ol>
-<li>检测是否存在valueOf方法，有则调用</li>
-<li>如果valueOf是基本值就赋值给value</li>
-<li>如果不是基本值就调用toString，赋值给value</li>
-</ol>
-<p>然后就是对boolean以及其他基本值的检测（主要是number，这个number可以在object检测时的valueOf产生），看一下这一部分</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> value <span class="token operator">!==</span> <span class="token string">'string'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> value <span class="token operator">===</span> <span class="token number">0</span> <span class="token operator">?</span> value <span class="token operator">:</span> <span class="token operator">+</span>value
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>+运算符会将value转化为number</p>
-<p>最后就是string的处理</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">value <span class="token operator">=</span> value<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span>reTrim<span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span>
-<span class="token keyword">const</span> isBinary <span class="token operator">=</span> reIsBinary<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
-<span class="token keyword">return</span> <span class="token punctuation">(</span>isBinary <span class="token operator">||</span> reIsOctal<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">?</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>value<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> isBinary <span class="token operator">?</span> <span class="token number">2</span> <span class="token operator">:</span> <span class="token number">8</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token punctuation">(</span>reIsBadHex<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token constant">NAN</span> <span class="token operator">:</span> <span class="token operator">+</span>value<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>为了尽力转化为number，首先用replace去除收尾的空格。接下来就是检测二进制，八进制，十六进制，然后使用parseInt进行转化即可（十六进制这个地方据说是node老版本的一个bug）。</p>
-<p>总结一下对字符串的处理</p>
-<ol>
-<li>去除收尾空格</li>
-<li>检测是否为二进制，八进制，等几种情况，如果是就调用parseInt。</li>
-<li>最后调用一元+尝试转化为数字</li>
-</ol>
-<h2 id="summary"><a href="#summary" class="headerlink" title="summary"></a>summary</h2><p><img src="/images/2021-7-21/summary.png" alt="summary"></p>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>babel这边使用promise对函数进行了封装。异常处理和next都放在then的onFulfilled和onRejected中，根据promise的状态自动next或者捕获异常</p>
 
                 
             </div>
@@ -560,7 +604,7 @@ value <span class="token operator">=</span> <span class="token function">isObjec
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://maplepudding.github.io/20210721/2021-7-21/">https://maplepudding.github.io/20210721/2021-7-21/</a>
+                    <a href="https://maplepudding.github.io/20210725/2021-7-25/">https://maplepudding.github.io/20210725/2021-7-25/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -602,8 +646,8 @@ value <span class="token operator">=</span> <span class="token function">isObjec
                                     <span class="chip bg-color">Web前端</span>
                                 </a>
                             
-                                <a href="/tags/lodash/">
-                                    <span class="chip bg-color">lodash</span>
+                                <a href="/tags/JavaScript/">
+                                    <span class="chip bg-color">JavaScript</span>
                                 </a>
                             
                         </div>
@@ -644,9 +688,10 @@ value <span class="token operator">=</span> <span class="token function">isObjec
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/20210725/2021-7-25/">
                     <div class="card-image">
@@ -664,9 +709,9 @@ value <span class="token operator">=</span> <span class="token function">isObjec
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-07-25
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-25
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -679,6 +724,7 @@ value <span class="token operator">=</span> <span class="token function">isObjec
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -701,31 +747,31 @@ value <span class="token operator">=</span> <span class="token function">isObjec
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/20210717/2021-7-17/">
+                <a href="/20210721/2021-7-21/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="【React源码学习】3 从setState分析update流程">
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="【lodash源码阅读】0 从toNumber看lodash的类型检测">
                         
-                        <span class="card-title">【React源码学习】3 从setState分析update流程</span>
+                        <span class="card-title">【lodash源码阅读】0 从toNumber看lodash的类型检测</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            React源码阅读
+                            lodash源码阅读
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-17
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-21
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/React/" class="post-category">
-                                    React
+                            <a href="/categories/lodash/" class="post-category">
+                                    lodash
                                 </a>
                             
                             
@@ -735,12 +781,12 @@ value <span class="token operator">=</span> <span class="token function">isObjec
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/React/">
-                        <span class="chip bg-color">React</span>
-                    </a>
-                    
                     <a href="/tags/Web%E5%89%8D%E7%AB%AF/">
                         <span class="chip bg-color">Web前端</span>
+                    </a>
+                    
+                    <a href="/tags/lodash/">
+                        <span class="chip bg-color">lodash</span>
                     </a>
                     
                 </div>
