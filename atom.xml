@@ -6,7 +6,7 @@
   <link href="https://maplepudding.github.io/atom.xml" rel="self"/>
   
   <link href="https://maplepudding.github.io/"/>
-  <updated>2021-07-25T14:57:05.093Z</updated>
+  <updated>2021-07-26T14:08:53.462Z</updated>
   <id>https://maplepudding.github.io/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【axios源码阅读】 0 axios的基本结构</title>
+    <link href="https://maplepudding.github.io/20210726/2021-7-26/"/>
+    <id>https://maplepudding.github.io/20210726/2021-7-26/</id>
+    <published>2021-07-26T13:24:00.000Z</published>
+    <updated>2021-07-26T14:08:53.462Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;交接的项目刚好用到了axios，来看一下axios的源码，先贴一下核心文件的部分代码&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-javascript&quot; data-language=&quot;javascript&quot;&gt;&lt;code</summary>
+        
+      
+    
+    
+    
+    <category term="axios" scheme="https://maplepudding.github.io/categories/axios/"/>
+    
+    
+    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="axios" scheme="https://maplepudding.github.io/tags/axios/"/>
+    
+    <category term="Ajax" scheme="https://maplepudding.github.io/tags/Ajax/"/>
+    
+  </entry>
   
   <entry>
     <title>async与generator的联系</title>
@@ -540,34 +570,6 @@
     <category term="Leetcode" scheme="https://maplepudding.github.io/tags/Leetcode/"/>
     
     <category term="Algorithm" scheme="https://maplepudding.github.io/tags/Algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【React源码学习】2 mount阶段compleleWork工作流程</title>
-    <link href="https://maplepudding.github.io/20210614/2021-6-14/"/>
-    <id>https://maplepudding.github.io/20210614/2021-6-14/</id>
-    <published>2021-06-14T13:24:00.000Z</published>
-    <updated>2021-06-19T06:44:29.462Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;测试代码如下&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-javascript&quot; data-language=&quot;javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token</summary>
-        
-      
-    
-    
-    
-    <category term="React" scheme="https://maplepudding.github.io/categories/React/"/>
-    
-    
-    <category term="React" scheme="https://maplepudding.github.io/tags/React/"/>
-    
-    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
