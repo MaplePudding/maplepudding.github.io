@@ -6,7 +6,7 @@
   <link href="https://maplepudding.github.io/atom.xml" rel="self"/>
   
   <link href="https://maplepudding.github.io/"/>
-  <updated>2021-07-26T14:08:53.462Z</updated>
+  <updated>2021-07-30T13:35:27.433Z</updated>
   <id>https://maplepudding.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【React源码学习】8 如何通过update计算state</title>
+    <link href="https://maplepudding.github.io/20210730/2021-7-30/"/>
+    <id>https://maplepudding.github.io/20210730/2021-7-30/</id>
+    <published>2021-07-30T13:24:00.000Z</published>
+    <updated>2021-07-30T13:35:27.433Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;demo继续用上次那个按钮&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-javascript&quot; data-language=&quot;javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span</summary>
+        
+      
+    
+    
+    
+    <category term="React" scheme="https://maplepudding.github.io/categories/React/"/>
+    
+    
+    <category term="React" scheme="https://maplepudding.github.io/tags/React/"/>
+    
+    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>【axios源码阅读】 0 axios的基本结构</title>
@@ -543,33 +571,6 @@
     <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
     
     <category term="Webpack" scheme="https://maplepudding.github.io/tags/Webpack/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>两种常见的反转链表方式</title>
-    <link href="https://maplepudding.github.io/20210615/2021-6-15/"/>
-    <id>https://maplepudding.github.io/20210615/2021-6-15/</id>
-    <published>2021-06-15T13:24:00.000Z</published>
-    <updated>2021-06-19T06:44:36.876Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;不考虑收尾元素的反转&quot;&gt;&lt;a href=&quot;#不考虑收尾元素的反转&quot; class=&quot;headerlink&quot; title=&quot;不考虑收尾元素的反转&quot;&gt;&lt;/a&gt;不考虑收尾元素的反转&lt;/h2&gt;&lt;p&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="https://maplepudding.github.io/categories/Leetcode/"/>
-    
-    
-    <category term="Leetcode" scheme="https://maplepudding.github.io/tags/Leetcode/"/>
-    
-    <category term="Algorithm" scheme="https://maplepudding.github.io/tags/Algorithm/"/>
     
   </entry>
   
