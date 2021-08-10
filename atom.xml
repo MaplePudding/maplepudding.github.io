@@ -6,7 +6,7 @@
   <link href="https://maplepudding.github.io/atom.xml" rel="self"/>
   
   <link href="https://maplepudding.github.io/"/>
-  <updated>2021-07-30T13:35:27.433Z</updated>
+  <updated>2021-08-10T08:24:45.101Z</updated>
   <id>https://maplepudding.github.io/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>常见用户验证方式总结</title>
+    <link href="https://maplepudding.github.io/20210801/2021-8-1/"/>
+    <id>https://maplepudding.github.io/20210801/2021-8-1/</id>
+    <published>2021-08-01T13:24:00.000Z</published>
+    <updated>2021-08-10T08:24:45.101Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;整理一下前端常见的用户验证方式&lt;/p&gt;
+&lt;p&gt;本文示例：&lt;br&gt;前端：js原生&lt;br&gt;后端：express&lt;/p&gt;
+&lt;p&gt;文件结构：&lt;br&gt;&lt;img src=&quot;/images/2021-8-1/structure.png&quot; alt=&quot;structure&quot;&gt;&lt;/p&gt;
+&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="Web前端" scheme="https://maplepudding.github.io/categories/Web%E5%89%8D%E7%AB%AF/"/>
+    
+    
+    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="Web后端" scheme="https://maplepudding.github.io/tags/Web%E5%90%8E%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>【React源码学习】8 如何通过update计算state</title>
@@ -544,33 +574,6 @@
     <category term="Leetcode" scheme="https://maplepudding.github.io/tags/Leetcode/"/>
     
     <category term="Algorithm" scheme="https://maplepudding.github.io/tags/Algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Webpack学习笔记(一)</title>
-    <link href="https://maplepudding.github.io/20210616/2021-6-16/"/>
-    <id>https://maplepudding.github.io/20210616/2021-6-16/</id>
-    <published>2021-06-16T13:24:00.000Z</published>
-    <updated>2021-06-19T06:44:46.048Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;webpack基本概念&quot;&gt;&lt;a href=&quot;#webpack基本概念&quot; class=&quot;headerlink&quot; title=&quot;webpack基本概念&quot;&gt;&lt;/a&gt;webpack基本概念&lt;/h2&gt;&lt;h3 id=&quot;entry&quot;&gt;&lt;a href=&quot;#entry&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Webpack" scheme="https://maplepudding.github.io/categories/Webpack/"/>
-    
-    
-    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="Webpack" scheme="https://maplepudding.github.io/tags/Webpack/"/>
     
   </entry>
   
