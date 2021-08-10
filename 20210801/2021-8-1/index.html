@@ -450,7 +450,7 @@
                 <p>整理一下前端常见的用户验证方式</p>
 <p>本文示例：<br>前端：js原生<br>后端：express</p>
 <p>文件结构：<br><img src="/images/2021-8-1/structure.png" alt="structure"></p>
-<h2 id="Http基本验证"><a href="#Http基本验证" class="headerlink" title="Http基本验证"></a>Http基本验证</h2><p>http基本验证的流程是发送验证请求时将用户名和密码拼接成字符串，使用base64转义，然后作为header <strong>authorization</strong>的值发送，服务端检测request head内是否存在authorization，如果存在获取authorization的值验证用户名和密码，如果不存在就响应一个<strong>code 401</strong>，同时要相应header **WWW-Authenticate:Basic realm=”Secure Area”**这个header和401 code会触发浏览器的默认行为，弹出登录窗口</p>
+<h2 id="Http基本验证"><a href="#Http基本验证" class="headerlink" title="Http基本验证"></a>Http基本验证</h2><p>http基本验证的流程是发送验证请求时将用户名和密码拼接成字符串，使用base64转义，然后作为header  <strong>authorization</strong> 的值发送，服务端检测request head内是否存在authorization，如果存在获取authorization的值验证用户名和密码，如果不存在就响应一个<strong>code 401</strong>，同时要相应header <strong>WWW-Authenticate:Basic realm=”Secure Area”</strong> 这个header和401 code会触发浏览器的默认行为，弹出登录窗口</p>
 <p>下面看代码</p>
 <p>前端</p>
 <pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
@@ -545,7 +545,7 @@ app<span class="token punctuation">.</span><span class="token function">listen</
 <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>工作流程总结：<br><img src="/images/2021-8-1/summary1.png" alt="summary1"></p>
-<h2 id="Cookie-Session验证"><a href="#Cookie-Session验证" class="headerlink" title="Cookie-Session验证"></a>Cookie-Session验证</h2><p>常用的验证方式，原理是浏览器每一次会话都会产生一个session对象，该对象可保存在内存或文件内，第一次登录时更具特定的规则产生一个session保存在服务端，然后将<strong>session的id</strong>保存在cookie内返回，下一次请求时携带cookie就可以根据cookie内的id获取到session对象，查看是否需要验证</p>
+<h2 id="Cookie-Session验证"><a href="#Cookie-Session验证" class="headerlink" title="Cookie-Session验证"></a>Cookie-Session验证</h2><p>常用的验证方式，原理是浏览器每一次会话都会产生一个session对象，该对象可保存在内存或文件内，第一次登录时更具特定的规则产生一个session保存在服务端，然后将 <strong>session的id</strong> 保存在cookie内返回，下一次请求时携带cookie就可以根据cookie内的id获取到session对象，查看是否需要验证</p>
 <p>这里要用到包express-session, 管理session更方便</p>
 <pre class="line-numbers language-none"><code class="language-none">npm i express-session --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>对于所有的请求，我们指定一个生成session的规则</p>
@@ -558,7 +558,7 @@ app<span class="token punctuation">.</span><span class="token function">listen</
     <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>然后可以通过req.session访问到该会话的session(<strong>借助于cookie，用户即使关掉浏览器重新登录也能拿到session</strong>)</p>
+<p>然后可以通过req.session访问到该会话的session( <strong>借助于cookie，用户即使关掉浏览器重新登录也能拿到session</strong> )</p>
 <p>贴一下demo完整代码</p>
 <p>前端</p>
 <pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
@@ -700,7 +700,7 @@ app<span class="token punctuation">.</span><span class="token function">listen</
     <span class="token keyword">const</span> token <span class="token operator">=</span> jwt<span class="token punctuation">.</span><span class="token function">sign</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>user<span class="token operator">:</span> user<span class="token punctuation">,</span> pwd<span class="token operator">:</span> pwd<span class="token punctuation">&#125;</span><span class="token punctuation">,</span> key<span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>expiresIn<span class="token operator">:</span><span class="token number">10</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
     <span class="token keyword">return</span> token
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p><strong>jwt.sing用于签发token</strong>, 和session的secret一样，签发token需要一个key（不建议token保存密码，这里只是测试一下）</p>
+<p> <strong>jwt.sing用于签发token</strong> , 和session的secret一样，签发token需要一个key（不建议token保存密码，这里只是测试一下）</p>
 <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">verifyToken</span><span class="token punctuation">(</span><span class="token parameter">token</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     <span class="token keyword">return</span> jwt<span class="token punctuation">.</span><span class="token function">verify</span><span class="token punctuation">(</span>token<span class="token punctuation">,</span> key<span class="token punctuation">)</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
