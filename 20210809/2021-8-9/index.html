@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="前端的坑【01】 margin百分比参照什么值显示？, Code">
+    <meta name="keywords" content="系统整理一下JS正则相关api, Code">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>前端的坑【01】 margin百分比参照什么值显示？ | Code</title>
+    <title>系统整理一下JS正则相关api | Code</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -273,7 +273,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">前端的坑【01】 margin百分比参照什么值显示？</h1>
+                    <h1 class="description center-align post-title">系统整理一下JS正则相关api</h1>
                 </div>
             </div>
         </div>
@@ -393,8 +393,8 @@
                                 <span class="chip bg-color">Web前端</span>
                             </a>
                         
-                            <a href="/tags/CSS/">
-                                <span class="chip bg-color">CSS</span>
+                            <a href="/tags/JavaScript/">
+                                <span class="chip bg-color">JavaScript</span>
                             </a>
                         
                     </div>
@@ -418,14 +418,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-08-05
+                    2021-08-09
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2021-08-10
+                    2021-08-16
                 </div>
                 
 
@@ -447,51 +447,67 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="默认状态下百分比margin如何显示？"><a href="#默认状态下百分比margin如何显示？" class="headerlink" title="默认状态下百分比margin如何显示？"></a>默认状态下百分比margin如何显示？</h2><p>很简单的demo，两个div</p>
-<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>X-UA-Compatible<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>IE=edge<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>viewport<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>width=device-width, initial-scale=1.0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>Document<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
-        <span class="token selector">.outer</span><span class="token punctuation">&#123;</span>
-            <span class="token property">width</span><span class="token punctuation">:</span> 300px<span class="token punctuation">;</span>
-            <span class="token property">height</span><span class="token punctuation">:</span> 300px<span class="token punctuation">;</span>
-            <span class="token property">border</span><span class="token punctuation">:</span> 1px solid blue<span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
+                <h2 id="系统整理一下JS正则相关api"><a href="#系统整理一下JS正则相关api" class="headerlink" title="系统整理一下JS正则相关api"></a>系统整理一下JS正则相关api</h2><p>一直不太熟悉js正则相关的函数（更熟悉正则的匹配方式），每次用到相关函数都要查文档，今天抽时间整理一下相关api</p>
+<h2 id="正则自身的api"><a href="#正则自身的api" class="headerlink" title="正则自身的api"></a>正则自身的api</h2><p>下面这两个函数都是正则原型链上的函数</p>
+<h3 id="test"><a href="#test" class="headerlink" title="test"></a>test</h3><p>test就是检测一个字符串是否可以被匹配，如果可以返回true，不可以返回false</p>
+<p>用法</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">RegExp<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span>    <span class="token comment">//true of false</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-        <span class="token selector">.inner</span><span class="token punctuation">&#123;</span>
-            <span class="token property">width</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
-            <span class="token property">height</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
-            <span class="token property">margin-left</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
-            <span class="token property">border</span><span class="token punctuation">:</span> 1px solid red<span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-    </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>outer<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>inner<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<p>举个例子</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^abc$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'abc'</span><span class="token punctuation">)</span>     <span class="token comment">//true</span>
+<span class="token operator">/</span><span class="token operator">^</span>abc$<span class="token operator">/</span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'abcd'</span><span class="token punctuation">)</span>    <span class="token comment">//false</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>父元素300px宽，子元素100px宽，设置子元素的margin-left：50%，此时子元素的margin-left为150px，刚好为父元素的一半（测试margin-top也是一样）,也就是说 <strong>默认状态下参考的是父元素的margin</strong></p>
-<p><img src="/images/2021-8-5/summary1.png" alt="summary1"></p>
-<h2 id="子元素的postion会影响margin的显示效果吗？"><a href="#子元素的postion会影响margin的显示效果吗？" class="headerlink" title="子元素的postion会影响margin的显示效果吗？"></a>子元素的postion会影响margin的显示效果吗？</h2><p>改一下子元素的position</p>
-<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>在页面宽度为800px的情况下子元素的margin变为了400px, 可以初步得出 <strong>若当前元素的postion为absolute（fixed），margin的大小会参考父级定位元素</strong></p>
-<p><img src="/images/2021-8-5/summary2.png" alt="summary2"></p>
-<p>为了验证一下结论，改一下父元素的postion</p>
-<pre class="line-numbers language-css" data-language="css"><code class="language-css"><span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>此时inner的margin-left从300px变成了150px</p>
-<h2 id="summary"><a href="#summary" class="headerlink" title="summary"></a>summary</h2><p>总结一下：</p>
-<ol>
-<li>子元素定位方式正常（非absolute，非fixed），margin百分比参考 <strong>父元素</strong>(sticky属于正常情况)</li>
-<li>子元素定位方式为absolute或fixed，margin百分比值参考 <strong>父级定位元素</strong></li>
-</ol>
+<p>只要能匹配就会返回true，比如下面这种情况</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">a</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'abc'</span><span class="token punctuation">)</span>     <span class="token comment">//true</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="exec"><a href="#exec" class="headerlink" title="exec"></a>exec</h3><p>区别于test，exec会返回匹配结果构成的数组，不能匹配就返回null</p>
+<p>用法</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">RegExp<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span>    <span class="token comment">//null or Array</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>举个例子</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">a</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">'aaaaabc'</span><span class="token punctuation">)</span>     <span class="token comment">//["a"]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>多测试几个例子可以发现js的正则存在 <strong>状态</strong>，每次匹配都会更新返回值的index属性（本次匹配时做最左边元素的位置）</p>
+<p>例子</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> regexp <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">abcc?</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span>
+
+<span class="token keyword">let</span> str <span class="token operator">=</span> <span class="token string">'abcabcabccc'</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>regexp<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">)</span>   <span class="token comment">// ['abc',index:0,input:'abcabcabccc',groups:undefined]</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>regexp<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">)</span>   <span class="token comment">// ['abc',index:3,input:'abcabcabccc',groups:undefined]</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>regexp<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">)</span>   <span class="token comment">// ['abcc',index:6,input:'abcabcabccc',groups:undefined]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>数组内的每一项就是本次与正则匹配的返回值（正则内的（）会产生新的匹配项，这个一会再看），可以看到每次调用返回值的index都在更新，数组内容也在更新。</p>
+<p>最后看一下正则内的 <strong>（）对exec结果的影响</strong></p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> regexp <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">abc(c)?</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span>
+
+<span class="token keyword">let</span> str <span class="token operator">=</span> <span class="token string">'abcabcabccc'</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>regexp<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">)</span>   <span class="token comment">//['abc',undefined,index:0,input:'abcabcabccc',groups: undefined]</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>regexp<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">)</span>   <span class="token comment">//['abc',undefined,index:3,input:'abcabcabccc',groups: undefined]</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>regexp<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">)</span>   <span class="token comment">//['abcc','c',index:6,input:'abcabcabccc',groups:undefined]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>括号内的匹配项也会出现在数组内，如果没有匹配到就是undefined</p>
+<h2 id="数组相关的api"><a href="#数组相关的api" class="headerlink" title="数组相关的api"></a>数组相关的api</h2><p>毕竟正则是用来处理字符串的，数组也有一些相关的api</p>
+<h3 id="match"><a href="#match" class="headerlink" title="match"></a>match</h3><p>用正则取匹配字符串，返回可以匹配的字符串数组</p>
+<p>用法</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">str<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span>RegExp<span class="token punctuation">)</span>      <span class="token comment">// Array</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>match相对来说没有exec那么复杂，就是返回匹配项构成的数组</p>
+<p>举个例子</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> regexp <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">ab(c)</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span>
+<span class="token keyword">let</span> str <span class="token operator">=</span> <span class="token string">'abcabcabccc'</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span>regexp<span class="token punctuation">)</span><span class="token punctuation">)</span>      <span class="token comment">// ['abc','abc','abc']</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>就是返回一个普通的数组，括号内的项也不会影响返回值</p>
+<h3 id="replace和split"><a href="#replace和split" class="headerlink" title="replace和split"></a>replace和split</h3><p>这两个用法就比较简单了，看一下就懂</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> regexp <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">ab(c)</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span>
+<span class="token keyword">let</span> str <span class="token operator">=</span> <span class="token string">'abcabcabccc'</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span>regexp<span class="token punctuation">,</span> <span class="token string">'-'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>   <span class="token comment">// ---cc</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> regexp <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">ab(c)</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span>
+<span class="token keyword">let</span> str <span class="token operator">=</span> <span class="token string">'abcabcabccc'</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span>regexp<span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment">//['','c','','c','','c','cc']</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>这里发现（）会对split结果产生影响, （）内的值也会进行一次额外分割</p>
 
                 
             </div>
@@ -518,7 +534,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://maplepudding.github.io/20210805/2021-8-5/">https://maplepudding.github.io/20210805/2021-8-5/</a>
+                    <a href="https://maplepudding.github.io/20210809/2021-8-9/">https://maplepudding.github.io/20210809/2021-8-9/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -560,8 +576,8 @@
                                     <span class="chip bg-color">Web前端</span>
                                 </a>
                             
-                                <a href="/tags/CSS/">
-                                    <span class="chip bg-color">CSS</span>
+                                <a href="/tags/JavaScript/">
+                                    <span class="chip bg-color">JavaScript</span>
                                 </a>
                             
                         </div>
@@ -602,9 +618,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/20210809/2021-8-9/">
                     <div class="card-image">
@@ -622,9 +639,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-09
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-09
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -637,6 +654,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -659,24 +677,24 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/20210801/2021-8-1/">
+                <a href="/20210805/2021-8-5/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="常见用户验证方式总结">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="前端的坑【01】 margin百分比参照什么值显示？">
                         
-                        <span class="card-title">常见用户验证方式总结</span>
+                        <span class="card-title">前端的坑【01】 margin百分比参照什么值显示？</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            用户验证方式
+                            margin百分比
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-01
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-05
                             </span>
                         <span class="publish-author">
                             
@@ -697,8 +715,8 @@
                         <span class="chip bg-color">Web前端</span>
                     </a>
                     
-                    <a href="/tags/Web%E5%90%8E%E7%AB%AF/">
-                        <span class="chip bg-color">Web后端</span>
+                    <a href="/tags/CSS/">
+                        <span class="chip bg-color">CSS</span>
                     </a>
                     
                 </div>
