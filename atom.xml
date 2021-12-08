@@ -6,7 +6,7 @@
   <link href="https://maplepudding.github.io/atom.xml" rel="self"/>
   
   <link href="https://maplepudding.github.io/"/>
-  <updated>2021-09-14T14:51:32.663Z</updated>
+  <updated>2021-12-08T08:57:14.807Z</updated>
   <id>https://maplepudding.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>设计模式入门笔记 01 Creational Pattern</title>
+    <link href="https://maplepudding.github.io/20211208/2021-12-8/"/>
+    <id>https://maplepudding.github.io/20211208/2021-12-8/</id>
+    <published>2021-12-08T13:24:00.000Z</published>
+    <updated>2021-12-08T08:57:14.807Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;简单点说，设计模式就是一种解决特定问题的组织代码的方式，这种方式经过多次的验证，可以有效提高项目的可维护程度，让代码结构更加清晰。&lt;/p&gt;
+&lt;p&gt;因为是非科班菜鸡，没仔细学过，所以以cousera的design</summary>
+        
+      
+    
+    
+    
+    <category term="CS基础" scheme="https://maplepudding.github.io/categories/CS%E5%9F%BA%E7%A1%80/"/>
+    
+    
+    <category term="CS基础" scheme="https://maplepudding.github.io/tags/CS%E5%9F%BA%E7%A1%80/"/>
+    
+    <category term="设计模式" scheme="https://maplepudding.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>前端的坑【01】 关于我对js函数内变量取值的误解</title>
@@ -546,35 +574,6 @@
     <category term="React" scheme="https://maplepudding.github.io/tags/React/"/>
     
     <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Webpack学习笔记(二) 配置一个React开发环境</title>
-    <link href="https://maplepudding.github.io/20210623/2021-6-23/"/>
-    <id>https://maplepudding.github.io/20210623/2021-6-23/</id>
-    <published>2021-06-23T13:24:00.000Z</published>
-    <updated>2021-06-23T08:44:52.186Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;这篇blog将基于webpack实现一个最最最基本的react开发环境&lt;br&gt;ps: 我觉得过度依赖开发工具不是好的习惯，因此希望了解一下相关配置&lt;/p&gt;
-&lt;p&gt;首先初始化一个node环境&lt;/p&gt;
-&lt;pre class=&quot;line-numbers</summary>
-        
-      
-    
-    
-    
-    <category term="Webpack" scheme="https://maplepudding.github.io/categories/Webpack/"/>
-    
-    
-    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="Webpack" scheme="https://maplepudding.github.io/tags/Webpack/"/>
     
   </entry>
   
