@@ -6,7 +6,7 @@
   <link href="https://maplepudding.github.io/atom.xml" rel="self"/>
   
   <link href="https://maplepudding.github.io/"/>
-  <updated>2021-12-08T08:57:14.807Z</updated>
+  <updated>2021-12-10T08:31:57.400Z</updated>
   <id>https://maplepudding.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>redis学习笔记 01 redis常用命令</title>
+    <link href="https://maplepudding.github.io/20211215/2021-12-15/"/>
+    <id>https://maplepudding.github.io/20211215/2021-12-15/</id>
+    <published>2021-12-15T13:24:00.000Z</published>
+    <updated>2021-12-10T08:31:57.400Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;redis启动与关闭&quot;&gt;&lt;a href=&quot;#redis启动与关闭&quot; class=&quot;headerlink&quot; title=&quot;redis启动与关闭&quot;&gt;&lt;/a&gt;redis启动与关闭&lt;/h3&gt;&lt;p&gt;启动redis&lt;/p&gt;
+&lt;pre class=&quot;line-numbers</summary>
+        
+      
+    
+    
+    
+    <category term="redis" scheme="https://maplepudding.github.io/categories/redis/"/>
+    
+    
+    <category term="Web后端" scheme="https://maplepudding.github.io/tags/Web%E5%90%8E%E7%AB%AF/"/>
+    
+    <category term="redis" scheme="https://maplepudding.github.io/tags/redis/"/>
+    
+  </entry>
   
   <entry>
     <title>设计模式入门笔记 01 Creational Pattern</title>
@@ -302,7 +330,7 @@
     <link href="https://maplepudding.github.io/20210724/2021-7-25/"/>
     <id>https://maplepudding.github.io/20210724/2021-7-25/</id>
     <published>2021-07-24T13:24:00.000Z</published>
-    <updated>2021-07-25T14:57:05.093Z</updated>
+    <updated>2021-12-10T04:49:26.467Z</updated>
     
     
       
@@ -315,7 +343,7 @@
     
     
     
-    <category term="js" scheme="https://maplepudding.github.io/categories/js/"/>
+    <category term="JavaScript" scheme="https://maplepudding.github.io/categories/JavaScript/"/>
     
     
     <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
@@ -528,33 +556,6 @@
     <id>https://maplepudding.github.io/20210628/2021-6-28(3)/</id>
     <published>2021-06-28T13:24:00.000Z</published>
     <updated>2021-06-28T14:41:46.298Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;解法&quot;&gt;&lt;a href=&quot;#解法&quot; class=&quot;headerlink&quot; title=&quot;解法&quot;&gt;&lt;/a&gt;解法&lt;/h2&gt;&lt;pre class=&quot;line-numbers language-javascript&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="https://maplepudding.github.io/categories/Leetcode/"/>
-    
-    
-    <category term="Leetcode" scheme="https://maplepudding.github.io/tags/Leetcode/"/>
-    
-    <category term="Algorithm" scheme="https://maplepudding.github.io/tags/Algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>NC49 最长的括号子串</title>
-    <link href="https://maplepudding.github.io/20210628/2021-6-28(2)/"/>
-    <id>https://maplepudding.github.io/20210628/2021-6-28(2)/</id>
-    <published>2021-06-28T13:24:00.000Z</published>
-    <updated>2021-06-30T05:05:50.396Z</updated>
     
     
       

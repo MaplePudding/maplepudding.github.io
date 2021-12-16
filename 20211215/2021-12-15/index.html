@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="【lodash源码阅读】0 从toNumber看lodash的类型检测, Code">
+    <meta name="keywords" content="redis学习笔记 01 redis常用命令, Code">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>【lodash源码阅读】0 从toNumber看lodash的类型检测 | Code</title>
+    <title>redis学习笔记 01 redis常用命令 | Code</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -268,12 +268,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">【lodash源码阅读】0 从toNumber看lodash的类型检测</h1>
+                    <h1 class="description center-align post-title">redis学习笔记 01 redis常用命令</h1>
                 </div>
             </div>
         </div>
@@ -389,12 +389,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Web%E5%89%8D%E7%AB%AF/">
-                                <span class="chip bg-color">Web前端</span>
+                            <a href="/tags/Web%E5%90%8E%E7%AB%AF/">
+                                <span class="chip bg-color">Web后端</span>
                             </a>
                         
-                            <a href="/tags/lodash/">
-                                <span class="chip bg-color">lodash</span>
+                            <a href="/tags/redis/">
+                                <span class="chip bg-color">redis</span>
                             </a>
                         
                     </div>
@@ -405,8 +405,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/lodash/" class="post-category">
-                                lodash
+                            <a href="/categories/redis/" class="post-category">
+                                redis
                             </a>
                         
                     </div>
@@ -418,14 +418,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-07-21
+                    2021-12-15
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2021-07-21
+                    2021-12-10
                 </div>
                 
 
@@ -447,93 +447,162 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>偶然看到了lodash的类型检测，感觉很细致，这次仔细分析一下</p>
-<p>先贴上toNumber的代码</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> reTrim <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^\s+|\s+$</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span>
-<span class="token keyword">const</span> reIsBadHex <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^[-+]0x[0-9a-f]+$</span><span class="token regex-delimiter">/</span><span class="token regex-flags">i</span></span>
-<span class="token keyword">const</span> reIsBinary <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^0b[01]+$</span><span class="token regex-delimiter">/</span><span class="token regex-flags">i</span></span>
-<span class="token keyword">const</span> reIsOctal <span class="token operator">=</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">^0o[0-7]+$</span><span class="token regex-delimiter">/</span><span class="token regex-flags">i</span></span>
+                <h3 id="redis启动与关闭"><a href="#redis启动与关闭" class="headerlink" title="redis启动与关闭"></a>redis启动与关闭</h3><p>启动redis</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">redis-server ~&#x2F;redis-6.2.6&#x2F;redis.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<span class="token keyword">function</span> <span class="token function">toNumber</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> value <span class="token operator">===</span> <span class="token string">'number'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> value
-  <span class="token punctuation">&#125;</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isSymbol</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> <span class="token constant">NAN</span>
-  <span class="token punctuation">&#125;</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">isObject</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">const</span> other <span class="token operator">=</span> <span class="token keyword">typeof</span> value<span class="token punctuation">.</span>valueOf <span class="token operator">===</span> <span class="token string">'function'</span> <span class="token operator">?</span> value<span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> value
-    value <span class="token operator">=</span> <span class="token function">isObject</span><span class="token punctuation">(</span>other<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>other<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token template-punctuation string">`</span></span> <span class="token operator">:</span> other
-  <span class="token punctuation">&#125;</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> value <span class="token operator">!==</span> <span class="token string">'string'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> value <span class="token operator">===</span> <span class="token number">0</span> <span class="token operator">?</span> value <span class="token operator">:</span> <span class="token operator">+</span>value
-  <span class="token punctuation">&#125;</span>
-  value <span class="token operator">=</span> value<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span>reTrim<span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span>
-  <span class="token keyword">const</span> isBinary <span class="token operator">=</span> reIsBinary<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
-  <span class="token keyword">return</span> <span class="token punctuation">(</span>isBinary <span class="token operator">||</span> reIsOctal<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token operator">?</span> <span class="token function">freeParseInt</span><span class="token punctuation">(</span>value<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> isBinary <span class="token operator">?</span> <span class="token number">2</span> <span class="token operator">:</span> <span class="token number">8</span><span class="token punctuation">)</span>
-    <span class="token operator">:</span> <span class="token punctuation">(</span>reIsBadHex<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token constant">NAN</span> <span class="token operator">:</span> <span class="token operator">+</span>value<span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>关闭redis</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">redis-cli shutdown<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>首先一句话概括一下toNumber的作用，尽最大可能将参数转化为number，如果无法转化就返回NaN</p>
-<p>首先用typeof检测一下最简单的number，如果是number返回即可。</p>
-<p>然后检测es6新加入的symbol，看一下isSymbol的代码, symbol不能转化为number，直接返回NaN即可</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">isSymbol</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">const</span> type <span class="token operator">=</span> <span class="token keyword">typeof</span> value
+<h3 id="redis相关操作"><a href="#redis相关操作" class="headerlink" title="redis相关操作"></a>redis相关操作</h3><p>（操作redis感觉像使用一个map/笑）</p>
+<p>切换数据库，redis默认有16个库</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">select 2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-    <span class="token comment">/**
-     * const sym = Symbol("foo");
-     * typeof sym;     // "symbol"
-     * const symObj = Oject(sym);
-     * typeof symObj;  // "object"
-     */</span>
-    <span class="token keyword">return</span> type <span class="token operator">==</span> <span class="token string">'symbol'</span> <span class="token operator">||</span> <span class="token punctuation">(</span>type <span class="token operator">===</span> <span class="token string">'object'</span> <span class="token operator">&amp;&amp;</span> value <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> <span class="token function">getTag</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string">'[object Symbol]'</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>redis基于key进行操作，使用dbsize查看key的数量</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">dbsize<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>用typeof检测普通的symbol返回的就是’symbol’， 另一种特殊情况就是下面这样</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> s <span class="token operator">=</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"symbol"</span><span class="token punctuation">)</span>
-<span class="token keyword">let</span> os <span class="token operator">=</span> <span class="token function">Object</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span>
-<span class="token keyword">typeof</span> os <span class="token comment">// Object</span>
-<span class="token class-name">Object</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>os<span class="token punctuation">)</span>  <span class="token comment">//[object Symbol]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>使用Object封装过的Symbol需要用getTag进行检测</p>
-<p>总结一下Symbol的检测方式</p>
-<ol>
-<li>普通的Symbol用typeof即可</li>
-<li>Object封装的Symbol用Object.prototype.toString.call(Symbold)</li>
-</ol>
-<p>接下来是对Object的检测，看一下isObject的源码</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">isObject</span><span class="token punctuation">(</span><span class="token parameter">value</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">const</span> type <span class="token operator">=</span> <span class="token keyword">typeof</span> value
-    <span class="token keyword">return</span> value <span class="token operator">!=</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span>type <span class="token operator">===</span> <span class="token string">'object'</span> <span class="token operator">||</span> type <span class="token operator">===</span> <span class="token string">'function'</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span>   <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>清空数据库</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">flushdb     &#x2F;&#x2F;清空当前库
 
-<p>typeof Object的返回值有两种比较特殊的情况，null和function，function也属于Object。如果isObject返回true，调一下下面的代码</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> other <span class="token operator">=</span> <span class="token keyword">typeof</span> value<span class="token punctuation">.</span>valueOf <span class="token operator">===</span> <span class="token string">'function'</span> <span class="token operator">?</span> value<span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> value
-value <span class="token operator">=</span> <span class="token function">isObject</span><span class="token punctuation">(</span>other<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>other<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token template-punctuation string">`</span></span> <span class="token operator">:</span> other<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>为了尽力转化为number，先调一下valueOf（这个时候还检测valueOf是否是function）。然后看一下valueOf的返回值是否是基本值，这里的模板字符串相当于调用toString方法</p>
-<p>总结一下对于object对象的处理方式</p>
-<ol>
-<li>检测是否存在valueOf方法，有则调用</li>
-<li>如果valueOf是基本值就赋值给value</li>
-<li>如果不是基本值就调用toString，赋值给value</li>
-</ol>
-<p>然后就是对boolean以及其他基本值的检测（主要是number，这个number可以在object检测时的valueOf产生），看一下这一部分</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> value <span class="token operator">!==</span> <span class="token string">'string'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> value <span class="token operator">===</span> <span class="token number">0</span> <span class="token operator">?</span> value <span class="token operator">:</span> <span class="token operator">+</span>value
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>+运算符会将value转化为number</p>
-<p>最后就是string的处理</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">value <span class="token operator">=</span> value<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span>reTrim<span class="token punctuation">,</span> <span class="token string">''</span><span class="token punctuation">)</span>
-<span class="token keyword">const</span> isBinary <span class="token operator">=</span> reIsBinary<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
-<span class="token keyword">return</span> <span class="token punctuation">(</span>isBinary <span class="token operator">||</span> reIsOctal<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">?</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>value<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> isBinary <span class="token operator">?</span> <span class="token number">2</span> <span class="token operator">:</span> <span class="token number">8</span><span class="token punctuation">)</span><span class="token operator">:</span> <span class="token punctuation">(</span>reIsBadHex<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token operator">?</span> <span class="token constant">NAN</span> <span class="token operator">:</span> <span class="token operator">+</span>value<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>为了尽力转化为number，首先用replace去除收尾的空格。接下来就是检测二进制，八进制，十六进制，然后使用parseInt进行转化即可（十六进制这个地方据说是node老版本的一个bug）。</p>
-<p>总结一下对字符串的处理</p>
-<ol>
-<li>去除收尾空格</li>
-<li>检测是否为二进制，八进制，等几种情况，如果是就调用parseInt。</li>
-<li>最后调用一元+尝试转化为数字</li>
-</ol>
-<h2 id="summary"><a href="#summary" class="headerlink" title="summary"></a>summary</h2><p><img src="/images/2021-7-21/summary.png" alt="summary"></p>
+flushall    &#x2F;&#x2F;清空全部库<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="key相关操作"><a href="#key相关操作" class="headerlink" title="key相关操作"></a>key相关操作</h3><p>前面提到过redis操作和map很像，key的操作也差不多</p>
+<p>查看当前库所有key</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">keys *<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>判断key的类型，redis中数据有不同的类型，比较常见的就是string</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">set k1 1
+
+type k1     &#x2F;&#x2F; string<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>判断key是否存在</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">exists k1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>删除key</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">del k1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>设置key的过期时间(单位s)，个人认为很重要的特性，毕竟redis经常用作缓存。使用ttl可以查看还剩多少时间</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">expire1 k1 10
+
+ttl k1      &#x2F;&#x2F; 8<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="redis数据类型及相关操作"><a href="#redis数据类型及相关操作" class="headerlink" title="redis数据类型及相关操作"></a>redis数据类型及相关操作</h3><h4 id="string"><a href="#string" class="headerlink" title="string"></a>string</h4><p>添加和取值</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">set k1 1
+
+setnx k1 1  &#x2F;&#x2F; not exist ?
+
+get k1      &#x2F;&#x2F; 1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>追加内容（就和普通的string一样）</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">append k1 2     &#x2F;&#x2F; 12<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>获取str的长度</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">strlen k1       &#x2F;&#x2F; 2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>自增和自减(必须是number)</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">incr k1
+decr k1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h4 id="双向链表list"><a href="#双向链表list" class="headerlink" title="双向链表list"></a>双向链表list</h4><p>插入和删除，下面分别是左插和右插，如果pop以后元素为空那这个key也就失效了</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">lpush k1 1
+rpush k1 1
+
+lpop k1
+rpop k1
+
+rpoplpush k1 k2     &#x2F;&#x2F; 字面意思，从k1右侧pop出一个值插到k2左侧<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>获取元素，lrange用于获取多个元素，index获取特定下表的元素</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">lrange k1 0 -1  
+
+index k1 0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>获取list长度</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">llen k1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>插入&amp;&amp;删除&amp;&amp;替换</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">linsert k3 before 1 2   &#x2F;&#x2F; 在k3中从左向右查找1，找到后将2插入前方
+
+lrem k3 1 2             &#x2F;&#x2F; 从左向右查找并删除1个2
+
+lset k3 0 3             &#x2F;&#x2F;替换特定index的值<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="set"><a href="#set" class="headerlink" title="set"></a>set</h4><p>set的特征就是<strong>内部元素无序且不重复</strong>，下面都是比较基本的操作</p>
+<p>添加&amp;&amp;删除</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sadd k1 1 2 3       &#x2F;&#x2F;一次添加多个元素
+srem k1 1           &#x2F;&#x2F;删除某个元素
+spop k1             &#x2F;&#x2F;随机算出k1中的一个元素
+smove k1 k2 1       <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>获取set本身的信息</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">smembers k1         &#x2F;&#x2F; 获取所有成员
+sismmember k1 1     &#x2F;&#x2F; k1中是否有1
+scard k1            &#x2F;&#x2F; 成员数量
+srandmember k1 2    &#x2F;&#x2F; 冲k1随机取出两个值<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>逻辑操作，个人认为set比较重要的功能</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">sinter k1 k2        &#x2F;&#x2F;交集
+sunion k1 k2        &#x2F;&#x2F;并集
+sdiff k1 k2         &#x2F;&#x2F;差集 k1中存在 k2中不存在<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="hash"><a href="#hash" class="headerlink" title="hash"></a>hash</h4><p>和其他的操作基本相同</p>
+<p>添加数据</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">hset k1 k 1             
+hmset k1 k 1 l 2 m 3    &#x2F;&#x2F;批量设置数据
+hsetnx k1 k 1           &#x2F;&#x2F;和setnx一样<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>获取数据</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">hget k1 k
+hkeys       &#x2F;&#x2F;获取集合中所有的键
+hvals       &#x2F;&#x2F;获取所有的值<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>判断值是否存在</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">hexists k1 k    <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="有序集合zset"><a href="#有序集合zset" class="headerlink" title="有序集合zset"></a>有序集合zset</h4><p>相对于普通的set，zset给每个值加了一个权重，根据权重进行排序，操作基本相同</p>
+<p>添加</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">zadd k1 100 1       &#x2F;&#x2F;zadd &lt;key&gt; &lt;score&gt; &lt;val&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>获取</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">zrange k1 0 5           &#x2F;&#x2F;获取0-5之间的元素
+zrangebyscore k1 1 3    &#x2F;&#x2F;获取score在1-3之间的元素，包括1和3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>删除</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">zrem k1 1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>统计数量</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">zcount k1 1 3       &#x2F;&#x2F;score在1-3之间的元素数量<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>获取排名</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">zrank k1 1          <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="bitmaps"><a href="#bitmaps" class="headerlink" title="bitmaps"></a>bitmaps</h4><p>按照我的理解就是一个array，只不过每一位是一个bit，值只有0/1</p>
+<p>添加&amp;&amp;获取</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">setbit k1 100 1         &#x2F;&#x2F;将index100处设置为1
+getbit k1 100<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>获取数量</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">bitcount k1 1 100       &#x2F;&#x2F;1-100之间1的个数<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>逻辑操作</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">bitop and&#x2F;or&#x2F;not&#x2F;xor<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="hyperloglog"><a href="#hyperloglog" class="headerlink" title="hyperloglog"></a>hyperloglog</h2><p>hll的优势就是空间很小，如果只关注基数本身无疑是比set更好的选择</p>
+<p>计算基数</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">pfcount k1 k2 k3<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>合并hll</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">pfmerge target k1 k2 k3<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="Geospatial"><a href="#Geospatial" class="headerlink" title="Geospatial"></a>Geospatial</h2><p>很方便的数据类型，比如缓存用户的gps信息用于定位，还可以很方便的算出距离</p>
+<p>添加</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">geoadd city 120 30 shanghai<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>取值</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">geopos city shanghai<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>距离</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">geodist city shanghai beijing m<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="总结一下redis的数据类型"><a href="#总结一下redis的数据类型" class="headerlink" title="总结一下redis的数据类型"></a>总结一下redis的数据类型</h3><p><img src="/images/2021-12-15/summary.png" alt="summary"></p>
 
                 
             </div>
@@ -560,7 +629,7 @@ value <span class="token operator">=</span> <span class="token function">isObjec
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://maplepudding.github.io/20210721/2021-7-21/">https://maplepudding.github.io/20210721/2021-7-21/</a>
+                    <a href="https://maplepudding.github.io/20211215/2021-12-15/">https://maplepudding.github.io/20211215/2021-12-15/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -598,12 +667,12 @@ value <span class="token operator">=</span> <span class="token function">isObjec
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Web%E5%89%8D%E7%AB%AF/">
-                                    <span class="chip bg-color">Web前端</span>
+                                <a href="/tags/Web%E5%90%8E%E7%AB%AF/">
+                                    <span class="chip bg-color">Web后端</span>
                                 </a>
                             
-                                <a href="/tags/lodash/">
-                                    <span class="chip bg-color">lodash</span>
+                                <a href="/tags/redis/">
+                                    <span class="chip bg-color">redis</span>
                                 </a>
                             
                         </div>
@@ -644,50 +713,52 @@ value <span class="token operator">=</span> <span class="token function">isObjec
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/20210724/2021-7-25/">
+                <a href="/20211215/2021-12-15/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="async与generator的联系">
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="redis学习笔记 01 redis常用命令">
                         
-                        <span class="card-title">async与generator的联系</span>
+                        <span class="card-title">redis学习笔记 01 redis常用命令</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            js基础
+                            redis
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-07-24
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-15
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/JavaScript/" class="post-category">
-                                    JavaScript
+                            <a href="/categories/redis/" class="post-category">
+                                    redis
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Web%E5%89%8D%E7%AB%AF/">
-                        <span class="chip bg-color">Web前端</span>
+                    <a href="/tags/Web%E5%90%8E%E7%AB%AF/">
+                        <span class="chip bg-color">Web后端</span>
                     </a>
                     
-                    <a href="/tags/JavaScript/">
-                        <span class="chip bg-color">JavaScript</span>
+                    <a href="/tags/redis/">
+                        <span class="chip bg-color">redis</span>
                     </a>
                     
                 </div>
@@ -701,31 +772,31 @@ value <span class="token operator">=</span> <span class="token function">isObjec
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/20210717/2021-7-17/">
+                <a href="/20211208/2021-12-8/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="【React源码学习】3 从setState分析update流程">
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="设计模式入门笔记 01 Creational Pattern">
                         
-                        <span class="card-title">【React源码学习】3 从setState分析update流程</span>
+                        <span class="card-title">设计模式入门笔记 01 Creational Pattern</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            React源码阅读
+                            设计模式
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-17
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-08
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/React/" class="post-category">
-                                    React
+                            <a href="/categories/CS%E5%9F%BA%E7%A1%80/" class="post-category">
+                                    CS基础
                                 </a>
                             
                             
@@ -735,12 +806,12 @@ value <span class="token operator">=</span> <span class="token function">isObjec
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/React/">
-                        <span class="chip bg-color">React</span>
+                    <a href="/tags/CS%E5%9F%BA%E7%A1%80/">
+                        <span class="chip bg-color">CS基础</span>
                     </a>
                     
-                    <a href="/tags/Web%E5%89%8D%E7%AB%AF/">
-                        <span class="chip bg-color">Web前端</span>
+                    <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                        <span class="chip bg-color">设计模式</span>
                     </a>
                     
                 </div>
