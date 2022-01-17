@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>前端工程化 一种git commit message规范工具的简单使用</title>
+      <link href="20220117/2022-1-17/"/>
+      <url>20220117/2022-1-17/</url>
+      
+        <content type="html"><![CDATA[<p>本篇介绍一下commitizen的简单使用，git message规范是前端工程化的重要部分，良好的message风格有利于进行项目的版本管理，在对比多种工具后发现commitizen更符合我的习惯，功能丰富且开箱即用。</p><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>此工具基于node，首先要进行全局安装</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> i -g commitizen<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h2 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h2><p>提交前先确保根目录有package.json,如果没有运行如下命令</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> init<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>该工具可以适配多种message格式，不同风格的适配依赖于不同的adapter，下面以ng团队的风格为例子</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">commitizen init cz-conventional-changelog --save-dev<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>安装结束后使用git cz代替git commit即可</p><p> <strong><em>tips: 不要使用git bash！ bash环境下方向键会失效，无法进行选择</em></strong></p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> cz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>放一张cz后的截图<br><img src="/images/2022-1-17/cz.png" alt="summary"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前端工程化 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Web前端 </tag>
+            
+            <tag> 前端工程化 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>redis学习笔记 01 redis常用命令</title>
       <link href="20211215/2021-12-15/"/>
       <url>20211215/2021-12-15/</url>

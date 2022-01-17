@@ -6,7 +6,7 @@
   <link href="https://maplepudding.github.io/atom.xml" rel="self"/>
   
   <link href="https://maplepudding.github.io/"/>
-  <updated>2021-12-10T08:31:57.400Z</updated>
+  <updated>2022-01-17T08:01:36.917Z</updated>
   <id>https://maplepudding.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>前端工程化 一种git commit message规范工具的简单使用</title>
+    <link href="https://maplepudding.github.io/20220117/2022-1-17/"/>
+    <id>https://maplepudding.github.io/20220117/2022-1-17/</id>
+    <published>2022-01-17T13:24:00.000Z</published>
+    <updated>2022-01-17T08:01:36.917Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;本篇介绍一下commitizen的简单使用，git message规范是前端工程化的重要部分，良好的message风格有利于进行项目的版本管理，在对比多种工具后发现commitizen更符合我的习惯，功能丰富且开箱即用。&lt;/p&gt;
+&lt;h2 id=&quot;安装&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="前端工程化" scheme="https://maplepudding.github.io/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    
+    
+    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="前端工程化" scheme="https://maplepudding.github.io/tags/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    
+  </entry>
   
   <entry>
     <title>redis学习笔记 01 redis常用命令</title>
@@ -547,33 +575,6 @@
     <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
     
     <category term="Node" scheme="https://maplepudding.github.io/tags/Node/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>NC126 换钱的最少货币数</title>
-    <link href="https://maplepudding.github.io/20210628/2021-6-28(3)/"/>
-    <id>https://maplepudding.github.io/20210628/2021-6-28(3)/</id>
-    <published>2021-06-28T13:24:00.000Z</published>
-    <updated>2021-06-28T14:41:46.298Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;解法&quot;&gt;&lt;a href=&quot;#解法&quot; class=&quot;headerlink&quot; title=&quot;解法&quot;&gt;&lt;/a&gt;解法&lt;/h2&gt;&lt;pre class=&quot;line-numbers language-javascript&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="https://maplepudding.github.io/categories/Leetcode/"/>
-    
-    
-    <category term="Leetcode" scheme="https://maplepudding.github.io/tags/Leetcode/"/>
-    
-    <category term="Algorithm" scheme="https://maplepudding.github.io/tags/Algorithm/"/>
     
   </entry>
   
