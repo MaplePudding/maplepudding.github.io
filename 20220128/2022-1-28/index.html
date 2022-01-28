@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="前端工程化 一种git commit message规范工具的简单使用, Code">
+    <meta name="keywords" content="前端的坑【03】解决一个snowpack环境下图片等资源无法加载的问题, Code">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>前端工程化 一种git commit message规范工具的简单使用 | Code</title>
+    <title>前端的坑【03】解决一个snowpack环境下图片等资源无法加载的问题 | Code</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -268,12 +268,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">前端工程化 一种git commit message规范工具的简单使用</h1>
+                    <h1 class="description center-align post-title">前端的坑【03】解决一个snowpack环境下图片等资源无法加载的问题</h1>
                 </div>
             </div>
         </div>
@@ -393,8 +393,8 @@
                                 <span class="chip bg-color">Web前端</span>
                             </a>
                         
-                            <a href="/tags/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/">
-                                <span class="chip bg-color">前端工程化</span>
+                            <a href="/tags/Snowpack/">
+                                <span class="chip bg-color">Snowpack</span>
                             </a>
                         
                     </div>
@@ -405,8 +405,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="post-category">
-                                前端工程化
+                            <a href="/categories/Web%E5%89%8D%E7%AB%AF/" class="post-category">
+                                Web前端
                             </a>
                         
                     </div>
@@ -418,14 +418,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-01-17
+                    2022-01-28
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2022-01-17
+                    2022-01-28
                 </div>
                 
 
@@ -447,21 +447,28 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>本篇介绍一下commitizen的简单使用，git message规范是前端工程化的重要部分，良好的message风格有利于进行项目的版本管理，在对比多种工具后发现commitizen更符合我的习惯，功能丰富且开箱即用。</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>此工具基于node，首先要进行全局安装</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> i -g commitizen<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <h2 id="复现"><a href="#复现" class="headerlink" title="复现"></a>复现</h2><p>最近尝试新的构建工具时遇到了这么一个坑，使用snowpack时图片等资源无法正常加载。</p>
+<p>项目结构如下</p>
+<pre class="line-numbers language-none"><code class="language-none">front
+|
+|-public-img-|
+             |-logo.png
+             |-border.png<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>然后像往常一样在tsx中引入图片</p>
+<pre class="line-numbers language-typescript" data-language="typescript"><code class="language-typescript"><span class="token keyword">import</span> logo <span class="token keyword">from</span> <span class="token string">'/public/img/logo.png'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h2 id="提交"><a href="#提交" class="headerlink" title="提交"></a>提交</h2><p>提交前先确保根目录有package.json,如果没有运行如下命令</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> init<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>然后居然报错了</p>
+<pre class="line-numbers language-none"><code class="language-none">[22:05:35] [snowpack] [404] Not Found (&#x2F;public&#x2F;img&#x2F;logo.png.proxy.js)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>该工具可以适配多种message格式，不同风格的适配依赖于不同的adapter，下面以ng团队的风格为例子</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">commitizen init cz-conventional-changelog --save-dev<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>安装结束后使用git cz代替git commit即可</p>
-<p> <strong><em>tips: 不要使用git bash！ bash环境下方向键会失效，无法进行选择</em></strong></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> cz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>这个问题本质上涉及到bundless和传统bundle工具的差异，在使用webpack dev模式时，webpack会将所有的文件构建成一个or多个bundle，然后存在dev服务器上。而对于snowpack这样的bundless工具，在开发模式下并不需要构建bundle，而是直接请求每一份单独的文件(借助于http2更加高效),snowpack加载文件的过程如下。<br><img src="/images/2022-1-28/shot.png" alt="一次snowpack初始化的过程"></p>
+<p>这样就涉及到如何定位每一份文件的位置，snowpack的config文件提供了url与文件路径映射的功能</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json">mount<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    public<span class="token operator">:</span> <span class="token punctuation">&#123;</span> url<span class="token operator">:</span> '/'<span class="token punctuation">,</span> static<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    src<span class="token operator">:</span> <span class="token punctuation">&#123;</span> url<span class="token operator">:</span> '/dist' <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">,</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>放一张cz后的截图<br><img src="/images/2022-1-17/cz.PNG" alt="summary"></p>
-
+<p>因此引入img的代码如下</p>
+<pre class="line-numbers language-typescript" data-language="typescript"><code class="language-typescript"><span class="token keyword">import</span> logo <span class="token keyword">from</span> <span class="token string">'/img/logo.png'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -487,7 +494,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://maplepudding.github.io/20220117/2022-1-17/">https://maplepudding.github.io/20220117/2022-1-17/</a>
+                    <a href="https://maplepudding.github.io/20220128/2022-1-28/">https://maplepudding.github.io/20220128/2022-1-28/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -529,8 +536,8 @@
                                     <span class="chip bg-color">Web前端</span>
                                 </a>
                             
-                                <a href="/tags/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/">
-                                    <span class="chip bg-color">前端工程化</span>
+                                <a href="/tags/Snowpack/">
+                                    <span class="chip bg-color">Snowpack</span>
                                 </a>
                             
                         </div>
@@ -571,9 +578,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/20220128/2022-1-28/">
                     <div class="card-image">
@@ -591,9 +599,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-01-28
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-28
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -606,6 +614,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -628,31 +637,31 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/20211215/2021-12-15/">
+                <a href="/20220117/2022-1-17/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="redis学习笔记 01 redis常用命令">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="前端工程化 一种git commit message规范工具的简单使用">
                         
-                        <span class="card-title">redis学习笔记 01 redis常用命令</span>
+                        <span class="card-title">前端工程化 一种git commit message规范工具的简单使用</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            redis
+                            前端工程化
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-15
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-17
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/redis/" class="post-category">
-                                    redis
+                            <a href="/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/" class="post-category">
+                                    前端工程化
                                 </a>
                             
                             
@@ -662,12 +671,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Web%E5%90%8E%E7%AB%AF/">
-                        <span class="chip bg-color">Web后端</span>
+                    <a href="/tags/Web%E5%89%8D%E7%AB%AF/">
+                        <span class="chip bg-color">Web前端</span>
                     </a>
                     
-                    <a href="/tags/redis/">
-                        <span class="chip bg-color">redis</span>
+                    <a href="/tags/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/">
+                        <span class="chip bg-color">前端工程化</span>
                     </a>
                     
                 </div>

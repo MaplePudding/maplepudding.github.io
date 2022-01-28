@@ -6,7 +6,7 @@
   <link href="https://maplepudding.github.io/atom.xml" rel="self"/>
   
   <link href="https://maplepudding.github.io/"/>
-  <updated>2022-01-17T08:09:21.272Z</updated>
+  <updated>2022-01-28T13:54:28.659Z</updated>
   <id>https://maplepudding.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>前端的坑【03】解决一个snowpack环境下图片等资源无法加载的问题</title>
+    <link href="https://maplepudding.github.io/20220128/2022-1-28/"/>
+    <id>https://maplepudding.github.io/20220128/2022-1-28/</id>
+    <published>2022-01-28T13:24:00.000Z</published>
+    <updated>2022-01-28T13:54:28.659Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;复现&quot;&gt;&lt;a href=&quot;#复现&quot; class=&quot;headerlink&quot; title=&quot;复现&quot;&gt;&lt;/a&gt;复现&lt;/h2&gt;&lt;p&gt;最近尝试新的构建工具时遇到了这么一个坑，使用snowpack时图片等资源无法正常加载。&lt;/p&gt;
+&lt;p&gt;项目结构如下&lt;/p&gt;
+&lt;pre</summary>
+        
+      
+    
+    
+    
+    <category term="Web前端" scheme="https://maplepudding.github.io/categories/Web%E5%89%8D%E7%AB%AF/"/>
+    
+    
+    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="Snowpack" scheme="https://maplepudding.github.io/tags/Snowpack/"/>
+    
+  </entry>
   
   <entry>
     <title>前端工程化 一种git commit message规范工具的简单使用</title>
@@ -128,11 +157,11 @@
   </entry>
   
   <entry>
-    <title>前端的坑【01】 关于我对js函数内变量取值的误解</title>
+    <title>前端的坑【02】 关于我对js函数内变量取值的误解</title>
     <link href="https://maplepudding.github.io/20210914/2021-9-14/"/>
     <id>https://maplepudding.github.io/20210914/2021-9-14/</id>
     <published>2021-09-14T13:24:00.000Z</published>
-    <updated>2021-09-14T14:51:32.663Z</updated>
+    <updated>2022-01-28T13:55:43.079Z</updated>
     
     
       
@@ -546,35 +575,6 @@
     <category term="Leetcode" scheme="https://maplepudding.github.io/tags/Leetcode/"/>
     
     <category term="Algorithm" scheme="https://maplepudding.github.io/tags/Algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Node.js学习笔记(一) Buffer的简单使用</title>
-    <link href="https://maplepudding.github.io/20210628/2021-6-28(1)/"/>
-    <id>https://maplepudding.github.io/20210628/2021-6-28(1)/</id>
-    <published>2021-06-28T13:24:00.000Z</published>
-    <updated>2021-06-28T14:40:19.065Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;一直没有系统学习过Node.js, 今天开个坑，整理一下Node相关的内容&lt;/p&gt;
-&lt;p&gt;Node引入Buffer就是为了更方便处理二进制数据，下面整理一下Buffer常用api的作用&lt;/p&gt;
-&lt;h2 id=&quot;Buffer-from&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="Node" scheme="https://maplepudding.github.io/categories/Node/"/>
-    
-    
-    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="Node" scheme="https://maplepudding.github.io/tags/Node/"/>
     
   </entry>
   
