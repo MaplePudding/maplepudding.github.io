@@ -6,7 +6,7 @@
   <link href="https://maplepudding.github.io/atom.xml" rel="self"/>
   
   <link href="https://maplepudding.github.io/"/>
-  <updated>2022-01-28T14:01:26.539Z</updated>
+  <updated>2022-02-08T15:00:21.884Z</updated>
   <id>https://maplepudding.github.io/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>基于AES CBC模式实现敏感信息加密（Js + Go）</title>
+    <link href="https://maplepudding.github.io/20220208/2022-2-8/"/>
+    <id>https://maplepudding.github.io/20220208/2022-2-8/</id>
+    <published>2022-02-08T13:24:00.000Z</published>
+    <updated>2022-02-08T15:00:21.884Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;简单说一下AES加密CBC模式的工作原理，首先AES加密会涉及几个基本概念：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;原始数据&lt;/li&gt;
+&lt;li&gt;加密key（key的长度有特定要求，只能是16/24/32</summary>
+        
+      
+    
+    
+    
+    <category term="Web前端" scheme="https://maplepudding.github.io/categories/Web%E5%89%8D%E7%AB%AF/"/>
+    
+    
+    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="Web后端" scheme="https://maplepudding.github.io/tags/Web%E5%90%8E%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>前端的坑【03】解决一个snowpack环境下图片等资源无法加载的问题</title>
@@ -537,33 +567,6 @@
         
         
     <summary type="html">&lt;h2 id=&quot;题解&quot;&gt;&lt;a href=&quot;#题解&quot; class=&quot;headerlink&quot; title=&quot;题解&quot;&gt;&lt;/a&gt;题解&lt;/h2&gt;&lt;pre class=&quot;line-numbers language-javascript&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Leetcode" scheme="https://maplepudding.github.io/categories/Leetcode/"/>
-    
-    
-    <category term="Leetcode" scheme="https://maplepudding.github.io/tags/Leetcode/"/>
-    
-    <category term="Algorithm" scheme="https://maplepudding.github.io/tags/Algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JZ4 重建二叉树</title>
-    <link href="https://maplepudding.github.io/20210630/2021-6-30(2)/"/>
-    <id>https://maplepudding.github.io/20210630/2021-6-30(2)/</id>
-    <published>2021-06-30T13:24:00.000Z</published>
-    <updated>2021-06-30T05:06:51.595Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;解法&quot;&gt;&lt;a href=&quot;#解法&quot; class=&quot;headerlink&quot; title=&quot;解法&quot;&gt;&lt;/a&gt;解法&lt;/h2&gt;&lt;pre class=&quot;line-numbers language-javascript&quot;</summary>
         
       
     
