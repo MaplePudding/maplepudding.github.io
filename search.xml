@@ -166,6 +166,33 @@
     
     
     <entry>
+      <title>golang struct传值还是传地址？</title>
+      <link href="20211111/2021-11-11/"/>
+      <url>20211111/2021-11-11/</url>
+      
+        <content type="html"><![CDATA[<p>之前用for range遍历slice，希望对slice每一项的struct值进行修改，但是最终修改失败。仔细考虑一下可能是go和js对Object的处理有差异，go传递的可能并不是引用（地址）</p><h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><p>首先验证一下函数传参的情况</p><pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">type</span> Node <span class="token keyword">struct</span> <span class="token punctuation">&#123;</span>id <span class="token builtin">string</span><span class="token punctuation">&#125;</span><span class="token keyword">func</span> <span class="token function">test</span><span class="token punctuation">(</span>node Node<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>log<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"%p"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>node<span class="token punctuation">)</span><span class="token punctuation">&#125;</span><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>node <span class="token operator">:=</span> Node<span class="token punctuation">&#123;</span>id<span class="token punctuation">:</span> <span class="token string">"id"</span><span class="token punctuation">,</span><span class="token punctuation">&#125;</span>log<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"%p"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>node<span class="token punctuation">)</span>     <span class="token comment">//0xc00003c1f0</span><span class="token function">test</span><span class="token punctuation">(</span>node<span class="token punctuation">)</span>                  <span class="token comment">//0xc00003c210</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>地址果然不一样，可以初步确定，go函数传递struct时进行了拷贝</p><p>下面看一下for range的情况</p><pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">type</span> Node <span class="token keyword">struct</span> <span class="token punctuation">&#123;</span>id <span class="token builtin">string</span><span class="token punctuation">&#125;</span><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>list <span class="token operator">:=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>Node<span class="token punctuation">&#123;</span>Node<span class="token punctuation">&#123;</span>id<span class="token punctuation">:</span> <span class="token string">"id"</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span>log<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"%p"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>list<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>      <span class="token comment">//0xc00003c1f0</span><span class="token keyword">for</span> <span class="token boolean">_</span><span class="token punctuation">,</span> value <span class="token operator">:=</span> <span class="token keyword">range</span> list<span class="token punctuation">&#123;</span>log<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"%p"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>value<span class="token punctuation">)</span>    <span class="token comment">//0xc00003c210</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>使用简单的的demo测试一下，显然range返回的value是对struct的拷贝，经常用js让我习惯性以为拿到的struct就是地址，使用pointer可以完全避免这个问题，这里记录一下这个小坑。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Golang </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Web后端 </tag>
+            
+            <tag> Golang </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>前端的坑【02】 关于我对js函数内变量取值的误解</title>
       <link href="20210914/2021-9-14/"/>
       <url>20210914/2021-9-14/</url>
