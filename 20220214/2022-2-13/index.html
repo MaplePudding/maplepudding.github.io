@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="基于AES CBC模式实现敏感信息加密（Js + Go）, Code">
+    <meta name="keywords" content="一种使用mysql保存树形结构的方式 demo, Code">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>基于AES CBC模式实现敏感信息加密（Js + Go） | Code</title>
+    <title>一种使用mysql保存树形结构的方式 demo | Code</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -273,7 +273,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">基于AES CBC模式实现敏感信息加密（Js + Go）</h1>
+                    <h1 class="description center-align post-title">一种使用mysql保存树形结构的方式 demo</h1>
                 </div>
             </div>
         </div>
@@ -389,12 +389,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Web%E5%89%8D%E7%AB%AF/">
-                                <span class="chip bg-color">Web前端</span>
-                            </a>
-                        
                             <a href="/tags/Web%E5%90%8E%E7%AB%AF/">
                                 <span class="chip bg-color">Web后端</span>
+                            </a>
+                        
+                            <a href="/tags/Mysql%E5%9F%BA%E7%A1%80/">
+                                <span class="chip bg-color">Mysql基础</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                                <span class="chip bg-color">数据结构</span>
                             </a>
                         
                     </div>
@@ -418,14 +422,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-02-08
+                    2022-02-14
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2022-02-08
+                    2022-02-12
                 </div>
                 
 
@@ -447,56 +451,82 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>简单说一下AES加密CBC模式的工作原理，首先AES加密会涉及几个基本概念：</p>
+                <p>建一个简单的表，结构如下，解释一下这三个字段的作用</p>
 <ul>
-<li>原始数据</li>
-<li>加密key（key的长度有特定要求，只能是16/24/32 byte）</li>
-<li>偏移</li>
+<li>id：每个record的唯一id</li>
+<li>parentId：父节点的id，如果父节点是一级节点就为0</li>
+<li>value：node的值</li>
 </ul>
-<p>CBC模式将原始数据均分为若干块，从第一块开始使用key进行加密，然后第二原始块与第一个加密块进行XOR运算后再次用key加密，以此类推即可。</p>
-<p><img src="/images/2022-2-8/encrypt.png" alt="AES CBC加密"><br><img src="/images/2022-2-8/decrypt.png" alt="AES CBC解密"></p>
-<h2 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h2><p>前端主要用crypto-js和axios</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">npm i crypto-js --save
-npm i axios-js --save<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><img src="/images/2022-2-13/table.png" alt="table"></p>
+<h2 id="字段数据结构"><a href="#字段数据结构" class="headerlink" title="字段数据结构"></a>字段数据结构</h2><pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">type</span> Node <span class="token keyword">struct</span> <span class="token punctuation">&#123;</span>
+	Id <span class="token builtin">string</span>
+	ParentId <span class="token builtin">string</span>
+	Value <span class="token builtin">string</span>
+<span class="token punctuation">&#125;</span>
 
-<p>后端用gin，crypto</p>
-<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">get get github.com&#x2F;gin-contrib&#x2F;cors 
-get get github.com&#x2F;gin-gonic&#x2F;gin 
-get get golang.org&#x2F;x&#x2F;crypto<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">func</span> <span class="token punctuation">(</span><span class="token operator">*</span>Node<span class="token punctuation">)</span> <span class="token function">TableName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token builtin">string</span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">return</span> <span class="token string">"node"</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="前端加密"><a href="#前端加密" class="headerlink" title="前端加密"></a>前端加密</h2><p>这里我们选用16 byte的key进行加密</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">aesCbcEncrypt</span><span class="token punctuation">(</span><span class="token parameter">text</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">const</span> key <span class="token operator">=</span> CryptoJS<span class="token punctuation">.</span>enc<span class="token punctuation">.</span>Utf8<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token string">"0"</span><span class="token punctuation">.</span><span class="token function">repeat</span><span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token keyword">let</span> encrypted <span class="token operator">=</span> aes<span class="token punctuation">.</span><span class="token function">encrypt</span><span class="token punctuation">(</span>text<span class="token punctuation">,</span> key<span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>mode<span class="token operator">:</span> CryptoJS<span class="token punctuation">.</span>mode<span class="token punctuation">.</span><span class="token constant">CBC</span><span class="token punctuation">,</span> padding<span class="token operator">:</span> CryptoJS<span class="token punctuation">.</span>pad<span class="token punctuation">.</span>Pkcs7<span class="token punctuation">,</span> iv<span class="token operator">:</span> key<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
-    <span class="token keyword">return</span> encrypted<span class="token punctuation">.</span>ciphertext<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span>CryptoJS<span class="token punctuation">.</span>enc<span class="token punctuation">.</span>Hex<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>aes.encrypt对key的类型是有要求的(string | WordArray)，使用Utf8.parse解决编码的问题，同时得到一个utf8的WordArray</p>
-<p>然后调用aes.encrypt进行加密，解释一下padding的作用：</p>
-<p>前面提到CBC加密时会把数据均分为若干个块，<strong>但是如果原始数据的长度不能均分就需要填充</strong> ，主流的填充方式有Pkcs7和Pkcs5，在AES加密中这两种方式没有区别，这里以Pkcs7为例，<strong>经过Pkcs7填充的数据最后一位代表填充的位数，在解密时进行upadding即可</strong> </p>
-<p>返回的字符串用hex处理，防止编码出现问题，因此解密时需要先用hex decode</p>
-<h2 id="后端解密"><a href="#后端解密" class="headerlink" title="后端解密"></a>后端解密</h2><p>首先时upadding的实现，之前提到了最后一位代表填充的位数，这里获取最后一位的数值即可</p>
-<pre class="line-numbers language-golang" data-language="golang"><code class="language-golang">func PKCS7UnPadding(plantText []byte) []byte &#123;
-	length :&#x3D; len(plantText)
-	unpadding :&#x3D; int(plantText[length-1])
-	return plantText[:(length - unpadding)]
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>受用Node接受sql返回的数据</p>
+<h2 id="连接mysql"><a href="#连接mysql" class="headerlink" title="连接mysql"></a>连接mysql</h2><pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">type</span> Conn <span class="token keyword">struct</span> <span class="token punctuation">&#123;</span>
+	db <span class="token operator">*</span>gorm<span class="token punctuation">.</span>DB
+<span class="token punctuation">&#125;</span>
 
-<p>核心解密函数的实现(解密前记得调用hex.DecodeString)</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">func <span class="token function">AesCBCDecrypt</span><span class="token punctuation">(</span>encrypted <span class="token punctuation">[</span><span class="token punctuation">]</span>byte<span class="token punctuation">)</span> <span class="token punctuation">(</span>decrypted <span class="token punctuation">[</span><span class="token punctuation">]</span>byte<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-	key <span class="token operator">:</span><span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token function">byte</span><span class="token punctuation">(</span>strings<span class="token punctuation">.</span><span class="token function">Repeat</span><span class="token punctuation">(</span><span class="token string">"0"</span><span class="token punctuation">,</span> <span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-	block<span class="token punctuation">,</span> err <span class="token operator">:</span><span class="token operator">=</span> aes<span class="token punctuation">.</span><span class="token function">NewCipher</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span>
-	<span class="token keyword">if</span> err <span class="token operator">!=</span> nil <span class="token punctuation">&#123;</span>
-		log<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">"create newCipher error"</span><span class="token punctuation">)</span>
+<span class="token keyword">func</span> <span class="token punctuation">(</span>c <span class="token operator">*</span>Conn<span class="token punctuation">)</span> <span class="token function">SelectNode</span><span class="token punctuation">(</span>parentId <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token operator">*</span><span class="token punctuation">[</span><span class="token punctuation">]</span>Node<span class="token punctuation">&#123;</span>
+	<span class="token keyword">var</span> list <span class="token punctuation">[</span><span class="token punctuation">]</span>Node
+	c<span class="token punctuation">.</span>db<span class="token punctuation">.</span><span class="token function">Raw</span><span class="token punctuation">(</span><span class="token string">"SELECT * FROM node WHERE parent_id = ?"</span><span class="token punctuation">,</span> parentId<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Scan</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>list<span class="token punctuation">)</span>
+	<span class="token keyword">return</span> <span class="token operator">&amp;</span>list
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">func</span> <span class="token function">connect</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">*</span>gorm<span class="token punctuation">.</span>DB<span class="token punctuation">&#123;</span>
+	db<span class="token punctuation">,</span> err <span class="token operator">:=</span> gorm<span class="token punctuation">.</span><span class="token function">Open</span><span class="token punctuation">(</span>mysql<span class="token punctuation">.</span><span class="token function">Open</span><span class="token punctuation">(</span><span class="token string">"root:123456@tcp(127.0.0.1:3306)/node?charset=utf8mb4&amp;parseTime=True&amp;loc=Local"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>gorm<span class="token punctuation">.</span>Config<span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+	<span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span><span class="token punctuation">&#123;</span>
+		log<span class="token punctuation">.</span><span class="token function">Print</span><span class="token punctuation">(</span><span class="token string">"connect to mysql error"</span><span class="token punctuation">)</span>
 	<span class="token punctuation">&#125;</span>
-	blockModel <span class="token operator">:</span><span class="token operator">=</span> cipher<span class="token punctuation">.</span><span class="token function">NewCBCDecrypter</span><span class="token punctuation">(</span>block<span class="token punctuation">,</span> key<span class="token punctuation">)</span>
-	plantText <span class="token operator">:</span><span class="token operator">=</span> <span class="token function">make</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span>byte<span class="token punctuation">,</span> <span class="token function">len</span><span class="token punctuation">(</span>encrypted<span class="token punctuation">)</span><span class="token punctuation">)</span>
-	blockModel<span class="token punctuation">.</span><span class="token function">CryptBlocks</span><span class="token punctuation">(</span>plantText<span class="token punctuation">,</span> encrypted<span class="token punctuation">)</span>
-	plantText <span class="token operator">=</span> <span class="token function">PKCS7UnPadding</span><span class="token punctuation">(</span>plantText<span class="token punctuation">)</span>
-	<span class="token keyword">return</span> plantText
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+	<span class="token keyword">return</span> db
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>用Conn接受返回的db对象，表结构比较简单，用SelectNode足够解决查询问题。</p>
+<h2 id="构造树形结构"><a href="#构造树形结构" class="headerlink" title="构造树形结构"></a>构造树形结构</h2><p>把构造过程分为两部分，首先获取所有的root（parentId == 0）并放入Array中，人后在根据每个root的id递归构造子树</p>
+<p>TreeNode是树形结构的基本组成，除了具有Node的基本属性还有children</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">type</span> TreeNode <span class="token keyword">struct</span> <span class="token punctuation">&#123;</span>
+	Node
+	children <span class="token operator">*</span><span class="token punctuation">[</span><span class="token punctuation">]</span>TreeNode
+<span class="token punctuation">&#125;</span>
 
-<p>aes.NewCipher创建一个cipher用于后续解密，这里传入key决定解密算法的位数，然后使用cipher创建一个用于CBC解密的专用对象（cipher.NewCBCDecrypter），最后调用CryptBlocks解密就可以了，解密后的数据用Pkcs7UnPadding去除填充部分得到的就是原始数据。</p>
-<p>总结一下解密过程<br><img src="/images/2022-2-8/summary.png" alt="使用Golang实现AES CBC解密"></p>
+<span class="token keyword">func</span> <span class="token function">buildRoot</span><span class="token punctuation">(</span>conn <span class="token operator">*</span>Conn<span class="token punctuation">)</span> <span class="token operator">*</span><span class="token punctuation">[</span><span class="token punctuation">]</span>TreeNode<span class="token punctuation">&#123;</span>
+	<span class="token keyword">var</span> container <span class="token punctuation">[</span><span class="token punctuation">]</span>TreeNode
+	list <span class="token operator">:=</span> <span class="token operator">*</span>conn<span class="token punctuation">.</span><span class="token function">SelectNode</span><span class="token punctuation">(</span><span class="token string">"0"</span><span class="token punctuation">)</span>
+	<span class="token keyword">for</span> <span class="token boolean">_</span><span class="token punctuation">,</span> value <span class="token operator">:=</span> <span class="token keyword">range</span> list<span class="token punctuation">&#123;</span>
+		tr <span class="token operator">:=</span> <span class="token operator">&amp;</span>TreeNode<span class="token punctuation">&#123;</span>
+			Node<span class="token punctuation">:</span> Node<span class="token punctuation">&#123;</span>
+				Id<span class="token punctuation">:</span> value<span class="token punctuation">.</span>Id<span class="token punctuation">,</span>
+				ParentId<span class="token punctuation">:</span> value<span class="token punctuation">.</span>ParentId<span class="token punctuation">,</span>
+				Value<span class="token punctuation">:</span> value<span class="token punctuation">.</span>Value<span class="token punctuation">,</span>
+			<span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+		<span class="token punctuation">&#125;</span>
+		container <span class="token operator">=</span> <span class="token function">append</span><span class="token punctuation">(</span>container<span class="token punctuation">,</span> <span class="token operator">*</span>tr<span class="token punctuation">)</span>
+	<span class="token punctuation">&#125;</span>
+	<span class="token keyword">return</span> <span class="token operator">&amp;</span>container
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">func</span> <span class="token function">build</span><span class="token punctuation">(</span>container <span class="token operator">*</span><span class="token punctuation">[</span><span class="token punctuation">]</span>TreeNode<span class="token punctuation">,</span> conn <span class="token operator">*</span>Conn<span class="token punctuation">)</span> <span class="token operator">*</span><span class="token punctuation">[</span><span class="token punctuation">]</span>TreeNode<span class="token punctuation">&#123;</span>
+	<span class="token keyword">for</span> i<span class="token punctuation">,</span> value <span class="token operator">:=</span> <span class="token keyword">range</span> <span class="token operator">*</span>container<span class="token punctuation">&#123;</span>
+		<span class="token keyword">var</span> children <span class="token punctuation">[</span><span class="token punctuation">]</span>TreeNode
+		list <span class="token operator">:=</span> conn<span class="token punctuation">.</span><span class="token function">SelectNode</span><span class="token punctuation">(</span>value<span class="token punctuation">.</span>Id<span class="token punctuation">)</span>
+		<span class="token keyword">for</span> <span class="token boolean">_</span><span class="token punctuation">,</span> node <span class="token operator">:=</span> <span class="token keyword">range</span> <span class="token operator">*</span>list<span class="token punctuation">&#123;</span>
+			children <span class="token operator">=</span> <span class="token function">append</span><span class="token punctuation">(</span>children<span class="token punctuation">,</span> TreeNode<span class="token punctuation">&#123;</span>
+				Node<span class="token punctuation">:</span> Node<span class="token punctuation">&#123;</span>Id<span class="token punctuation">:</span> node<span class="token punctuation">.</span>Id<span class="token punctuation">,</span> ParentId<span class="token punctuation">:</span> node<span class="token punctuation">.</span>ParentId<span class="token punctuation">,</span> Value<span class="token punctuation">:</span>node<span class="token punctuation">.</span>Value<span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+			<span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+			<span class="token punctuation">(</span><span class="token operator">*</span>container<span class="token punctuation">)</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>children <span class="token operator">=</span> <span class="token operator">&amp;</span>children
+		<span class="token punctuation">&#125;</span>
+		<span class="token keyword">if</span> value<span class="token punctuation">.</span>children <span class="token operator">!=</span> <span class="token boolean">nil</span><span class="token punctuation">&#123;</span>
+			<span class="token function">build</span><span class="token punctuation">(</span>value<span class="token punctuation">.</span>children<span class="token punctuation">,</span> conn<span class="token punctuation">)</span>
+		<span class="token punctuation">&#125;</span>
+	<span class="token punctuation">&#125;</span>
+	<span class="token keyword">return</span> container
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
                 
             </div>
@@ -523,7 +553,7 @@ get get golang.org&#x2F;x&#x2F;crypto<span aria-hidden="true" class="line-number
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://maplepudding.github.io/20220208/2022-2-8/">https://maplepudding.github.io/20220208/2022-2-8/</a>
+                    <a href="https://maplepudding.github.io/20220214/2022-2-13/">https://maplepudding.github.io/20220214/2022-2-13/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -561,12 +591,16 @@ get get golang.org&#x2F;x&#x2F;crypto<span aria-hidden="true" class="line-number
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Web%E5%89%8D%E7%AB%AF/">
-                                    <span class="chip bg-color">Web前端</span>
-                                </a>
-                            
                                 <a href="/tags/Web%E5%90%8E%E7%AB%AF/">
                                     <span class="chip bg-color">Web后端</span>
+                                </a>
+                            
+                                <a href="/tags/Mysql%E5%9F%BA%E7%A1%80/">
+                                    <span class="chip bg-color">Mysql基础</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                                    <span class="chip bg-color">数据结构</span>
                                 </a>
                             
                         </div>
@@ -607,9 +641,10 @@ get get golang.org&#x2F;x&#x2F;crypto<span aria-hidden="true" class="line-number
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/20220214/2022-2-13/">
                     <div class="card-image">
@@ -627,9 +662,9 @@ get get golang.org&#x2F;x&#x2F;crypto<span aria-hidden="true" class="line-number
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-02-14
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-14
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -642,6 +677,7 @@ get get golang.org&#x2F;x&#x2F;crypto<span aria-hidden="true" class="line-number
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -668,24 +704,24 @@ get get golang.org&#x2F;x&#x2F;crypto<span aria-hidden="true" class="line-number
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/20220128/2022-1-28/">
+                <a href="/20220208/2022-2-8/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="前端的坑【03】解决一个snowpack环境下图片等资源无法加载的问题">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="基于AES CBC模式实现敏感信息加密（Js + Go）">
                         
-                        <span class="card-title">前端的坑【03】解决一个snowpack环境下图片等资源无法加载的问题</span>
+                        <span class="card-title">基于AES CBC模式实现敏感信息加密（Js + Go）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            snowpack问题
+                            加密
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-01-28
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-08
                             </span>
                         <span class="publish-author">
                             
@@ -706,8 +742,8 @@ get get golang.org&#x2F;x&#x2F;crypto<span aria-hidden="true" class="line-number
                         <span class="chip bg-color">Web前端</span>
                     </a>
                     
-                    <a href="/tags/Snowpack/">
-                        <span class="chip bg-color">Snowpack</span>
+                    <a href="/tags/Web%E5%90%8E%E7%AB%AF/">
+                        <span class="chip bg-color">Web后端</span>
                     </a>
                     
                 </div>

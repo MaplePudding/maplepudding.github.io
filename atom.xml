@@ -6,7 +6,7 @@
   <link href="https://maplepudding.github.io/atom.xml" rel="self"/>
   
   <link href="https://maplepudding.github.io/"/>
-  <updated>2022-02-08T15:00:21.884Z</updated>
+  <updated>2022-02-12T14:35:00.105Z</updated>
   <id>https://maplepudding.github.io/</id>
   
   <author>
@@ -15,6 +15,41 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一种使用mysql保存树形结构的方式 demo</title>
+    <link href="https://maplepudding.github.io/20220214/2022-2-13/"/>
+    <id>https://maplepudding.github.io/20220214/2022-2-13/</id>
+    <published>2022-02-14T13:24:00.000Z</published>
+    <updated>2022-02-12T14:35:00.105Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;建一个简单的表，结构如下，解释一下这三个字段的作用&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;id：每个record的唯一id&lt;/li&gt;
+&lt;li&gt;parentId：父节点的id，如果父节点是一级节点就为0&lt;/li&gt;
+&lt;li&gt;value：node的值&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img</summary>
+        
+      
+    
+    
+    
+    <category term="Web前端" scheme="https://maplepudding.github.io/categories/Web%E5%89%8D%E7%AB%AF/"/>
+    
+    
+    <category term="Web后端" scheme="https://maplepudding.github.io/tags/Web%E5%90%8E%E7%AB%AF/"/>
+    
+    <category term="Mysql基础" scheme="https://maplepudding.github.io/tags/Mysql%E5%9F%BA%E7%A1%80/"/>
+    
+    <category term="数据结构" scheme="https://maplepudding.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+  </entry>
   
   <entry>
     <title>基于AES CBC模式实现敏感信息加密（Js + Go）</title>
@@ -540,34 +575,6 @@
 &lt;p&gt;函数组件触发更新的过程&lt;/p&gt;
 &lt;p&gt;demo&lt;/p&gt;
 &lt;pre class=&quot;line-numbers language-javascript&quot; data-language=&quot;javascript&quot;&gt;&lt;code</summary>
-        
-      
-    
-    
-    
-    <category term="React" scheme="https://maplepudding.github.io/categories/React/"/>
-    
-    
-    <category term="React" scheme="https://maplepudding.github.io/tags/React/"/>
-    
-    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【React源码学习】6 commitMutationEffects的调用过程</title>
-    <link href="https://maplepudding.github.io/20210704/2021-7-4/"/>
-    <id>https://maplepudding.github.io/20210704/2021-7-4/</id>
-    <published>2021-07-04T13:24:00.000Z</published>
-    <updated>2021-07-04T15:08:47.052Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;demo&lt;/p&gt;
-&lt;h2 id=&quot;更新DOM&quot;&gt;&lt;a href=&quot;#更新DOM&quot; class=&quot;headerlink&quot; title=&quot;更新DOM&quot;&gt;&lt;/a&gt;更新DOM&lt;/h2&gt;&lt;pre class=&quot;line-numbers language-javascript&quot;</summary>
         
       
     
