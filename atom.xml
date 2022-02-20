@@ -6,7 +6,7 @@
   <link href="https://maplepudding.github.io/atom.xml" rel="self"/>
   
   <link href="https://maplepudding.github.io/"/>
-  <updated>2022-02-12T14:35:00.105Z</updated>
+  <updated>2022-02-20T13:28:11.213Z</updated>
   <id>https://maplepudding.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>实现一个Promise</title>
+    <link href="https://maplepudding.github.io/20220220/2022-2-20/"/>
+    <id>https://maplepudding.github.io/20220220/2022-2-20/</id>
+    <published>2022-02-20T13:24:00.000Z</published>
+    <updated>2022-02-20T13:28:11.213Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;基本框架&quot;&gt;&lt;a href=&quot;#基本框架&quot; class=&quot;headerlink&quot; title=&quot;基本框架&quot;&gt;&lt;/a&gt;基本框架&lt;/h2&gt;&lt;p&gt;首先打开Promises/A+规范，根据如下要求构建代码框架。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;“promise” is an</summary>
+        
+      
+    
+    
+    
+    <category term="Web前端" scheme="https://maplepudding.github.io/categories/Web%E5%89%8D%E7%AB%AF/"/>
+    
+    
+    <category term="JavaScript" scheme="https://maplepudding.github.io/tags/JavaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>一种使用mysql保存树形结构的方式 demo</title>
@@ -544,36 +571,6 @@
         
         
     <summary type="html">&lt;p&gt;很简单的demo，一个button而已，看一下setState过程发生了啥&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-javascript&quot; data-language=&quot;javascript&quot;&gt;&lt;code</summary>
-        
-      
-    
-    
-    
-    <category term="React" scheme="https://maplepudding.github.io/categories/React/"/>
-    
-    
-    <category term="React" scheme="https://maplepudding.github.io/tags/React/"/>
-    
-    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【React源码学习】7 函数式组件触发更新的方式</title>
-    <link href="https://maplepudding.github.io/20210709/2021-7-9/"/>
-    <id>https://maplepudding.github.io/20210709/2021-7-9/</id>
-    <published>2021-07-09T13:24:00.000Z</published>
-    <updated>2021-07-09T13:31:01.824Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;demo&lt;/p&gt;
-&lt;p&gt;函数组件触发更新的过程&lt;/p&gt;
-&lt;p&gt;demo&lt;/p&gt;
 &lt;pre class=&quot;line-numbers language-javascript&quot; data-language=&quot;javascript&quot;&gt;&lt;code</summary>
         
       
