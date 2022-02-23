@@ -6,7 +6,7 @@
   <link href="https://maplepudding.github.io/atom.xml" rel="self"/>
   
   <link href="https://maplepudding.github.io/"/>
-  <updated>2022-02-20T13:28:11.213Z</updated>
+  <updated>2022-02-20T13:32:08.471Z</updated>
   <id>https://maplepudding.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://maplepudding.github.io/20220220/2022-2-20/"/>
     <id>https://maplepudding.github.io/20220220/2022-2-20/</id>
     <published>2022-02-20T13:24:00.000Z</published>
-    <updated>2022-02-20T13:28:11.213Z</updated>
+    <updated>2022-02-20T13:32:08.471Z</updated>
     
     
       
@@ -162,6 +162,32 @@
     <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
     
     <category term="前端工程化" scheme="https://maplepudding.github.io/tags/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Grid布局系统学习笔记</title>
+    <link href="https://maplepudding.github.io/20220106/2022-1-6/"/>
+    <id>https://maplepudding.github.io/20220106/2022-1-6/</id>
+    <published>2022-01-06T13:24:00.000Z</published>
+    <updated>2022-02-23T04:44:38.596Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;grid的布局核心原理就是将container分割为多个area，将子元素放置在一个或多个area内&lt;/p&gt;
+&lt;h2 id=&quot;grid-template-columns-rows&quot;&gt;&lt;a href=&quot;#grid-template-columns-rows&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Web前端" scheme="https://maplepudding.github.io/categories/Web%E5%89%8D%E7%AB%AF/"/>
+    
+    
+    <category term="CSS" scheme="https://maplepudding.github.io/tags/CSS/"/>
     
   </entry>
   
@@ -555,34 +581,6 @@
     <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
     
     <category term="lodash" scheme="https://maplepudding.github.io/tags/lodash/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【React源码学习】3 从setState分析update流程</title>
-    <link href="https://maplepudding.github.io/20210717/2021-7-17/"/>
-    <id>https://maplepudding.github.io/20210717/2021-7-17/</id>
-    <published>2021-07-17T13:24:00.000Z</published>
-    <updated>2021-07-17T08:18:06.169Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;很简单的demo，一个button而已，看一下setState过程发生了啥&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-javascript&quot; data-language=&quot;javascript&quot;&gt;&lt;code</summary>
-        
-      
-    
-    
-    
-    <category term="React" scheme="https://maplepudding.github.io/categories/React/"/>
-    
-    
-    <category term="React" scheme="https://maplepudding.github.io/tags/React/"/>
-    
-    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   

@@ -526,13 +526,13 @@ onRejected &#x3D; typeof onRejected &#x3D;&#x3D;&#x3D; &#39;function&#39; ? onRe
 
 <p>其次我们知道then方法可以被多次调用，也就是说then方法一定会返回一个promise,then方法的代码框架应该如下</p>
 <ul>
-<li>then may be called multiple times on the same promise.<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> promise2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">myPromise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+<li>then may be called multiple times on the same promise.</li>
+</ul>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">let</span> promise2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">myPromise</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">resolve<span class="token punctuation">,</span> reject</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
     <span class="token comment">//some code</span>
 <span class="token punctuation">&#125;</span>
 <span class="token keyword">return</span> promise2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-</li>
-</ul>
 <p>then方法返回的promise（下面成为promise2）状态由onFulfilled/onRejected的返回值决定，该函数的返回值由三种情况：</p>
 <ul>
 <li>简单值，如果是简单值（number，boolean，普通object等），则promise2的值也为简单值</li>
