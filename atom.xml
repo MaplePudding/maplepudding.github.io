@@ -6,7 +6,7 @@
   <link href="https://maplepudding.github.io/atom.xml" rel="self"/>
   
   <link href="https://maplepudding.github.io/"/>
-  <updated>2022-02-20T13:32:08.471Z</updated>
+  <updated>2022-02-25T05:31:13.096Z</updated>
   <id>https://maplepudding.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用fetch更优雅的发起请求</title>
+    <link href="https://maplepudding.github.io/20220225/2022-2-25/"/>
+    <id>https://maplepudding.github.io/20220225/2022-2-25/</id>
+    <published>2022-02-25T13:24:00.000Z</published>
+    <updated>2022-02-25T05:31:13.096Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;使用fetch更优雅的发起请求&quot;&gt;&lt;a href=&quot;#使用fetch更优雅的发起请求&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Web前端" scheme="https://maplepudding.github.io/categories/Web%E5%89%8D%E7%AB%AF/"/>
+    
+    
+    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>实现一个Promise</title>
@@ -552,35 +577,6 @@
     <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
     
     <category term="JavaScript" scheme="https://maplepudding.github.io/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【lodash源码阅读】0 从toNumber看lodash的类型检测</title>
-    <link href="https://maplepudding.github.io/20210721/2021-7-21/"/>
-    <id>https://maplepudding.github.io/20210721/2021-7-21/</id>
-    <published>2021-07-21T13:24:00.000Z</published>
-    <updated>2021-07-21T14:15:41.309Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;偶然看到了lodash的类型检测，感觉很细致，这次仔细分析一下&lt;/p&gt;
-&lt;p&gt;先贴上toNumber的代码&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-javascript&quot; data-language=&quot;javascript&quot;&gt;&lt;code</summary>
-        
-      
-    
-    
-    
-    <category term="lodash" scheme="https://maplepudding.github.io/categories/lodash/"/>
-    
-    
-    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="lodash" scheme="https://maplepudding.github.io/tags/lodash/"/>
     
   </entry>
   
