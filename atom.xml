@@ -6,7 +6,7 @@
   <link href="https://maplepudding.github.io/atom.xml" rel="self"/>
   
   <link href="https://maplepudding.github.io/"/>
-  <updated>2022-02-25T05:31:13.096Z</updated>
+  <updated>2022-02-28T11:27:11.765Z</updated>
   <id>https://maplepudding.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>snowpack入门 02 Server如何工作</title>
+    <link href="https://maplepudding.github.io/20220228/2022-2-28/"/>
+    <id>https://maplepudding.github.io/20220228/2022-2-28/</id>
+    <published>2022-02-28T13:24:00.000Z</published>
+    <updated>2022-02-28T11:27:11.765Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Snowpack入门02-Server如何工作&quot;&gt;&lt;a href=&quot;#Snowpack入门02-Server如何工作&quot; class=&quot;headerlink&quot; title=&quot;Snowpack入门02 Server如何工作&quot;&gt;&lt;/a&gt;Snowpack入门02</summary>
+        
+      
+    
+    
+    
+    <category term="Web前端" scheme="https://maplepudding.github.io/categories/Web%E5%89%8D%E7%AB%AF/"/>
+    
+    
+    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="打包工具" scheme="https://maplepudding.github.io/tags/%E6%89%93%E5%8C%85%E5%B7%A5%E5%85%B7/"/>
+    
+    <category term="Snowpack" scheme="https://maplepudding.github.io/tags/Snowpack/"/>
+    
+  </entry>
   
   <entry>
     <title>使用fetch更优雅的发起请求</title>
@@ -130,6 +159,31 @@
     <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
     
     <category term="Web后端" scheme="https://maplepudding.github.io/tags/Web%E5%90%8E%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Linux入门0 基础命令</title>
+    <link href="https://maplepudding.github.io/20220130/2022-1-30/"/>
+    <id>https://maplepudding.github.io/20220130/2022-1-30/</id>
+    <published>2022-01-30T13:24:00.000Z</published>
+    <updated>2022-02-25T05:32:05.615Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;常用帮助命令-man-amp-amp-help&quot;&gt;&lt;a href=&quot;#常用帮助命令-man-amp-amp-help&quot; class=&quot;headerlink&quot; title=&quot;常用帮助命令 man &amp;amp;&amp;amp; help&quot;&gt;&lt;/a&gt;常用帮助命令 man</summary>
+        
+      
+    
+    
+    
+    <category term="Linux" scheme="https://maplepudding.github.io/categories/Linux/"/>
+    
+    
+    <category term="Linux" scheme="https://maplepudding.github.io/tags/Linux/"/>
     
   </entry>
   
@@ -277,7 +331,7 @@
     <link href="https://maplepudding.github.io/20211129/2021-11-29/"/>
     <id>https://maplepudding.github.io/20211129/2021-11-29/</id>
     <published>2021-11-29T13:24:00.000Z</published>
-    <updated>2021-12-10T02:48:30.898Z</updated>
+    <updated>2022-02-25T09:26:58.345Z</updated>
     
     
       
@@ -296,6 +350,8 @@
     <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
     
     <category term="打包工具" scheme="https://maplepudding.github.io/tags/%E6%89%93%E5%8C%85%E5%B7%A5%E5%85%B7/"/>
+    
+    <category term="Snowpack" scheme="https://maplepudding.github.io/tags/Snowpack/"/>
     
   </entry>
   
@@ -520,63 +576,6 @@
     <category term="React" scheme="https://maplepudding.github.io/tags/React/"/>
     
     <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【axios源码阅读】 0 axios的基本结构</title>
-    <link href="https://maplepudding.github.io/20210726/2021-7-26/"/>
-    <id>https://maplepudding.github.io/20210726/2021-7-26/</id>
-    <published>2021-07-26T13:24:00.000Z</published>
-    <updated>2021-07-26T14:08:53.462Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;交接的项目刚好用到了axios，来看一下axios的源码，先贴一下核心文件的部分代码&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-javascript&quot; data-language=&quot;javascript&quot;&gt;&lt;code</summary>
-        
-      
-    
-    
-    
-    <category term="axios" scheme="https://maplepudding.github.io/categories/axios/"/>
-    
-    
-    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="axios" scheme="https://maplepudding.github.io/tags/axios/"/>
-    
-    <category term="Ajax" scheme="https://maplepudding.github.io/tags/Ajax/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>async与generator的联系</title>
-    <link href="https://maplepudding.github.io/20210724/2021-7-25/"/>
-    <id>https://maplepudding.github.io/20210724/2021-7-25/</id>
-    <published>2021-07-24T13:24:00.000Z</published>
-    <updated>2021-12-10T04:49:26.467Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;generator的简单用法&quot;&gt;&lt;a href=&quot;#generator的简单用法&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="JavaScript" scheme="https://maplepudding.github.io/categories/JavaScript/"/>
-    
-    
-    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="JavaScript" scheme="https://maplepudding.github.io/tags/JavaScript/"/>
     
   </entry>
   
