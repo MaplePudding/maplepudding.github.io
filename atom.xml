@@ -6,7 +6,7 @@
   <link href="https://maplepudding.github.io/atom.xml" rel="self"/>
   
   <link href="https://maplepudding.github.io/"/>
-  <updated>2022-02-28T11:27:11.765Z</updated>
+  <updated>2022-03-05T10:33:24.049Z</updated>
   <id>https://maplepudding.github.io/</id>
   
   <author>
@@ -17,11 +17,37 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Linux入门1 使用命令行管理用户</title>
+    <link href="https://maplepudding.github.io/20220305/2022-3-5/"/>
+    <id>https://maplepudding.github.io/20220305/2022-3-5/</id>
+    <published>2022-03-05T13:24:00.000Z</published>
+    <updated>2022-03-05T10:33:24.049Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Linux下的用户分为两种，普通用户和root，通过命令行可以对普通用户的权限，密码，用户组等信息进行管理&lt;/p&gt;
+&lt;h2 id=&quot;用户的删除与创建&quot;&gt;&lt;a href=&quot;#用户的删除与创建&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Linux" scheme="https://maplepudding.github.io/categories/Linux/"/>
+    
+    
+    <category term="Linux" scheme="https://maplepudding.github.io/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
     <title>snowpack入门 02 Server如何工作</title>
     <link href="https://maplepudding.github.io/20220228/2022-2-28/"/>
     <id>https://maplepudding.github.io/20220228/2022-2-28/</id>
     <published>2022-02-28T13:24:00.000Z</published>
-    <updated>2022-02-28T11:27:11.765Z</updated>
+    <updated>2022-03-01T02:57:20.324Z</updated>
     
     
       
@@ -548,34 +574,6 @@
     <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
     
     <category term="Web后端" scheme="https://maplepudding.github.io/tags/Web%E5%90%8E%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【React源码学习】8 如何通过update计算state</title>
-    <link href="https://maplepudding.github.io/20210730/2021-7-30/"/>
-    <id>https://maplepudding.github.io/20210730/2021-7-30/</id>
-    <published>2021-07-30T13:24:00.000Z</published>
-    <updated>2021-07-30T13:35:27.433Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;demo继续用上次那个按钮&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-javascript&quot; data-language=&quot;javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span</summary>
-        
-      
-    
-    
-    
-    <category term="React" scheme="https://maplepudding.github.io/categories/React/"/>
-    
-    
-    <category term="React" scheme="https://maplepudding.github.io/tags/React/"/>
-    
-    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
