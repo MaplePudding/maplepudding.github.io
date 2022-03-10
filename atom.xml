@@ -6,7 +6,7 @@
   <link href="https://maplepudding.github.io/atom.xml" rel="self"/>
   
   <link href="https://maplepudding.github.io/"/>
-  <updated>2022-03-05T10:33:24.049Z</updated>
+  <updated>2022-03-10T03:03:32.716Z</updated>
   <id>https://maplepudding.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用React-Query管理状态</title>
+    <link href="https://maplepudding.github.io/20220310/2022-3-10/"/>
+    <id>https://maplepudding.github.io/20220310/2022-3-10/</id>
+    <published>2022-03-10T13:24:00.000Z</published>
+    <updated>2022-03-10T03:03:32.716Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;在React中处理请求时我们经常会写出这样的代码&lt;/p&gt;
+&lt;pre class=&quot;line-numbers language-javascript&quot; data-language=&quot;javascript&quot;&gt;&lt;code</summary>
+        
+      
+    
+    
+    
+    <category term="Web前端" scheme="https://maplepudding.github.io/categories/Web%E5%89%8D%E7%AB%AF/"/>
+    
+    
+    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="React-Query" scheme="https://maplepudding.github.io/tags/React-Query/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux入门1 使用命令行管理用户</title>
@@ -544,36 +572,6 @@
     <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
     
     <category term="CSS" scheme="https://maplepudding.github.io/tags/CSS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>常见用户验证方式总结</title>
-    <link href="https://maplepudding.github.io/20210801/2021-8-1/"/>
-    <id>https://maplepudding.github.io/20210801/2021-8-1/</id>
-    <published>2021-08-01T13:24:00.000Z</published>
-    <updated>2021-08-10T08:30:31.402Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;整理一下前端常见的用户验证方式&lt;/p&gt;
-&lt;p&gt;本文示例：&lt;br&gt;前端：js原生&lt;br&gt;后端：express&lt;/p&gt;
-&lt;p&gt;文件结构：&lt;br&gt;&lt;img src=&quot;/images/2021-8-1/structure.png&quot; alt=&quot;structure&quot;&gt;&lt;/p&gt;
-&lt;h2</summary>
-        
-      
-    
-    
-    
-    <category term="Web前端" scheme="https://maplepudding.github.io/categories/Web%E5%89%8D%E7%AB%AF/"/>
-    
-    
-    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="Web后端" scheme="https://maplepudding.github.io/tags/Web%E5%90%8E%E7%AB%AF/"/>
     
   </entry>
   
