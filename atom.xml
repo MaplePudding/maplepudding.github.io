@@ -6,7 +6,7 @@
   <link href="https://maplepudding.github.io/atom.xml" rel="self"/>
   
   <link href="https://maplepudding.github.io/"/>
-  <updated>2022-03-10T03:03:32.716Z</updated>
+  <updated>2022-03-17T04:53:23.751Z</updated>
   <id>https://maplepudding.github.io/</id>
   
   <author>
@@ -17,11 +17,39 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>前端工程化1 开发环境配置</title>
+    <link href="https://maplepudding.github.io/20220317/2022-3-17/"/>
+    <id>https://maplepudding.github.io/20220317/2022-3-17/</id>
+    <published>2022-03-17T13:24:00.000Z</published>
+    <updated>2022-03-17T04:53:23.751Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;基础开发环境的规范是前端工程化的重要组成部分，本篇blog将介绍自动化代码格式化，git hook的简单使用，commit message标准化等内容&lt;/p&gt;
+&lt;h2 id=&quot;prettier-代码格式化工具&quot;&gt;&lt;a href=&quot;#prettier-代码格式化工具&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="前端工程化" scheme="https://maplepudding.github.io/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    
+    
+    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="前端工程化" scheme="https://maplepudding.github.io/tags/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
+    
+  </entry>
+  
+  <entry>
     <title>使用React-Query管理状态</title>
     <link href="https://maplepudding.github.io/20220310/2022-3-10/"/>
     <id>https://maplepudding.github.io/20220310/2022-3-10/</id>
     <published>2022-03-10T13:24:00.000Z</published>
-    <updated>2022-03-10T03:03:32.716Z</updated>
+    <updated>2022-03-10T03:09:41.177Z</updated>
     
     
       
@@ -545,33 +573,6 @@
     <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
     
     <category term="JavaScript" scheme="https://maplepudding.github.io/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>前端的坑【01】 margin百分比参照什么值显示？</title>
-    <link href="https://maplepudding.github.io/20210805/2021-8-5/"/>
-    <id>https://maplepudding.github.io/20210805/2021-8-5/</id>
-    <published>2021-08-05T13:24:00.000Z</published>
-    <updated>2021-08-10T10:14:50.490Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;默认状态下百分比margin如何显示？&quot;&gt;&lt;a href=&quot;#默认状态下百分比margin如何显示？&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Web前端" scheme="https://maplepudding.github.io/categories/Web%E5%89%8D%E7%AB%AF/"/>
-    
-    
-    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="CSS" scheme="https://maplepudding.github.io/tags/CSS/"/>
     
   </entry>
   
