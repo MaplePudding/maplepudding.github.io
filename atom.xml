@@ -6,7 +6,7 @@
   <link href="https://maplepudding.github.io/atom.xml" rel="self"/>
   
   <link href="https://maplepudding.github.io/"/>
-  <updated>2022-03-22T01:58:59.872Z</updated>
+  <updated>2022-04-05T15:31:06.872Z</updated>
   <id>https://maplepudding.github.io/</id>
   
   <author>
@@ -17,11 +17,41 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>【axios源码阅读】 1 拦截器如何工作</title>
+    <link href="https://maplepudding.github.io/20220404/2022-4-5/"/>
+    <id>https://maplepudding.github.io/20220404/2022-4-5/</id>
+    <published>2022-04-04T13:24:00.000Z</published>
+    <updated>2022-04-05T15:31:06.872Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;axios中拦截器分为请求拦截器和相应拦截器，请求拦截器用于在request之前的预处理，比如带上token，相应拦截器可以对response做统一处理。&lt;/p&gt;
+&lt;h3 id=&quot;初始化&quot;&gt;&lt;a href=&quot;#初始化&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="axios" scheme="https://maplepudding.github.io/categories/axios/"/>
+    
+    
+    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
+    
+    <category term="axios" scheme="https://maplepudding.github.io/tags/axios/"/>
+    
+    <category term="Ajax" scheme="https://maplepudding.github.io/tags/Ajax/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Webpack学习笔记(三) webpack进阶</title>
     <link href="https://maplepudding.github.io/20220322/2022-3-22/"/>
     <id>https://maplepudding.github.io/20220322/2022-3-22/</id>
     <published>2022-03-22T13:24:00.000Z</published>
-    <updated>2022-03-22T01:58:59.872Z</updated>
+    <updated>2022-03-22T02:02:46.648Z</updated>
     
     
       
@@ -546,33 +576,6 @@
     <category term="React" scheme="https://maplepudding.github.io/tags/React/"/>
     
     <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>跨域常见解决方式</title>
-    <link href="https://maplepudding.github.io/20210822/2021-8-22/"/>
-    <id>https://maplepudding.github.io/20210822/2021-8-22/</id>
-    <published>2021-08-22T13:24:00.000Z</published>
-    <updated>2021-08-22T09:23:15.716Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;首先概括一下跨域，就是请求时要保证</summary>
-        
-      
-    
-    
-    
-    <category term="Web前端" scheme="https://maplepudding.github.io/categories/Web%E5%89%8D%E7%AB%AF/"/>
-    
-    
-    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="Web后端" scheme="https://maplepudding.github.io/tags/Web%E5%90%8E%E7%AB%AF/"/>
     
   </entry>
   
