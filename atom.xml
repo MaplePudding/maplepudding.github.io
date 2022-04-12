@@ -6,7 +6,7 @@
   <link href="https://maplepudding.github.io/atom.xml" rel="self"/>
   
   <link href="https://maplepudding.github.io/"/>
-  <updated>2022-04-05T15:31:06.872Z</updated>
+  <updated>2022-04-12T15:03:23.370Z</updated>
   <id>https://maplepudding.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>基于net包实现多路复用的RPC通道 DEMO</title>
+    <link href="https://maplepudding.github.io/20220412/2022-4-12/"/>
+    <id>https://maplepudding.github.io/20220412/2022-4-12/</id>
+    <published>2022-04-12T13:24:00.000Z</published>
+    <updated>2022-04-12T15:03:23.370Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;RPC调用相比于HTTP效率更高，因为RPC底层基于二进制流进行通讯，信息更为简单。Node.js下的net包是对tcp的封装，因此可以基于net包实现rpc通信。&lt;/p&gt;
+&lt;p&gt;本DEMO结构如下&lt;/p&gt;
+&lt;pre class=&quot;line-numbers</summary>
+        
+      
+    
+    
+    
+    <category term="axios" scheme="https://maplepudding.github.io/categories/axios/"/>
+    
+    
+    <category term="Web后端" scheme="https://maplepudding.github.io/tags/Web%E5%90%8E%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>【axios源码阅读】 1 拦截器如何工作</title>
@@ -548,34 +575,6 @@
     <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
     
     <category term="JavaScript" scheme="https://maplepudding.github.io/tags/JavaScript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【React源码学习】9 useEffect的基本原理</title>
-    <link href="https://maplepudding.github.io/20210905/2021-9-5/"/>
-    <id>https://maplepudding.github.io/20210905/2021-9-5/</id>
-    <published>2021-09-05T13:24:00.000Z</published>
-    <updated>2021-09-05T06:19:04.385Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;demo&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-javascript&quot; data-language=&quot;javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token</summary>
-        
-      
-    
-    
-    
-    <category term="React" scheme="https://maplepudding.github.io/categories/React/"/>
-    
-    
-    <category term="React" scheme="https://maplepudding.github.io/tags/React/"/>
-    
-    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
     
   </entry>
   
