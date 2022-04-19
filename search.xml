@@ -13,7 +13,7 @@
       
       <categories>
           
-          <category> axios </category>
+          <category> Node </category>
           
       </categories>
       
@@ -721,8 +721,6 @@
             <tag> Web前端 </tag>
             
             <tag> axios </tag>
-            
-            <tag> Ajax </tag>
             
         </tags>
       
