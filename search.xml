@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>未设置Content-Type导致js和css文件失效</title>
+      <link href="20220416/2022-4-16/"/>
+      <url>20220416/2022-4-16/</url>
+      
+        <content type="html"><![CDATA[<p>最近用nginx部署一个前端应用后出现了很诡异的问题，构建后html访问正常，请求的css和js也都正常返回，但是js并没有执行且页面没有任何样式。</p><p><img src="/images/2022-4-16/html.png" alt="html"></p><p>network响应如下</p><p><img src="/images/2022-4-16/file.png" alt="file"></p><p>最开始认为是package.json的问题，但是加入homepage属性后问题依然没有解决，多次搜索后确定因<strong>没有设置Content-Type导致浏览器无法识别js和css文件</strong></p><p>ngxin安装后自带一个mime文件，该文件默认在/etc/nginx下，引入后基本可以解决这类问题</p><p><img src="/images/2022-4-16/folder.png" alt="/etc/nginx"></p><p>修改nginx.conf如下(引入mime文件)</p><p><img src="/images/2022-4-16/conf.png" alt="conf"></p><p>最后看一下response header是否已经有了Content-Type</p><p><img src="/images/2022-4-16/js.png" alt="js header"></p><p><img src="/images/2022-4-16/css.png" alt="css header"></p><p><strong><em>越诡异的问题越简单</em></strong></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Web前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Web前端 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>基于net包实现多路复用的RPC通道 DEMO</title>
       <link href="20220412/2022-4-12/"/>
       <url>20220412/2022-4-12/</url>

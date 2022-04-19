@@ -6,7 +6,7 @@
   <link href="https://maplepudding.github.io/atom.xml" rel="self"/>
   
   <link href="https://maplepudding.github.io/"/>
-  <updated>2022-04-19T12:08:48.255Z</updated>
+  <updated>2022-04-19T14:40:37.602Z</updated>
   <id>https://maplepudding.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>未设置Content-Type导致js和css文件失效</title>
+    <link href="https://maplepudding.github.io/20220416/2022-4-16/"/>
+    <id>https://maplepudding.github.io/20220416/2022-4-16/</id>
+    <published>2022-04-16T13:24:00.000Z</published>
+    <updated>2022-04-19T14:40:37.602Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;最近用nginx部署一个前端应用后出现了很诡异的问题，构建后html访问正常，请求的css和js也都正常返回，但是js并没有执行且页面没有任何样式。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/images/2022-4-16/html.png&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Web前端" scheme="https://maplepudding.github.io/categories/Web%E5%89%8D%E7%AB%AF/"/>
+    
+    
+    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>基于net包实现多路复用的RPC通道 DEMO</title>
@@ -546,35 +572,6 @@
     <category term="Web后端" scheme="https://maplepudding.github.io/tags/Web%E5%90%8E%E7%AB%AF/"/>
     
     <category term="Golang" scheme="https://maplepudding.github.io/tags/Golang/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>前端的坑【02】 关于我对js函数内变量取值的误解</title>
-    <link href="https://maplepudding.github.io/20210914/2021-9-14/"/>
-    <id>https://maplepudding.github.io/20210914/2021-9-14/</id>
-    <published>2021-09-14T13:24:00.000Z</published>
-    <updated>2022-01-28T13:55:43.079Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;测试&quot;&gt;&lt;a href=&quot;#测试&quot; class=&quot;headerlink&quot; title=&quot;测试&quot;&gt;&lt;/a&gt;测试&lt;/h2&gt;&lt;p&gt;今天突然发现了这个问题，有点颠覆三观（我太菜了&lt;/p&gt;
-&lt;p&gt;直接看一段代码&lt;/p&gt;
-&lt;pre class=&quot;line-numbers</summary>
-        
-      
-    
-    
-    
-    <category term="Web前端" scheme="https://maplepudding.github.io/categories/Web%E5%89%8D%E7%AB%AF/"/>
-    
-    
-    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="JavaScript" scheme="https://maplepudding.github.io/tags/JavaScript/"/>
     
   </entry>
   
