@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="未设置Content-Type导致js和css文件失效, Code">
+    <meta name="keywords" content="ab压测入门, Code">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>未设置Content-Type导致js和css文件失效 | Code</title>
+    <title>ab压测入门 | Code</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -268,12 +268,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">未设置Content-Type导致js和css文件失效</h1>
+                    <h1 class="description center-align post-title">ab压测入门</h1>
                 </div>
             </div>
         </div>
@@ -389,8 +389,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Web%E5%89%8D%E7%AB%AF/">
-                                <span class="chip bg-color">Web前端</span>
+                            <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/">
+                                <span class="chip bg-color">软件测试</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/">
+                                <span class="chip bg-color">性能测试</span>
                             </a>
                         
                     </div>
@@ -401,8 +405,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Web%E5%89%8D%E7%AB%AF/" class="post-category">
-                                Web前端
+                            <a href="/categories/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/" class="post-category">
+                                软件测试
                             </a>
                         
                     </div>
@@ -414,14 +418,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-04-16
+                    2022-04-25
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2022-04-19
+                    2022-04-24
                 </div>
                 
 
@@ -443,19 +447,80 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>最近用nginx部署一个前端应用后出现了很诡异的问题，构建后html访问正常，请求的css和js也都正常返回，但是js并没有执行且页面没有任何样式。</p>
-<p><img src="/images/2022-4-16/html.png" alt="html"></p>
-<p>network响应如下</p>
-<p><img src="/images/2022-4-16/file.png" alt="file"></p>
-<p>最开始认为是package.json的问题，但是加入homepage属性后问题依然没有解决，多次搜索后确定因<strong>没有设置Content-Type导致浏览器无法识别js和css文件</strong></p>
-<p>ngxin安装后自带一个mime文件，该文件默认在/etc/nginx下，引入后基本可以解决这类问题</p>
-<p><img src="/images/2022-4-16/folder.png" alt="/etc/nginx"></p>
-<p>修改nginx.conf如下(引入mime文件)</p>
-<p><img src="/images/2022-4-16/conf.png" alt="conf"></p>
-<p>最后看一下response header是否已经有了Content-Type</p>
-<p><img src="/images/2022-4-16/js.png" alt="js header"></p>
-<p><img src="/images/2022-4-16/css.png" alt="css header"></p>
-<p><strong><em>越诡异的问题越简单</em></strong></p>
+                <h2 id="ab压测入门"><a href="#ab压测入门" class="headerlink" title="ab压测入门"></a>ab压测入门</h2><p>ab是一款轻量级url压测工具，通过命令行即可对指定url进行压测。以debian为例，首先安装ab</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">apt-get install apache2-utils<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>使用ab -h即可查看相关命令，这里常用的option就是前四个，-n是指请求数量，比如-n 1000就是一共发起1000个请求。-c是并发量，-c 100代表同时发出100个请求。-t用来指定压测的时间限制。-s用来指定时间限制，超过后代表超时。</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">ab -h
+
+Usage: ab [options] [http[s]:&#x2F;&#x2F;]hostname[:port]&#x2F;path
+Options are:
+    -n requests     Number of requests to perform
+    -c concurrency  Number of multiple requests to make at a time
+    -t timelimit    Seconds to max. to spend on benchmarking
+                    This implies -n 50000
+    -s timeout      Seconds to max. wait for each response
+                    Default is 30 seconds<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>目前本机在127.0.0.1下有一个nginx服务器，访问80端口后会返回html文件，下面以该服务器为例在本地进行简单压测。</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">ab -n 500 -c 100 http:&#x2F;&#x2F;127.0.0.1:80&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上述命令对localhost的80端口进行了压测，一共发起500个请求，并发数量是100，下面看一下压测报告</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">Server Software:        nginx&#x2F;1.14.2
+Server Hostname:        127.0.0.1
+Server Port:            80
+
+Document Path:          &#x2F;
+Document Length:        612 bytes<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>第一部分是压测的相关信息，这里可以看到压测的server是nginx，除此之外还有port和host等信息。</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">Concurrency Level:      100
+Time taken for tests:   0.055 seconds
+Complete requests:      500
+Failed requests:        0
+Total transferred:      422500 bytes
+HTML transferred:       306000 bytes
+Requests per second:    9133.75 [#&#x2F;sec] (mean)
+Time per request:       10.948 [ms] (mean)
+Time per request:       0.109 [ms] (mean, across all concurrent requests)
+Transfer rate:          7537.13 [Kbytes&#x2F;sec] received<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这一部分比较重要。</p>
+<ul>
+<li><p>Concurrency Level是指并发数量，就是前面指定的-c 100</p>
+</li>
+<li><p>Time taken for tests是本次压测花费的时间，因为是直接在本地进行测试，0.055s就处理完了所有请求。</p>
+</li>
+<li><p>Complete request和Failed requests分别指完成的请求数和失败的请求数，如果server压力过大很可能会出现timeout导致failed</p>
+</li>
+<li><p>Total transferred是指压测过程中发送数据的总量，包括HTTP Header等数据。HTML transferred就是HTML所占的和数据量，这里我们进行了500此请求，HTML数据总量有306000 bytes</p>
+</li>
+<li><p>RPS是该服务器每秒能处理的请求数量，在当前环境下我们的nginx每秒能处理9133个请求，RPS是衡量服务器性能的重要指标</p>
+</li>
+<li><p>Time per request就是处理每个请求所占用的时间，这两项的区别可以看这一篇blog <a target="_blank" rel="noopener" href="https://www.imooc.com/article/19979">https://www.imooc.com/article/19979</a> </p>
+</li>
+</ul>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">Connection Times (ms)
+              min  mean[+&#x2F;-sd] median   max
+Connect:        0    3   1.5      3       7
+Processing:     2    7   3.2      6      18
+Waiting:        1    6   3.2      5      15
+Total:          5   10   3.2      9      20<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这一部分是对请求时间的统计。</p>
+<p>从上向下分别是连接时间，server处理请求的时间，请求等待时间。从左向右分别是最小值，最大值，方差（方差越大说明服务器不稳定），中位数和最大值。</p>
+<pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">Percentage of the requests served within a certain time (ms)
+  50%      9
+  66%     10
+  75%     11
+  80%     12
+  90%     14
+  95%     18
+  98%     18
+  99%     18
+ 100%     20 (longest request)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>最后一部分是对请求数量和时间的分析，50%的请求可以在9ms内处理完毕，100%的请求处理时间不会超过20ms（这里的数据也对应上一部分的Connection Times）</p>
 
                 
             </div>
@@ -482,7 +547,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://maplepudding.github.io/20220416/2022-4-16/">https://maplepudding.github.io/20220416/2022-4-16/</a>
+                    <a href="https://maplepudding.github.io/20220425/2022-4-25/">https://maplepudding.github.io/20220425/2022-4-25/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -520,8 +585,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Web%E5%89%8D%E7%AB%AF/">
-                                    <span class="chip bg-color">Web前端</span>
+                                <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/">
+                                    <span class="chip bg-color">软件测试</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/">
+                                    <span class="chip bg-color">性能测试</span>
                                 </a>
                             
                         </div>
@@ -562,9 +631,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/20220425/2022-4-25/">
                     <div class="card-image">
@@ -582,9 +652,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-25
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-25
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -597,6 +667,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -619,31 +690,31 @@
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/20220412/2022-4-12/">
+                <a href="/20220416/2022-4-16/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="基于net包实现多路复用的RPC通道 DEMO">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="未设置Content-Type导致js和css文件失效">
                         
-                        <span class="card-title">基于net包实现多路复用的RPC通道 DEMO</span>
+                        <span class="card-title">未设置Content-Type导致js和css文件失效</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            RPC
+                            坑
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-12
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-16
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Node/" class="post-category">
-                                    Node
+                            <a href="/categories/Web%E5%89%8D%E7%AB%AF/" class="post-category">
+                                    Web前端
                                 </a>
                             
                             
@@ -653,8 +724,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Web%E5%90%8E%E7%AB%AF/">
-                        <span class="chip bg-color">Web后端</span>
+                    <a href="/tags/Web%E5%89%8D%E7%AB%AF/">
+                        <span class="chip bg-color">Web前端</span>
                     </a>
                     
                 </div>

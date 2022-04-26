@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>ab压测入门</title>
+      <link href="20220425/2022-4-25/"/>
+      <url>20220425/2022-4-25/</url>
+      
+        <content type="html"><![CDATA[<h2 id="ab压测入门"><a href="#ab压测入门" class="headerlink" title="ab压测入门"></a>ab压测入门</h2><p>ab是一款轻量级url压测工具，通过命令行即可对指定url进行压测。以debian为例，首先安装ab</p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">apt-get install apache2-utils<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>使用ab -h即可查看相关命令，这里常用的option就是前四个，-n是指请求数量，比如-n 1000就是一共发起1000个请求。-c是并发量，-c 100代表同时发出100个请求。-t用来指定压测的时间限制。-s用来指定时间限制，超过后代表超时。</p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">ab -hUsage: ab [options] [http[s]:&#x2F;&#x2F;]hostname[:port]&#x2F;pathOptions are:    -n requests     Number of requests to perform    -c concurrency  Number of multiple requests to make at a time    -t timelimit    Seconds to max. to spend on benchmarking                    This implies -n 50000    -s timeout      Seconds to max. wait for each response                    Default is 30 seconds<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>目前本机在127.0.0.1下有一个nginx服务器，访问80端口后会返回html文件，下面以该服务器为例在本地进行简单压测。</p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">ab -n 500 -c 100 http:&#x2F;&#x2F;127.0.0.1:80&#x2F;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>上述命令对localhost的80端口进行了压测，一共发起500个请求，并发数量是100，下面看一下压测报告</p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">Server Software:        nginx&#x2F;1.14.2Server Hostname:        127.0.0.1Server Port:            80Document Path:          &#x2F;Document Length:        612 bytes<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>第一部分是压测的相关信息，这里可以看到压测的server是nginx，除此之外还有port和host等信息。</p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">Concurrency Level:      100Time taken for tests:   0.055 secondsComplete requests:      500Failed requests:        0Total transferred:      422500 bytesHTML transferred:       306000 bytesRequests per second:    9133.75 [#&#x2F;sec] (mean)Time per request:       10.948 [ms] (mean)Time per request:       0.109 [ms] (mean, across all concurrent requests)Transfer rate:          7537.13 [Kbytes&#x2F;sec] received<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>这一部分比较重要。</p><ul><li><p>Concurrency Level是指并发数量，就是前面指定的-c 100</p></li><li><p>Time taken for tests是本次压测花费的时间，因为是直接在本地进行测试，0.055s就处理完了所有请求。</p></li><li><p>Complete request和Failed requests分别指完成的请求数和失败的请求数，如果server压力过大很可能会出现timeout导致failed</p></li><li><p>Total transferred是指压测过程中发送数据的总量，包括HTTP Header等数据。HTML transferred就是HTML所占的和数据量，这里我们进行了500此请求，HTML数据总量有306000 bytes</p></li><li><p>RPS是该服务器每秒能处理的请求数量，在当前环境下我们的nginx每秒能处理9133个请求，RPS是衡量服务器性能的重要指标</p></li><li><p>Time per request就是处理每个请求所占用的时间，这两项的区别可以看这一篇blog <a href="https://www.imooc.com/article/19979">https://www.imooc.com/article/19979</a> </p></li></ul><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">Connection Times (ms)              min  mean[+&#x2F;-sd] median   maxConnect:        0    3   1.5      3       7Processing:     2    7   3.2      6      18Waiting:        1    6   3.2      5      15Total:          5   10   3.2      9      20<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>这一部分是对请求时间的统计。</p><p>从上向下分别是连接时间，server处理请求的时间，请求等待时间。从左向右分别是最小值，最大值，方差（方差越大说明服务器不稳定），中位数和最大值。</p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">Percentage of the requests served within a certain time (ms)  50%      9  66%     10  75%     11  80%     12  90%     14  95%     18  98%     18  99%     18 100%     20 (longest request)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>最后一部分是对请求数量和时间的分析，50%的请求可以在9ms内处理完毕，100%的请求处理时间不会超过20ms（这里的数据也对应上一部分的Connection Times）</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 软件测试 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 软件测试 </tag>
+            
+            <tag> 性能测试 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>未设置Content-Type导致js和css文件失效</title>
       <link href="20220416/2022-4-16/"/>
       <url>20220416/2022-4-16/</url>
