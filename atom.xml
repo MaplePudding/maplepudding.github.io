@@ -6,7 +6,7 @@
   <link href="https://maplepudding.github.io/atom.xml" rel="self"/>
   
   <link href="https://maplepudding.github.io/"/>
-  <updated>2022-05-01T10:37:41.738Z</updated>
+  <updated>2022-05-03T02:45:20.773Z</updated>
   <id>https://maplepudding.github.io/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>dotenv原理浅析</title>
+    <link href="https://maplepudding.github.io/20220503/2022-5-3/"/>
+    <id>https://maplepudding.github.io/20220503/2022-5-3/</id>
+    <published>2022-05-03T13:24:00.000Z</published>
+    <updated>2022-05-03T02:45:20.773Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;dotenv原理浅析&quot;&gt;&lt;a href=&quot;#dotenv原理浅析&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Node" scheme="https://maplepudding.github.io/categories/Node/"/>
+    
+    
+    <category term="Node" scheme="https://maplepudding.github.io/tags/Node/"/>
+    
+    <category term="NPM Package" scheme="https://maplepudding.github.io/tags/NPM-Package/"/>
+    
+  </entry>
+  
+  <entry>
     <title>浅析前端数据可视化</title>
     <link href="https://maplepudding.github.io/20220501/2022-5-1/"/>
     <id>https://maplepudding.github.io/20220501/2022-5-1/</id>
     <published>2022-05-01T13:24:00.000Z</published>
-    <updated>2022-05-01T10:37:41.738Z</updated>
+    <updated>2022-05-03T02:47:02.408Z</updated>
     
     
       
@@ -541,34 +568,6 @@
     <category term="Web后端" scheme="https://maplepudding.github.io/tags/Web%E5%90%8E%E7%AB%AF/"/>
     
     <category term="redis" scheme="https://maplepudding.github.io/tags/redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>设计模式入门笔记 01 Creational Pattern</title>
-    <link href="https://maplepudding.github.io/20211208/2021-12-8/"/>
-    <id>https://maplepudding.github.io/20211208/2021-12-8/</id>
-    <published>2021-12-08T13:24:00.000Z</published>
-    <updated>2021-12-08T08:57:14.807Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;简单点说，设计模式就是一种解决特定问题的组织代码的方式，这种方式经过多次的验证，可以有效提高项目的可维护程度，让代码结构更加清晰。&lt;/p&gt;
-&lt;p&gt;因为是非科班菜鸡，没仔细学过，所以以cousera的design</summary>
-        
-      
-    
-    
-    
-    <category term="CS基础" scheme="https://maplepudding.github.io/categories/CS%E5%9F%BA%E7%A1%80/"/>
-    
-    
-    <category term="CS基础" scheme="https://maplepudding.github.io/tags/CS%E5%9F%BA%E7%A1%80/"/>
-    
-    <category term="设计模式" scheme="https://maplepudding.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
     
   </entry>
   
