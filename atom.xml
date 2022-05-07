@@ -6,7 +6,7 @@
   <link href="https://maplepudding.github.io/atom.xml" rel="self"/>
   
   <link href="https://maplepudding.github.io/"/>
-  <updated>2022-05-03T02:45:20.773Z</updated>
+  <updated>2022-05-07T07:38:13.342Z</updated>
   <id>https://maplepudding.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>浅析go命令行工具 cobra</title>
+    <link href="https://maplepudding.github.io/20220507/2022-5-7/"/>
+    <id>https://maplepudding.github.io/20220507/2022-5-7/</id>
+    <published>2022-05-07T13:24:00.000Z</published>
+    <updated>2022-05-07T07:38:13.342Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;命令基本结构&quot;&gt;&lt;a href=&quot;#命令基本结构&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Web后端" scheme="https://maplepudding.github.io/categories/Web%E5%90%8E%E7%AB%AF/"/>
+    
+    
+    <category term="Web后端" scheme="https://maplepudding.github.io/tags/Web%E5%90%8E%E7%AB%AF/"/>
+    
+    <category term="Golang" scheme="https://maplepudding.github.io/tags/Golang/"/>
+    
+  </entry>
   
   <entry>
     <title>dotenv原理浅析</title>
@@ -102,7 +129,7 @@
     <link href="https://maplepudding.github.io/20220416/2022-4-16/"/>
     <id>https://maplepudding.github.io/20220416/2022-4-16/</id>
     <published>2022-04-16T13:24:00.000Z</published>
-    <updated>2022-04-19T14:40:37.602Z</updated>
+    <updated>2022-05-07T07:41:01.046Z</updated>
     
     
       
@@ -110,7 +137,7 @@
         
         
     <summary type="html">&lt;p&gt;最近用nginx部署一个前端应用后出现了很诡异的问题，构建后html访问正常，请求的css和js也都正常返回，但是js并没有执行且页面没有任何样式。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;/images/2022-4-16/html.png&quot;</summary>
+&lt;p&gt;&lt;img</summary>
         
       
     
@@ -540,34 +567,6 @@
     
     
     <category term="CSS" scheme="https://maplepudding.github.io/tags/CSS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>redis学习笔记 01 redis常用命令</title>
-    <link href="https://maplepudding.github.io/20211215/2021-12-15/"/>
-    <id>https://maplepudding.github.io/20211215/2021-12-15/</id>
-    <published>2021-12-15T13:24:00.000Z</published>
-    <updated>2021-12-10T08:31:57.400Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h3 id=&quot;redis启动与关闭&quot;&gt;&lt;a href=&quot;#redis启动与关闭&quot; class=&quot;headerlink&quot; title=&quot;redis启动与关闭&quot;&gt;&lt;/a&gt;redis启动与关闭&lt;/h3&gt;&lt;p&gt;启动redis&lt;/p&gt;
-&lt;pre class=&quot;line-numbers</summary>
-        
-      
-    
-    
-    
-    <category term="redis" scheme="https://maplepudding.github.io/categories/redis/"/>
-    
-    
-    <category term="Web后端" scheme="https://maplepudding.github.io/tags/Web%E5%90%8E%E7%AB%AF/"/>
-    
-    <category term="redis" scheme="https://maplepudding.github.io/tags/redis/"/>
     
   </entry>
   
