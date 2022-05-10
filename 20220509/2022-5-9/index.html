@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="浅析go命令行工具 cobra, Code">
+    <meta name="keywords" content="使用go实现猜字游戏和翻译工具 | 青训营笔记, Code">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>浅析go命令行工具 cobra | Code</title>
+    <title>使用go实现猜字游戏和翻译工具 | 青训营笔记 | Code</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -268,12 +268,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">浅析go命令行工具 cobra</h1>
+                    <h1 class="description center-align post-title">使用go实现猜字游戏和翻译工具 | 青训营笔记</h1>
                 </div>
             </div>
         </div>
@@ -418,14 +418,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2022-05-07
+                    2022-05-09
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2022-05-07
+                    2022-05-10
                 </div>
                 
 
@@ -447,129 +447,108 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="命令基本结构"><a href="#命令基本结构" class="headerlink" title="命令基本结构"></a>命令基本结构</h2><p>cobra可以通过简洁的代码实现一个完善的命令行工具，其内置的函数足以应付大多数场景，下面学习一下cobra的用法。</p>
-<p>在使用cobra之前要了解一个命令的基本结构，下面以npm i为例</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">npm</span> i axios --save-dev<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<ul>
-<li><p>i: i就是command本身，在cobra下使用cobra.Command定义，一个command至少会包含User（命令本身），Short（简短描述），Long（完整描述），Run（命令执行时的函数）</p>
-</li>
-<li><p>axios：install命令的参数</p>
-</li>
-<li><p>–save-dev：install命令的flag，flag可以有各种各样的值，常见的是bool。</p>
-</li>
-</ul>
-<h2 id="实现一个简易命令行工具"><a href="#实现一个简易命令行工具" class="headerlink" title="实现一个简易命令行工具"></a>实现一个简易命令行工具</h2><p>看完了命令的基本结构下面实现一个简单的命令行工具（这里不会包含具体的功能，只是演示cobra用法）</p>
-<pre class="line-numbers language-none"><code class="language-none">&#x2F;&#x2F; 项目结构
-.
-├── go.mod
-├── main.go
-|    
-├── cmd
-    ├── install.go
-    └── root.go<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+                <p>这是我参与「第三届青训营 -后端场」笔记创作活动的的第1篇笔记，青训营day1主要介绍了go的基础语法，同时提供了一些项目作为练习，猜字游戏侧重于go的基础语法以及输入输出相关package的用法，翻译工具更侧重于如何发起HTTP请求及响应。</p>
+<h2 id="猜字游戏"><a href="#猜字游戏" class="headerlink" title="猜字游戏"></a>猜字游戏</h2><p>首先描述一下功能：运行后内部产生一个random，然后提示用户输入一个随机数，如果用户输入不是数字则提示重新输入，如果是数字则对比大小后给出提示。</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	maxNum <span class="token operator">:=</span> <span class="token number">100</span>
+	<span class="token comment">//随机数种子</span>
+	rand<span class="token punctuation">.</span><span class="token function">Seed</span><span class="token punctuation">(</span>time<span class="token punctuation">.</span><span class="token function">Now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">UnixNano</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+	secretNumber <span class="token operator">:=</span> rand<span class="token punctuation">.</span><span class="token function">Intn</span><span class="token punctuation">(</span>maxNum<span class="token punctuation">)</span>
 
+    <span class="token comment">//提示</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"Please input your guess"</span><span class="token punctuation">)</span>
+	<span class="token keyword">for</span> <span class="token punctuation">&#123;</span>
+		<span class="token keyword">var</span> guess <span class="token builtin">int</span>
 
-<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token comment">//main.go</span>
+        <span class="token comment">//和c的scanf一样，传入addr</span>
+		<span class="token boolean">_</span><span class="token punctuation">,</span> err <span class="token operator">:=</span> fmt<span class="token punctuation">.</span><span class="token function">Scanf</span><span class="token punctuation">(</span><span class="token string">"%d\r\n"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>guess<span class="token punctuation">)</span>
 
-<span class="token keyword">package</span> main
-
-<span class="token keyword">import</span> <span class="token string">"study/cmd"</span>
-
-<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-	cmd<span class="token punctuation">.</span><span class="token function">Execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>main函数只需要执行cmd包的Execute方法，该方法内部会执行Command.Execute，这是command的核心执行函数。</p>
-<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token comment">// root.go</span>
-<span class="token keyword">package</span> cmd
-
-<span class="token keyword">import</span> <span class="token string">"github.com/spf13/cobra"</span>
-
-<span class="token comment">//定义npm命令</span>
-<span class="token keyword">var</span> rootCmd <span class="token operator">=</span> <span class="token operator">&amp;</span>cobra<span class="token punctuation">.</span>Command<span class="token punctuation">&#123;</span>
-	Use<span class="token punctuation">:</span> <span class="token string">"npm"</span><span class="token punctuation">,</span>
-	Short<span class="token punctuation">:</span> <span class="token string">"npm project"</span><span class="token punctuation">,</span>
-	Long<span class="token punctuation">:</span> <span class="token string">"npm project"</span><span class="token punctuation">,</span>
-	Run<span class="token punctuation">:</span> <span class="token keyword">func</span><span class="token punctuation">(</span>cmd <span class="token operator">*</span>cobra<span class="token punctuation">.</span>Command<span class="token punctuation">,</span> args<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-		<span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"npm..."</span><span class="token punctuation">)</span>
-	<span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
-<span class="token punctuation">&#125;</span>
-
-<span class="token keyword">func</span> <span class="token function">Execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-	rootCmd<span class="token punctuation">.</span><span class="token function">Execute</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>rootCmd内包含一个npm命令，执行后会调用run方法打印一个string。</p>
-<p>函数Execute就是对rootCmd.Execute的包装</p>
-<p>此时npm命令已经是可用状态了，执行go build</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">go build -o npm.exe
-
-npm.exe    // npm<span class="token punctuation">..</span>.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="使用arg和flag"><a href="#使用arg和flag" class="headerlink" title="使用arg和flag"></a>使用arg和flag</h3><p>然后添加一个install命令完善以下我们的npm</p>
-<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token comment">//install.go</span>
-
-<span class="token keyword">package</span> cmd
-
-<span class="token keyword">import</span> <span class="token punctuation">(</span>
-	<span class="token string">"github.com/spf13/cobra"</span>
-	<span class="token string">"log"</span>
-<span class="token punctuation">)</span>
-
-<span class="token comment">//用来保存flag</span>
-<span class="token keyword">var</span><span class="token punctuation">(</span>
-	devFlag <span class="token builtin">bool</span>
-<span class="token punctuation">)</span>
-
-<span class="token comment">//install命令</span>
-<span class="token keyword">var</span> installCmd <span class="token operator">=</span> <span class="token operator">&amp;</span>cobra<span class="token punctuation">.</span>Command<span class="token punctuation">&#123;</span>
-	Use<span class="token punctuation">:</span> <span class="token string">"install"</span><span class="token punctuation">,</span>
-	Short<span class="token punctuation">:</span> <span class="token string">"install package"</span><span class="token punctuation">,</span>
-	Long<span class="token punctuation">:</span> <span class="token string">"install npm package"</span><span class="token punctuation">,</span>
-    <span class="token comment">//arg就是install后面跟着的字符，比如npm i axios，axios就是arg</span>
-	Run<span class="token punctuation">:</span> <span class="token keyword">func</span><span class="token punctuation">(</span>cmd <span class="token operator">*</span>cobra<span class="token punctuation">.</span>Command<span class="token punctuation">,</span> args <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">string</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-		<span class="token keyword">if</span> <span class="token operator">!</span>devFlag <span class="token punctuation">&#123;</span>
-			log<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"install %s ..."</span><span class="token punctuation">,</span> args<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-		<span class="token punctuation">&#125;</span><span class="token keyword">else</span><span class="token punctuation">&#123;</span>
-			log<span class="token punctuation">.</span><span class="token function">Printf</span><span class="token punctuation">(</span><span class="token string">"install %s as dev dependency"</span><span class="token punctuation">,</span> args<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token comment">//无法parseInt</span>
+		<span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">&#123;</span>
+			fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"Invalid input. Please enter an integer value"</span><span class="token punctuation">)</span>
+			<span class="token keyword">continue</span>
 		<span class="token punctuation">&#125;</span>
-	<span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+		fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"You guess is"</span><span class="token punctuation">,</span> guess<span class="token punctuation">)</span>
+		<span class="token keyword">if</span> guess <span class="token operator">></span> secretNumber <span class="token punctuation">&#123;</span>
+			fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"Your guess is bigger than the secret number. Please try again"</span><span class="token punctuation">)</span>
+		<span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> guess <span class="token operator">&lt;</span> secretNumber <span class="token punctuation">&#123;</span>
+			fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"Your guess is smaller than the secret number. Please try again"</span><span class="token punctuation">)</span>
+		<span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+			fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"Correct, you Legend!"</span><span class="token punctuation">)</span>
+			<span class="token keyword">break</span>
+		<span class="token punctuation">&#125;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>tips:fmt.Scanf对于win用户要注意换行，windows输入回车后大概率会包含\r\n，如果不处理则无法转换成int。mac OS和linux还没有测试</strong></p>
+<h2 id="翻译工具"><a href="#翻译工具" class="headerlink" title="翻译工具"></a>翻译工具</h2><p>这个工具逻辑上比较简单，大概流程是：接受输入单词 -&gt; 构建client和request -&gt; 将data作为payload以post发送 -&gt; 将response转化为struct</p>
+<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token comment">//main</span>
+<span class="token keyword">func</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">if</span> <span class="token function">len</span><span class="token punctuation">(</span>os<span class="token punctuation">.</span>Args<span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token number">2</span> <span class="token punctuation">&#123;</span>
+		fmt<span class="token punctuation">.</span><span class="token function">Fprintf</span><span class="token punctuation">(</span>os<span class="token punctuation">.</span>Stderr<span class="token punctuation">,</span> <span class="token string">`usage: simpleDict WORD
+example: simpleDict hello
+		`</span><span class="token punctuation">)</span>
+		os<span class="token punctuation">.</span><span class="token function">Exit</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+	<span class="token punctuation">&#125;</span>
+	word <span class="token operator">:=</span> os<span class="token punctuation">.</span>Args<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+	<span class="token keyword">for</span> i <span class="token operator">:=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> runtime<span class="token punctuation">.</span><span class="token function">NumCPU</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">&#123;</span>
+		<span class="token function">query</span><span class="token punctuation">(</span>word<span class="token punctuation">)</span>
+	<span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span>
 
-<span class="token keyword">func</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    <span class="token comment">//AddCommand将install作为root的子命令</span>
-	rootCmd<span class="token punctuation">.</span><span class="token function">AddCommand</span><span class="token punctuation">(</span>installCmd<span class="token punctuation">)</span>
-    
-    <span class="token comment">//定义flag，这里的flag是bool类型</span>
-	installCmd<span class="token punctuation">.</span><span class="token function">Flags</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">BoolVarP</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>devFlag<span class="token punctuation">,</span> <span class="token string">"save-dev"</span><span class="token punctuation">,</span> <span class="token string">"D"</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token string">"install dev dependency"</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>在使用install命令后会执行Run方法，通过参数args可以拿到install后面的参数。在init内通过Flags().BoolVarP()定义了一个flag，该flag的值会被写入devFlag。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">go build -o npm.exe
+<span class="token comment">//query 核心请求函数</span>
+<span class="token keyword">func</span> <span class="token function">query</span><span class="token punctuation">(</span>word <span class="token builtin">string</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	client <span class="token operator">:=</span> <span class="token operator">&amp;</span>http<span class="token punctuation">.</span>Client<span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
 
-npm.exe <span class="token function">install</span> axios             // <span class="token function">install</span> axios <span class="token punctuation">..</span>. 
-npm.exe <span class="token function">install</span> axios --save-dev  // <span class="token function">install</span> axios as dev dependency
-npm.exe <span class="token function">install</span> axios -D          // <span class="token function">install</span> axios as dev dependency<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token comment">//request data</span>
+	request <span class="token operator">:=</span> DictRequest<span class="token punctuation">&#123;</span>TransType<span class="token punctuation">:</span> <span class="token string">"en2zh"</span><span class="token punctuation">,</span> Source<span class="token punctuation">:</span> word<span class="token punctuation">&#125;</span>
+	buf<span class="token punctuation">,</span> err <span class="token operator">:=</span> json<span class="token punctuation">.</span><span class="token function">Marshal</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span>
+	<span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">&#123;</span>
+		log<span class="token punctuation">.</span><span class="token function">Fatal</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+	<span class="token punctuation">&#125;</span>
+	<span class="token keyword">var</span> data <span class="token operator">=</span> bytes<span class="token punctuation">.</span><span class="token function">NewReader</span><span class="token punctuation">(</span>buf<span class="token punctuation">)</span>
 
-<h2 id="cobra包内的flag分类"><a href="#cobra包内的flag分类" class="headerlink" title="cobra包内的flag分类"></a>cobra包内的flag分类</h2><p>在解释flag分类之前先看一下定义一个flag的常见参数（以BoolVarP为例）</p>
+    <span class="token comment">//HTTP请求</span>
+	req<span class="token punctuation">,</span> err <span class="token operator">:=</span> http<span class="token punctuation">.</span><span class="token function">NewRequest</span><span class="token punctuation">(</span><span class="token string">"POST"</span><span class="token punctuation">,</span> <span class="token string">"https://api.interpreter.caiyunai.com/v1/dict"</span><span class="token punctuation">,</span> data<span class="token punctuation">)</span>
+	<span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">&#123;</span>
+		log<span class="token punctuation">.</span><span class="token function">Fatal</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+	<span class="token punctuation">&#125;</span>
+
+    <span class="token comment">// Set Header</span>
+
+	resp<span class="token punctuation">,</span> err <span class="token operator">:=</span> client<span class="token punctuation">.</span><span class="token function">Do</span><span class="token punctuation">(</span>req<span class="token punctuation">)</span>
+	<span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">&#123;</span>
+		log<span class="token punctuation">.</span><span class="token function">Fatal</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+	<span class="token punctuation">&#125;</span>
+
+    <span class="token comment">//defer关闭</span>
+	<span class="token keyword">defer</span> resp<span class="token punctuation">.</span>Body<span class="token punctuation">.</span><span class="token function">Close</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+	bodyText<span class="token punctuation">,</span> err <span class="token operator">:=</span> ioutil<span class="token punctuation">.</span><span class="token function">ReadAll</span><span class="token punctuation">(</span>resp<span class="token punctuation">.</span>Body<span class="token punctuation">)</span>
+	<span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">&#123;</span>
+		log<span class="token punctuation">.</span><span class="token function">Fatal</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+	<span class="token punctuation">&#125;</span>
+
+    <span class="token comment">//bad request</span>
+	<span class="token keyword">if</span> resp<span class="token punctuation">.</span>StatusCode <span class="token operator">!=</span> <span class="token number">200</span> <span class="token punctuation">&#123;</span>
+		log<span class="token punctuation">.</span><span class="token function">Fatal</span><span class="token punctuation">(</span><span class="token string">"bad StatusCode:"</span><span class="token punctuation">,</span> resp<span class="token punctuation">.</span>StatusCode<span class="token punctuation">,</span> <span class="token string">"body"</span><span class="token punctuation">,</span> <span class="token function">string</span><span class="token punctuation">(</span>bodyText<span class="token punctuation">)</span><span class="token punctuation">)</span>
+	<span class="token punctuation">&#125;</span>
+	<span class="token keyword">var</span> dictResponse DictResponse
+	err <span class="token operator">=</span> json<span class="token punctuation">.</span><span class="token function">Unmarshal</span><span class="token punctuation">(</span>bodyText<span class="token punctuation">,</span> <span class="token operator">&amp;</span>dictResponse<span class="token punctuation">)</span>
+	<span class="token keyword">if</span> err <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">&#123;</span>
+		log<span class="token punctuation">.</span><span class="token function">Fatal</span><span class="token punctuation">(</span>err<span class="token punctuation">)</span>
+	<span class="token punctuation">&#125;</span>
+	fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>word<span class="token punctuation">,</span> <span class="token string">"UK:"</span><span class="token punctuation">,</span> dictResponse<span class="token punctuation">.</span>Dictionary<span class="token punctuation">.</span>Prons<span class="token punctuation">.</span>En<span class="token punctuation">,</span> <span class="token string">"US:"</span><span class="token punctuation">,</span> dictResponse<span class="token punctuation">.</span>Dictionary<span class="token punctuation">.</span>Prons<span class="token punctuation">.</span>EnUs<span class="token punctuation">)</span>
+	<span class="token keyword">for</span> <span class="token boolean">_</span><span class="token punctuation">,</span> item <span class="token operator">:=</span> <span class="token keyword">range</span> dictResponse<span class="token punctuation">.</span>Dictionary<span class="token punctuation">.</span>Explanations <span class="token punctuation">&#123;</span>
+		fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>item<span class="token punctuation">)</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这里面有几个要注意的点：</p>
 <ul>
-<li>p *bool：保存该flagValue的内存地址</li>
-<li>name string：flag 名字，比如前面的save-dev</li>
-<li>shorthand string：name短格式，定义name后长格式使用–save-dev，短格式就是-D</li>
-<li>value bool：默认值，如果命令内没传入-D或者–save-dev该值为false</li>
-<li>usage string：解释该命令作用</li>
+<li>请求和响应的数据结构依赖于struct，定义好json flag后方便转换</li>
+<li>构建req是指定method url和data</li>
+<li>记得判断请求状态，是success还是error</li>
 </ul>
-<h3 id="是否使用指针接收value"><a href="#是否使用指针接收value" class="headerlink" title="是否使用指针接收value"></a>是否使用指针接收value</h3><p>函数名带有var的需要传入一个address接受value</p>
-<pre class="line-numbers language-go" data-language="go"><code class="language-go">testFlag <span class="token operator">:=</span> installCmd<span class="token punctuation">.</span><span class="token function">Flags</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Bool</span><span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token string">"test"</span><span class="token punctuation">)</span>                          <span class="token comment">// 没有var，不需要传入bool类型的pointer，这里的testFlag是bool类型的pointer </span>
-installCmd<span class="token punctuation">.</span><span class="token function">Flags</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">BoolVar</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>devFlag<span class="token punctuation">,</span> <span class="token string">"save-dev"</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token string">"install dev dependency"</span><span class="token punctuation">)</span>   <span class="token comment">// 带有var需要使用address接受value</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<h3 id="是否支持shortHand"><a href="#是否支持shortHand" class="headerlink" title="是否支持shortHand"></a>是否支持shortHand</h3><pre class="line-numbers language-go" data-language="go"><code class="language-go">testFlag <span class="token operator">:=</span> installCmd<span class="token punctuation">.</span><span class="token function">Flags</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">BoolP</span><span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">,</span> <span class="token string">"T"</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token string">"test"</span><span class="token punctuation">)</span>    <span class="token comment">//后面带有P说明支持shortHand，可以使用--test或者-T</span>
-testFlag <span class="token operator">:=</span> installCmd<span class="token punctuation">.</span><span class="token function">Flags</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">Bool</span><span class="token punctuation">(</span><span class="token string">"test"</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">,</span> <span class="token string">"test"</span><span class="token punctuation">)</span>          <span class="token comment">//不支持shortHand</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<h3 id="PersistentFlags"><a href="#PersistentFlags" class="headerlink" title="PersistentFlags"></a>PersistentFlags</h3><p>前面定义的flag只能给特定的命令使用（比如给installCmd定义的test），在cobra支持子命令的情况下如果可以给一组命令定义flag可以减少代码量的同时提高维护性，PersistentFlags可以实现此功能</p>
-<pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token comment">//PersistentFlags</span>
-rootCmd<span class="token punctuation">.</span><span class="token function">PersistentFlags</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">StringVar</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>cfgFile<span class="token punctuation">,</span> <span class="token string">"config"</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">,</span> <span class="token string">"config file (default is $HOME/.cobra.yaml)"</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<p>rootCmd定义PersistentFlags后该command的child command都可以使用该flag。</p>
 
                 
             </div>
@@ -596,7 +575,7 @@ rootCmd<span class="token punctuation">.</span><span class="token function">Pers
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://maplepudding.github.io/20220507/2022-5-7/">https://maplepudding.github.io/20220507/2022-5-7/</a>
+                    <a href="https://maplepudding.github.io/20220509/2022-5-9/">https://maplepudding.github.io/20220509/2022-5-9/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -684,13 +663,13 @@ rootCmd<span class="token punctuation">.</span><span class="token function">Pers
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/20220509/2022-5-9/">
+                <a href="/20220510/2022-5-10/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="使用go实现猜字游戏和翻译工具 | 青训营笔记">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="使用单测提高go代码质量 | 青训营笔记">
                         
-                        <span class="card-title">使用go实现猜字游戏和翻译工具 | 青训营笔记</span>
+                        <span class="card-title">使用单测提高go代码质量 | 青训营笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -701,7 +680,7 @@ rootCmd<span class="token punctuation">.</span><span class="token function">Pers
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-05-09
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-05-10
                         </span>
                         <span class="publish-author">
                             
@@ -737,31 +716,31 @@ rootCmd<span class="token punctuation">.</span><span class="token function">Pers
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/20220503/2022-5-3/">
+                <a href="/20220507/2022-5-7/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="dotenv原理浅析">
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="浅析go命令行工具 cobra">
                         
-                        <span class="card-title">dotenv原理浅析</span>
+                        <span class="card-title">浅析go命令行工具 cobra</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            dotenv源码
+                            cobra
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-03
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-07
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Node/" class="post-category">
-                                    Node
+                            <a href="/categories/Web%E5%90%8E%E7%AB%AF/" class="post-category">
+                                    Web后端
                                 </a>
                             
                             
@@ -771,12 +750,12 @@ rootCmd<span class="token punctuation">.</span><span class="token function">Pers
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Node/">
-                        <span class="chip bg-color">Node</span>
+                    <a href="/tags/Web%E5%90%8E%E7%AB%AF/">
+                        <span class="chip bg-color">Web后端</span>
                     </a>
                     
-                    <a href="/tags/NPM-Package/">
-                        <span class="chip bg-color">NPM Package</span>
+                    <a href="/tags/Golang/">
+                        <span class="chip bg-color">Golang</span>
                     </a>
                     
                 </div>

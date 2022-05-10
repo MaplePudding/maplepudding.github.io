@@ -6,7 +6,7 @@
   <link href="https://maplepudding.github.io/atom.xml" rel="self"/>
   
   <link href="https://maplepudding.github.io/"/>
-  <updated>2022-05-07T07:38:13.342Z</updated>
+  <updated>2022-05-10T14:01:00.066Z</updated>
   <id>https://maplepudding.github.io/</id>
   
   <author>
@@ -15,6 +15,62 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用单测提高go代码质量 | 青训营笔记</title>
+    <link href="https://maplepudding.github.io/20220510/2022-5-10/"/>
+    <id>https://maplepudding.github.io/20220510/2022-5-10/</id>
+    <published>2022-05-10T13:24:00.000Z</published>
+    <updated>2022-05-10T14:01:00.066Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;这是我参与「第三届青训营 -后端场」笔记创作活动的的第2篇笔记，青训营day2主要介绍了go的工程化实践，本篇blog将集中总结go单元测试相关内容，下面先看一下go单测的基本写法。&lt;/p&gt;
+&lt;h2 id=&quot;单元测试基本用法&quot;&gt;&lt;a href=&quot;#单元测试基本用法&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Web后端" scheme="https://maplepudding.github.io/categories/Web%E5%90%8E%E7%AB%AF/"/>
+    
+    
+    <category term="Web后端" scheme="https://maplepudding.github.io/tags/Web%E5%90%8E%E7%AB%AF/"/>
+    
+    <category term="Golang" scheme="https://maplepudding.github.io/tags/Golang/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用go实现猜字游戏和翻译工具 | 青训营笔记</title>
+    <link href="https://maplepudding.github.io/20220509/2022-5-9/"/>
+    <id>https://maplepudding.github.io/20220509/2022-5-9/</id>
+    <published>2022-05-09T13:24:00.000Z</published>
+    <updated>2022-05-10T14:00:22.906Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;这是我参与「第三届青训营 -后端场」笔记创作活动的的第1篇笔记，青训营day1主要介绍了go的基础语法，同时提供了一些项目作为练习，猜字游戏侧重于go的基础语法以及输入输出相关package的用法，翻译工具更侧重于如何发起HTTP请求及响应。&lt;/p&gt;
+&lt;h2</summary>
+        
+      
+    
+    
+    
+    <category term="Web后端" scheme="https://maplepudding.github.io/categories/Web%E5%90%8E%E7%AB%AF/"/>
+    
+    
+    <category term="Web后端" scheme="https://maplepudding.github.io/tags/Web%E5%90%8E%E7%AB%AF/"/>
+    
+    <category term="Golang" scheme="https://maplepudding.github.io/tags/Golang/"/>
+    
+  </entry>
   
   <entry>
     <title>浅析go命令行工具 cobra</title>
@@ -513,60 +569,6 @@
     <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
     
     <category term="Snowpack" scheme="https://maplepudding.github.io/tags/Snowpack/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>前端工程化 一种git commit message规范工具的简单使用</title>
-    <link href="https://maplepudding.github.io/20220117/2022-1-17/"/>
-    <id>https://maplepudding.github.io/20220117/2022-1-17/</id>
-    <published>2022-01-17T13:24:00.000Z</published>
-    <updated>2022-01-17T08:09:21.272Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;本篇介绍一下commitizen的简单使用，git message规范是前端工程化的重要部分，良好的message风格有利于进行项目的版本管理，在对比多种工具后发现commitizen更符合我的习惯，功能丰富且开箱即用。&lt;/p&gt;
-&lt;h2 id=&quot;安装&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="前端工程化" scheme="https://maplepudding.github.io/categories/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
-    
-    
-    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="前端工程化" scheme="https://maplepudding.github.io/tags/%E5%89%8D%E7%AB%AF%E5%B7%A5%E7%A8%8B%E5%8C%96/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Grid布局系统学习笔记</title>
-    <link href="https://maplepudding.github.io/20220106/2022-1-6/"/>
-    <id>https://maplepudding.github.io/20220106/2022-1-6/</id>
-    <published>2022-01-06T13:24:00.000Z</published>
-    <updated>2022-02-23T04:44:38.596Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;grid的布局核心原理就是将container分割为多个area，将子元素放置在一个或多个area内&lt;/p&gt;
-&lt;h2 id=&quot;grid-template-columns-rows&quot;&gt;&lt;a href=&quot;#grid-template-columns-rows&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Web前端" scheme="https://maplepudding.github.io/categories/Web%E5%89%8D%E7%AB%AF/"/>
-    
-    
-    <category term="CSS" scheme="https://maplepudding.github.io/tags/CSS/"/>
     
   </entry>
   
