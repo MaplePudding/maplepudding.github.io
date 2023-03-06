@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>如何修改一个npm包的源码？</title>
+      <link href="20230227/2023-2-27/"/>
+      <url>20230227/2023-2-27/</url>
+      
+        <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>大家写代码的过程中经常会有这样一种场景，某个npm不符合自己的需求/有bug，但是总不能直接去改npm包源码。此时大概有这么几个方法修改代码：</p><ol><li>把人家的代码down下来自己维护</li><li>自己写脚本替换代码</li></ol><p>以上两种方法缺点都十分明显，难道真的没有其他办法了嘛？</p><h2 id="patch-package简介"><a href="#patch-package简介" class="headerlink" title="patch-package简介"></a>patch-package简介</h2><p>为了实现上述需求可以使用<a href="https://www.npmjs.com/package/patch-package">patch-package</a>（从名字看就是对一个包打补丁），patch-package这个包会记录我们对npm包的修改，在执行patch命令后就会把npm包源码改成目标的样子。</p><h2 id="patch-package用法"><a href="#patch-package用法" class="headerlink" title="patch-package用法"></a>patch-package用法</h2><p>说了这么多下面直接来看一下怎么用(随便开一个空项目)</p><h3 id="安装并配置patch-package"><a href="#安装并配置patch-package" class="headerlink" title="安装并配置patch-package"></a>安装并配置patch-package</h3><p>首先安装patch-package</p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">npm i patch-package --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>然后我们肯定希望在安装一个包以后执行修改源码的命令，因此要写一下patch命令(官方文档写的很清楚)</p><pre class="line-numbers language-none"><code class="language-none">&quot;scripts&quot;: &#123; &quot;postinstall&quot;: &quot;patch-package&quot;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><h3 id="安装测试库"><a href="#安装测试库" class="headerlink" title="安装测试库"></a>安装测试库</h3><p>这里使用<a href="%5Bthe-answer%5D(https://www.npmjs.com/package/the-answer)">the-answer</a>作为测试库（这个库足够简单）</p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">npm i the-answer --save<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h3 id="准备一个测试文件"><a href="#准备一个测试文件" class="headerlink" title="准备一个测试文件"></a>准备一个测试文件</h3><pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">const</span> answer <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span> <span class="token string">'the-answer'</span> <span class="token punctuation">)</span><span class="token punctuation">;</span>console<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>answer<span class="token punctuation">)</span> <span class="token comment">// 42</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><h3 id="修改module源码"><a href="#修改module源码" class="headerlink" title="修改module源码"></a>修改module源码</h3><p>这里直接把the-answer里面的index由42改为41，然后执行patch-package</p><pre class="line-numbers language-shell" data-language="shell"><code class="language-shell">npx patch-package the-answer<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>删掉the-answer后重新执行npm i，运行index.js发现修改成功了</p><h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>既然patch-package这么好用，那是怎么修改npm包的源码呢？</p><p>在执行npx patch-package后可以发现根目录生成了一个patch文件夹</p><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c8f40387eed145dd92a315c5f628059d~tplv-k3u1fbpfcp-watermark.image" alt="image.png"></p><p>看patch文件的内容可以发现这是通过git diff生成的，这里面记录了被修改的文件名及具体改动。</p><p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/23503053cfc44903851403121b1fbd0f~tplv-k3u1fbpfcp-watermark.image" alt="image.png"></p><p><strong>在执行patch后会创建一个临时目录，在该目录内重新安装目标npm包后与修改后的包做对比，将change保存在patches文件夹内，这样就可以分析出源码被如何改动</strong></p><p>以后再遇到类似的需求就可以通过patch轻松修改源码，提前8个小时下班不是梦 :D</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Web前端 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Web前端 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>使用单测提高go代码质量 | 青训营笔记</title>
       <link href="20220510/2022-5-10/"/>
       <url>20220510/2022-5-10/</url>

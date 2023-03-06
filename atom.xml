@@ -6,7 +6,7 @@
   <link href="https://maplepudding.github.io/atom.xml" rel="self"/>
   
   <link href="https://maplepudding.github.io/"/>
-  <updated>2022-05-10T14:01:00.066Z</updated>
+  <updated>2023-03-06T14:55:59.600Z</updated>
   <id>https://maplepudding.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>如何修改一个npm包的源码？</title>
+    <link href="https://maplepudding.github.io/20230227/2023-2-27/"/>
+    <id>https://maplepudding.github.io/20230227/2023-2-27/</id>
+    <published>2023-02-27T13:24:00.000Z</published>
+    <updated>2023-03-06T14:55:59.600Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;背景&quot;&gt;&lt;a href=&quot;#背景&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Web前端" scheme="https://maplepudding.github.io/categories/Web%E5%89%8D%E7%AB%AF/"/>
+    
+    
+    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>使用单测提高go代码质量 | 青训营笔记</title>
@@ -540,35 +565,6 @@
     
     
     <category term="Linux" scheme="https://maplepudding.github.io/tags/Linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>前端的坑【03】解决一个snowpack环境下图片等资源无法加载的问题</title>
-    <link href="https://maplepudding.github.io/20220128/2022-1-28/"/>
-    <id>https://maplepudding.github.io/20220128/2022-1-28/</id>
-    <published>2022-01-28T13:24:00.000Z</published>
-    <updated>2022-01-28T14:01:26.539Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;复现&quot;&gt;&lt;a href=&quot;#复现&quot; class=&quot;headerlink&quot; title=&quot;复现&quot;&gt;&lt;/a&gt;复现&lt;/h2&gt;&lt;p&gt;最近尝试新的构建工具时遇到了这么一个坑，使用snowpack时图片等资源无法正常加载。&lt;/p&gt;
-&lt;p&gt;项目结构如下&lt;/p&gt;
-&lt;pre</summary>
-        
-      
-    
-    
-    
-    <category term="Web前端" scheme="https://maplepudding.github.io/categories/Web%E5%89%8D%E7%AB%AF/"/>
-    
-    
-    <category term="Web前端" scheme="https://maplepudding.github.io/tags/Web%E5%89%8D%E7%AB%AF/"/>
-    
-    <category term="Snowpack" scheme="https://maplepudding.github.io/tags/Snowpack/"/>
     
   </entry>
   
